@@ -1,0 +1,39 @@
+<div class="filters">
+	<div class="title"> Filtros </div>
+	<hr>
+	<%= form_with url:"/phones", method:"get", local: true do |form| %>
+	 <div>
+		 <%= form.label :manufacturer %>
+		 <%= form.text_field :manufacturer_eq %>
+	 </div>
+	 <div>
+	 	<%= form.label :model %>
+	 	<%= form.text_field :model_eq %>
+	 </div>
+	 <div>
+	 	<%= form.label :sale_modality %>
+	 	<%= form.text_field :sale_modality_eq %>
+	 </div>
+	 <div>
+	 	<%= form.submit :filtrar %>
+	 </div>
+	<% end %>
+</div>
+
+
+
+<table>
+	<tr>
+		<th> Fabricante </th>
+		<th> Modelo </th>
+		<th> Modo de Contrato </th>
+	</tr>
+
+	<%@phones.each do |phone|%>
+		<tr>
+			<td> <%=phone.manufacturer%> </td>
+			<td> <%=phone.model%> </td>
+			<td> <%=phone.sale_modality%> </td>
+		</tr>
+	<%end%>
+</table>
