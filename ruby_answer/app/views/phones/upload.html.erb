@@ -1,0 +1,6 @@
+<%= form_for @phone, url: "/phones/update" do |f| %>
+   <div class="form-group">     
+      <%= f.file_field :file, class: 'form-control-file', required: true %>
+   </div>
+   <%= f.button :submit %>
+<% end %>
