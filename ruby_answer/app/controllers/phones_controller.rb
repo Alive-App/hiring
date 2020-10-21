@@ -8,8 +8,8 @@ class PhonesController < ApplicationController
 	end
 
 	def update	
-		Phone.import(params[:phone][:file])
-		redirect_to "/phones"
+		import_result = Phone.import(params[:phone][:file])	
+		redirect_to "/phones", notice: import_result
 	end
 
 	def filter_params
