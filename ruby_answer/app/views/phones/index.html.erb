@@ -1,44 +1,51 @@
-<link href="/assets/stylesheets/phones.scss" media="screen" rel="stylesheet" />
-
 <p id="notice"><%= notice %></p>
 
 <div class="filters">
-	<div class="title"> Filtros </div>
-	<hr>
-	<%= form_with url:"/phones", method:"get", local: true do |form| %>
-	 <div>
-		 <%= form.label :manufacturer %>
-		 <%= form.text_field :manufacturer_eq %>
-	 </div>
-	 <div>
-	 	<%= form.label :model %>
-	 	<%= form.text_field :model_eq %>
-	 </div>
-	 <div>
-	 	<%= form.label :sale_modality %>
-	 	<%= form.text_field :sale_modality_eq %>
-	 </div>
-	 <div>
-	 	<%= form.submit :filtrar %>
-	 </div>
+	<div class="header">
+		<div>
+			<div>
+				<%=image_tag("phone_logo.png", size:"50x50")%>
+			</div>
+			<a>Celulares</a>
+		</div>
+
+	</div>
+	<%= form_with url:"/phones", method:"get", local: true, class:"form-inline" do |form| %>	
+		<%= form.label :manufacturer, "Fabricante" %>
+		<%= form.text_field :manufacturer_eq %>
+
+ 		<%= form.label :model, "Modelo" %>
+ 		<%= form.text_field :model_eq %>
+
+		<%= form.label :sale_modality, "Modo de contrato" %>
+ 		<%= form.text_field :sale_modality_eq %>
+
+		<div class="row">
+		 	<%= form.submit :filtrar %>
+		</div>
+	
 	<% end %>
 </div>
 
+<hr>
 
+<div class="container">	
+	<div class="table">
+		<div class="table-header">
+			<div class="header__item"><a>Fabricante</a></div>
+			<div class="header__item">Modelo</div>
+			<div class="header__item">Modo de Contrato</div>	
+		</div>
 
-<table class="table table-striped table-bordered" id="example">
-	<tr>
-		<th> Fabricante </th>
-		<th> Modelo </th>
-		<th> Modo de Contrato </th>
-	</tr>
+		<%@phones.each do |phone|%>
+			<div class="table-content">	
+				<div class="table-row">		
+					<div class="table-data"><%=phone.manufacturer%></div>				
+					<div class="table-data"><%=phone.model%></div>				
+					<div class="table-data"><%=phone.sale_modality%></div>				
+				</div>		
+			</div>
+		<%end%>
 
-	<%@phones.each do |phone|%>
-		<tr>
-			<td> <%=phone.manufacturer%> </td>
-			<td> <%=phone.model%> </td>
-			<td> <%=phone.sale_modality%> </td>
-		</tr>
-	<%end%>
-</table>
-
+	</div>
+</div>

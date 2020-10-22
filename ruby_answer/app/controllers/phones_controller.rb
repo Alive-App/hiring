@@ -1,4 +1,5 @@
 class PhonesController < ApplicationController
+	skip_before_action :verify_authenticity_token  
 	def index		
 		@phones = Phone.ransack(filter_params).result
 	end
@@ -8,6 +9,7 @@ class PhonesController < ApplicationController
 	end
 
 	def update	
+		binding.pry
 		import_result = Phone.import(params[:phone][:file])	
 		redirect_to "/phones", notice: import_result
 	end

@@ -1,6 +1,15 @@
-<%= form_for @phone, url: "/phones/update" do |f| %>
-   <div class="form-group">     
-      <%= f.file_field :file, class: 'form-control-file', required: true %>
-   </div>
+<link href="/assets/stylesheets/phones_upload.css" media="screen" rel="stylesheet" />
+
+<%= form_for @phone, url: "/phones/update" do |f| %>   
+   <%= f.file_field :file, required: true %>   
+   <p>Arraste a planilha para esta área ou click aqui!</p>
    <%= f.button :submit %>
 <% end %>
+
+<script>
+$(document).ready(function(){
+  $('form input').change(function () {
+    $('form p').text(this.files.length + " Arquivo(s) selecionados");
+  });
+});
+</script>
