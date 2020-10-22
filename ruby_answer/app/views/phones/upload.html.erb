@@ -1,4 +1,4 @@
-<link href="/assets/stylesheets/phones_upload.css" media="screen" rel="stylesheet" />
+<%= stylesheet_link_tag "phones_upload", media: "all" %>
 
 <%= form_for @phone, url: "/phones/update" do |f| %>   
    <%= f.file_field :file, required: true %>   

@@ -8,8 +8,7 @@ class PhonesController < ApplicationController
 		@phone = Phone.new
 	end
 
-	def update	
-		binding.pry
+	def update		
 		import_result = Phone.import(params[:phone][:file])	
 		redirect_to "/phones", notice: import_result
 	end
