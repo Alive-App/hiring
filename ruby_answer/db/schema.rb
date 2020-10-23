@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_20_182143) do
+ActiveRecord::Schema.define(version: 2020_10_23_115525) do
 
   create_table "phones", force: :cascade do |t|
     t.string "manufacturer"
@@ -18,6 +18,8 @@ ActiveRecord::Schema.define(version: 2020_10_20_182143) do
     t.string "sale_modality"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "quantity"
+    t.float "price"
   end
 
 end

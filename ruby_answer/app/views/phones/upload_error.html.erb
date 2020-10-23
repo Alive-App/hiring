@@ -1,0 +1,18 @@
+<%= stylesheet_link_tag "phones", media: "all" %>
+
+<div class="header">
+	Erro na importação de dados!
+</div>
+
+<div class="errors-content"> 
+	<%@import_result.each do |error|%>
+		<div class="error">
+			<%="❌ #{error}"%>
+		</div>
+	<%end%>
+
+	<div class = "button-content">
+		<a href="/phones/upload" class="button">Voltar</a>
+	</div>
+	
+</div>

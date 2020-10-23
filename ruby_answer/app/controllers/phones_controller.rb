@@ -9,8 +9,18 @@ class PhonesController < ApplicationController
 	end
 
 	def update		
-		import_result = Phone.import(params[:phone][:file])	
-		redirect_to "/phones", notice: import_result
+		phones_quantity = Phone.all.count
+		@import_result = Phone.import(params[:phone][:file])	
+		new_phones_quantity = Phone.all.count
+
+		phones_added = new_phones_quantity - phones_quantity
+
+		
+		if @import_result == "sucess"
+			redirect_to "/phones", notice: "#{phones_added} celular(es) adicionado(s) com sucesso!"
+		else
+			render "upload_error"
+		end
 	end
 
 	def filter_params

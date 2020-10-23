@@ -3,7 +3,7 @@
   display: flex;
   flex-flow: row wrap;
   align-items: center;
-  max-width:950px;
+  max-width:1200px;
   margin:auto;
 }
 
@@ -14,13 +14,13 @@
 .form-inline input {
   vertical-align: middle;
   margin: 5px 10px 5px 0;
-  padding: 10px;
+  padding: 10px 40px;
   background-color: #fff;
   border: 1px solid #ddd;
 }
 
 .form-inline button {
-  padding: 10px 20px;
+  padding: 7px 25px;
   background-color: dodgerblue;
   border: 1px solid #ddd;
   color: white;
@@ -31,7 +31,7 @@
   background-color: royalblue;
 }
 
-@media (max-width: 950px) {
+@media (max-width: 1200px) {
   .form-inline input {
     margin: 10px 0;
   }

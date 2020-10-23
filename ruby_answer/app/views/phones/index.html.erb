@@ -2,8 +2,6 @@
 <%= stylesheet_link_tag "tables", media: "all" %>
 <%= stylesheet_link_tag "filters", media: "all" %>
 
-<p id="notice"><%= notice %></p>
-
 <div class="filters">
 	<div class="header">
 		<div>
@@ -30,8 +28,11 @@
 	
 	<% end %>
 </div>
-
 <hr>
+
+<div class="button-content">
+	<a href="/phones/upload/" class="button"> Upload </a>
+</div>
 
 <div class="container">	
 	<div class="table">
@@ -39,6 +40,8 @@
 			<div class="header__item"><a>Fabricante</a></div>
 			<div class="header__item">Modelo</div>
 			<div class="header__item">Modo de Contrato</div>	
+			<div class="header__item">Quantidade</div>	
+			<div class="header__item">Preço</div>	
 		</div>
 
 		<%@phones.each do |phone|%>
@@ -47,6 +50,8 @@
 					<div class="table-data"><%=phone.manufacturer%></div>				
 					<div class="table-data"><%=phone.model%></div>				
 					<div class="table-data"><%=phone.sale_modality%></div>				
+					<div class="table-data"><%=phone.formated_quantity%></div>				
+					<div class="table-data"><%=phone.formated_price%></div>				
 				</div>		
 			</div>
 		<%end%>
