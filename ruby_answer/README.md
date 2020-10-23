@@ -1,24 +1,26 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+* Esta aplicação, consiste no resultado do desafio proposto para o processo seletivo de analista BackEnd da Alive App.
 
-Things you may want to cover:
+* O Projeto foi desenvolvido com o framework Ruby on Rails e com o banco de dados postgresql.
 
-* Ruby version
+* Para inicialização do projeto, rodar os seguintes comandos: 
 
-* System dependencies
+** bundle install
+** rake db:create
+** rake db:migrate
 
-* Configuration
+* O projeto consiste no upload, normalização e visualização de um arquivo CSV.
 
-* Database creation
+* O upload de celulares pode ser feito através do link disponível na página inicial ou 
+  pela rota /phones/upload/ .
 
-* Database initialization
+* Caso a importação tenha erros, o usuário será redirecionado para uma página com a listagem
+dos errors, caso contrário ele será redirecionado para a página principal, onde poderá visualizar
+os dados importados.
 
-* How to run the test suite
+* O arquivo csv deve obedecer o formato padrão. Um arquivo de exemplo está disponível na raiz
+  do projeto com o nome phones.csv
 
-* Services (job queues, cache servers, search engines, etc.)
+* Os testes foram realizados com a ferramenta Rspec e devem ser executados através do comando rspec.
 
-* Deployment instructions
-
-* ...
