@@ -1,5 +1,6 @@
 class Phone < ApplicationRecord
 	require 'csv'
+	extend Enumerize
 
 	validates :manufacturer, presence: true
 	validates :model, presence:true
@@ -7,6 +8,8 @@ class Phone < ApplicationRecord
 	validates :quantity, presence: true
 	validates :price, presence: true
 	validates :manufacturer,uniqueness: {scope:[:model, :sale_modality]}
+
+	enumerize :sale_modality, in: [:pre_pago,:pos_pago]
 
 	def self.import(file)	
 		errors = []

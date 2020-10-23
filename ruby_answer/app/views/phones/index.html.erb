@@ -14,18 +14,15 @@
 	</div>
 	<%= form_with url:"/phones", method:"get", local: true, class:"form-inline" do |form| %>	
 		<%= form.label :manufacturer, "Fabricante" %>
-		<%= form.text_field :manufacturer_eq %>
+		<%= form.select :manufacturer_eq, Phone.all.pluck(:manufacturer).uniq.unshift("")%>
 
  		<%= form.label :model, "Modelo" %>
- 		<%= form.text_field :model_eq %>
+ 		<%= form.select :model_eq, Phone.all.pluck(:model).uniq.unshift("") %>
 
 		<%= form.label :sale_modality, "Modo de contrato" %>
- 		<%= form.text_field :sale_modality_eq %>
-
-		<div class="row">
-		 	<%= form.submit :filtrar %>
-		</div>
-	
+ 		<%= form.select :sale_modality_eq, ["","pre_pago","pos_pago"]%>
+		
+		<%= form.submit :filtrar, class:"filter_button"%>	
 	<% end %>
 </div>
 <hr>
