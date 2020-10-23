@@ -6,9 +6,9 @@
 
 * Para inicialização do projeto, rodar os seguintes comandos: 
 
-** bundle install
-** rake db:create
-** rake db:migrate
+  - bundle install
+  - rake db:create
+  - rake db:migrate
 
 * O projeto consiste no upload, normalização e visualização de um arquivo CSV.
 
