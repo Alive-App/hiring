@@ -1,0 +1,35 @@
+
+<% if @smartphones.any? %>
+  <table>
+    <tr>
+      <th>
+        <%= t('attributes.smartphone.manufacturer', scope: :activerecord) %>
+      </th>
+      <th>
+        <%= t('attributes.smartphone.model', scope: :activerecord) %>
+      </th>
+      <th>
+        <%= t('attributes.smartphone.color', scope: :activerecord) %>
+      </th>
+      <th>
+        <%= t('attributes.smartphone.carrier_plan_type', scope: :activerecord) %>
+      </th>
+      <th>
+        <%= t('attributes.smartphone.quantity', scope: :activerecord) %>
+      </th>
+      <th>
+        <%= t('attributes.smartphone.price', scope: :activerecord) %>
+      </th>
+    </tr>
+    <% @smartphones.each do |smartphone| %>
+      <tr>
+        <td><%= smartphone.manufacturer %></td>
+        <td><%= smartphone.model %></td>
+        <td><%= smartphone.color %></td>
+        <td><%= smartphone.carrier_plan_type %></td>
+        <td><%= smartphone.quantity %></td>
+        <td><%= smartphone.price %></td>
+      </tr>
+    <% end %>
+  </table>
+<% end %>

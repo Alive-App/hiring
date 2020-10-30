@@ -1,0 +1,14 @@
+en:
+  activerecord:
+    models:
+      smartphone:
+        one: 'Smartphone'
+        other: 'Smartphones'
+    attributes:
+      smartphone:
+        manufacturer: 'Manufacturer'
+        price: 'Price'
+        model: 'Model'
+        color: 'Color'
+        carrier_plan_type: 'Carrier plan'
+        quantity: 'Quatity'

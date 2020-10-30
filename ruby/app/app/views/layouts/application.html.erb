@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>App</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <nav>
+      <%= link_to 'Novo Upload', new_csv_upload_path %>
+      <%= link_to  'Smartphones', smartphones_path %>
+    </nav>
+        <% if !alert.nil? %>
+      <div class='alert'>
+        <%= alert %>
+      </div>
+    <% end %>
+    <% if !notice.nil? %>
+      <div class='notice'>
+        <%= notice %>
+      </div>
+    <% end %>
+    <main>
+      <%= yield %>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,8 @@
+<div class='form-container'>
+  <%= form_with model: @csv_upload do |f| %>
+    <%= f.label :csv, 'csv' %>
+    <%= f.file_field :csv, accept: 'text/csv' %>
+    <%= f.submit 'Enviar', class: 'submit' %>
+  <% end %>
+</div>
+<div class='triangle-rigth'></div>

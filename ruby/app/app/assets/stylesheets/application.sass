@@ -1,0 +1,95 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+nav
+  background-color: #c4c4c4c4
+  padding: 2%
+  display: flex
+  justify-content: space-evenly
+  a
+    color: #ffffff
+    text-decoration: underline
+
+.notice, .alert
+  width: 50%
+  margin-left: 25%
+  margin-right: auto
+  display: flex
+  justify-content: center
+  margin-top: 2%
+  padding: 1%
+
+.alert
+  background-color: red
+  color: #ffffff
+
+.notice
+  background-color: #32e0c4
+  color: #ffffff
+
+body
+  background-color: #32e0c4
+main
+  margin-top: 2%
+  width: 100%
+  height: 100%
+  display: flex
+  justify-content: center
+
+  table
+    margin-left: 5%
+    min-width: 60%
+    background-color: #0d7377
+    td, th
+      border: 1px solid #ffffff
+      text-align: left
+      padding: 1%
+      font-size: 1.2em
+      color: #ffffff
+
+.form-container
+  background-color: #0d7377
+  margin-left: 20%
+  width: 35%
+  form
+    display: flex
+    justify-content: center
+    flex-direction: column
+    input, label
+      display: flex
+      justify-content: center
+      margin: 4%
+      color: #ffffff
+
+    .submit
+      margin: 10%
+      padding: 5%
+      border-radius: 16px
+      background-color: #32e0c4
+
+    input
+      font-size: 1.2em
+
+    label
+      font-size: 2em
+
+.triangle-rigth
+  margin-left: auto
+  margin-right: 0px
+  width: 30%
+  height: 100%
+  background-color: #ffffff
+  clip-path: polygon(100% 0%, 0% 45%, 100% 80%)
