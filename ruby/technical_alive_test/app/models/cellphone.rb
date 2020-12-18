@@ -17,7 +17,7 @@ class Cellphone < ApplicationRecord
     end
 
     begin
-      csv = CSV.read file.path, headers: true
+      csv = CSV.read(file.path, headers: true)
     rescue StandardError
       @import_errors.append('Unable to parse CSV file')
       return false
@@ -38,7 +38,7 @@ class Cellphone < ApplicationRecord
           price: row['price'],
         )
 
-        if !cellphone.valid?
+        if cellphone.invalid?
           @import_errors.append "Error in line #{line}"
           @import_errors += cellphone.errors.full_messages
 
