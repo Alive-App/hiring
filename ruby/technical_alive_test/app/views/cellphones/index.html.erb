@@ -1,2 +1,45 @@
-<h1>Cellphones#index</h1>
-<p>Find me in app/views/cellphones/index.html.erb</p>
+<h1>Cellphones</h1>
+
+<% if flash[:import_errors]&.any? %>
+  <div class="alert alert-danger" role="alert">
+    <h4>
+      <%= pluralize flash[:import_errors].count, 'error' %>:
+    </h4>
+    <ul>
+      <% flash[:import_errors].each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<% if !@cellphones&.empty? %>
+  <table>
+    <thead>
+      <th>Manufacturer</th>
+      <th>Model</th>
+      <th>Color</th>
+      <th>Carrier plan type</th>
+      <th>Quantity</th>
+      <th>Price</th>
+      <th>Created at</th>
+      <th>Updated at</th>
+    </thead>
+    <tbody>
+      <% @cellphones&.each do |cellphone| %>
+        <tr>
+          <td><%= cellphone.manufacturer %></td>
+          <td><%= cellphone.model %></td>
+          <td><%= cellphone.color %></td>
+          <td><%= cellphone.carrier_plan_type %></td>
+          <td><%= cellphone.quantity %></td>
+          <td><%= cellphone.price %></td>
+          <td><%= cellphone.created_at %></td>
+          <td><%= cellphone.updated_at %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p>No cellphones in inventory</p>
+<% end %>

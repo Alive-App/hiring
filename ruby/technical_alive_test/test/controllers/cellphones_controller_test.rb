@@ -24,7 +24,7 @@ class CellphonesControllerTest < ActionDispatch::IntegrationTest
       post cellphones_import_url, params: { file: @valid_file }
     end
 
-    assert_redirected_to root_url
+    assert_redirected_to cellphones_index_url
   end
 
   test 'should not import invalid file' do
@@ -32,6 +32,6 @@ class CellphonesControllerTest < ActionDispatch::IntegrationTest
       post cellphones_import_url, params: { file: @invalid_file }
     end
 
-    assert_template :import
+    assert_redirected_to cellphones_index_url
   end
 end

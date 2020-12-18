@@ -1,18 +1,5 @@
 <h4>Import cellphone data</h4>
 
-<% if @cellphone&.import_errors&.any? %>
-  <div class="alert alert-danger" role="alert">
-    <h4>
-      <%= pluralize @cellphone.import_errors.count, 'error' %>:
-    </h4>
-    <ul>
-      <% @cellphone.import_errors.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-    </ul>
-  </div>
-<% end %>
-
 <% if notice %>
   <p><%= notice %></p>
 <% end %>
