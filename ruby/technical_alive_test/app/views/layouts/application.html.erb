@@ -11,6 +11,10 @@
   </head>
 
   <body>
+    <ul>
+      <li><%= link_to 'Inventory', cellphones_index_path %></li>
+      <li><%= link_to 'Import', cellphones_import_path %></li>
+    </ul>
     <%= yield %>
   </body>
 </html>
