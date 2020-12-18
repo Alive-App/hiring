@@ -8,6 +8,18 @@ class Cellphone < ApplicationRecord
     :carrier_plan_type, :quantity, :price,
     presence: true
 
+  scope :filter_by_manufacturer, -> (manufacturer) {
+    where('manufacturer ILIKE ?', "%#{manufacturer}%")
+  }
+
+  scope :filter_by_model, -> (model) {
+    where('model ILIKE ?', "%#{model}%")
+  }
+
+  scope :filter_by_carrier_plan_type, -> (carrier_plan_type) {
+    where carrier_plan_type: carrier_plan_type
+  }
+
   def import
     @import_errors = []
 

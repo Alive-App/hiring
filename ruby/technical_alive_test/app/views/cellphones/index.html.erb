@@ -13,9 +13,31 @@
   </div>
 <% end %>
 
-<% if !@cellphones&.empty? %>
+<% unless @cellphones&.empty? %>
+  <%= form_tag cellphones_index_path, method: :get do %>
+    <%= label_tag :manufacturer %>
+    <%= text_field_tag :manufacturer %>
+
+    <%= label_tag :model %>
+    <%= text_field_tag :model %>
+
+    <%= label_tag :carrier_plan_type %>
+    <%=
+      select_tag(
+        :carrier_plan_type,
+        options_for_select(@carrier_plan_types),
+        { include_blank: '- Select -'}
+      )
+    %>
+
+    <%= submit_tag 'Filter' %>
+  <% end %>
+
+  <br>
+
   <table>
     <thead>
+      <th>#</th>
       <th>Manufacturer</th>
       <th>Model</th>
       <th>Color</th>
@@ -26,8 +48,9 @@
       <th>Updated at</th>
     </thead>
     <tbody>
-      <% @cellphones&.each do |cellphone| %>
+      <% @cellphones&.each_with_index do |cellphone, index| %>
         <tr>
+          <td><%= index + 1 %></td>
           <td><%= cellphone.manufacturer %></td>
           <td><%= cellphone.model %></td>
           <td><%= cellphone.color %></td>
