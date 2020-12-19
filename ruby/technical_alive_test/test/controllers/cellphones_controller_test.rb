@@ -34,4 +34,9 @@ class CellphonesControllerTest < ActionDispatch::IntegrationTest
 
     assert_redirected_to cellphones_index_url
   end
+
+  test 'should be able to filter' do
+    get "#{cellphones_index_url}?manufacturer=Motorola&model=G5&carrier_plan_type=pos"
+    assert_response :success
+  end
 end
