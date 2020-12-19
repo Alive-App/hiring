@@ -1,24 +1,54 @@
-# README
+# Technical Alive Test
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Instruções
 
-Things you may want to cover:
+Os pré-requisitos para rodar o projeto são:
+- `ruby` versão 2.7.1
+- `rails` versão 6.1.0
+- `bundler`
 
-* Ruby version
+### Instalando as dependências
 
-* System dependencies
+Rode o comando abaixo para instalar as dependências:
 
-* Configuration
+```
+bundle install
+```
 
-* Database creation
+### Rodando o projeto
 
-* Database initialization
+Se for a primeira vez que estiver executando o projeto, crie seu próprio `.env` baseado no `.env.sample` e substitua com suas variáveis de ambiente:
 
-* How to run the test suite
+```
+cp .env.sample .env
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+Crie o banco:
+    
+```
+bin/rake db:create
+```
 
-* Deployment instructions
+Rode as *migrations*:
 
-* ...
+```
+bin/rake db:migrate
+```
+
+Para rodar a aplicação execute o seguinte comando:
+
+```
+bin/rails server
+```
+
+### Testes
+Os testes são realizados utilizando o `Minitest`.
+
+Para executar os testes, rode o comando abaixo:
+```
+bin/rails test
+```
+
+### Melhorias
+
+Diversas melhorias podem ser aplicadas, como por exemplo, realizar o processamento da importação em um *background job*, e salvar em uma tabela o resultado da importação para o usuário saber o resultado.
