@@ -1,7 +1,10 @@
 <%= flash[:notice] %>
 
-<%= link_to "Teste", cell_phones_import_path %>
-
+<div>
+  <%= link_to "Importar CSV", cell_phones_import_path %>
+</div>
+<br>
+<div>
 <% unless @cellphones&.empty? %>
   <%= form_tag cell_phones_index_path, method: :get do %>
 
@@ -12,9 +15,8 @@
     <%= label_tag :carrier_plan_type %>
     <%= text_field_tag :carrier_plan_type %>
 
-    <%= submit_tag 'Buscar' %>
+    <%= submit_tag 'Pesquisar' %>
   <% end %>
-
   <br>
   <table>
     <thead>
@@ -41,5 +43,5 @@
 <% else %>
   <p>Não temos produtos no inventario</p>
 <% end %>
-
+</div>
 
