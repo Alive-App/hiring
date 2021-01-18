@@ -1,7 +1,4 @@
-<h1>Importar Dados CSV</h1>
-
 <div>
-  <h4>Importar arquivo CSV</h4>
   <%= form_tag import_cell_phones_path, multipart: true do %>
     <%= file_field_tag :file %>
     <%= submit_tag "Importar dados CSV" %>

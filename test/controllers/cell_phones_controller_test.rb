@@ -6,7 +6,7 @@ class CellPhonesControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "should get import" do
+  test "should create import" do
     get cell_phones_import_url
     assert_response :success
   end
