@@ -1,25 +1,32 @@
-<%= flash[:notice] %>
-
 <div>
-  <%= link_to "Importar CSV", cell_phones_import_path %>
+  <%= flash[:notice] %>
 </div>
 <br>
 <div>
-<% unless @cellphones&.empty? %>
   <%= form_tag cell_phones_index_path, method: :get do %>
-
-    <%= label_tag :manufacturer %>
-    <%= text_field_tag :manufacturer %>
-    <%= label_tag :model %>
-    <%= text_field_tag :model %>
-    <%= label_tag :carrier_plan_type %>
-    <%= text_field_tag :carrier_plan_type %>
-
-    <%= submit_tag 'Pesquisar' %>
+    <div class="row">
+      <div class="col">
+        <%= text_field_tag :manufacturer, '', class: 'form-control', placeholder: 'Fabricante' %>
+      </div>
+      <div class="col">
+        <%= text_field_tag :model, '', class: 'form-control', placeholder: 'Modelo' %>
+      </div>
+      <div class="col">
+        <%= text_field_tag :carrier_plan_type, '', class: 'form-control', placeholder: 'Plano' %>
+      </div>
+      <div class="col">
+        <%= submit_tag 'Pesquisar', class: 'btn btn-primary' %>
+      </div>
+    </div>
   <% end %>
+    <br>
+    <div>
+      <%= link_to "Importar CSV", cell_phones_import_path, class: 'btn btn-primary' %>
+    </div>
   <br>
-  <table>
+  <table class="table">
     <thead>
+    <th>#</th>
     <th>Fabricante</th>
     <th>Modelo</th>
     <th>Cor</th>
@@ -28,8 +35,10 @@
     <th>Preço</th>
     </thead>
     <tbody>
+    <% unless @cellphones&.empty? %>
     <% @cellphones.each do |cellphone| %>
       <tr>
+        <td><%= cellphone.id %></td>
         <td><%= cellphone.manufacturer %></td>
         <td><%= cellphone.model %></td>
         <td><%= cellphone.color %></td>

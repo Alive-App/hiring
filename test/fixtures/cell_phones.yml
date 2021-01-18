@@ -1,15 +1,17 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  model: MyString
-  color: MyString
-  carrier_plan_type: MyString
+motorola:
+  manufacturer: motorola
+  model: motog
+  color: preto
+  carrier_plan_type: pre
   quantity: 1
   price: 1.5
 
-two:
-  model: MyString
-  color: MyString
-  carrier_plan_type: MyString
-  quantity: 1
-  price: 1.5
+samsung:
+  manufacturer: samsung
+  model: galaxy01
+  color: branco
+  carrier_plan_type: pos
+  quantity: 2
+  price: 1.6

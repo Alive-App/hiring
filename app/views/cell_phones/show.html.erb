@@ -2,9 +2,9 @@
   <h4>Importar arquivo CSV</h4>
   <%= form_tag import_cell_phones_path, multipart: true do %>
     <%= file_field_tag :file %>
-    <%= submit_tag "Importar dados CSV" %>
+    <%= submit_tag "Iniciar importação" %>
   <% end %>
 </div>
 <br>
-<%= link_to "Voltar", cell_phones_index_path %>
+<%= link_to "Voltar", cell_phones_index_path, class: 'btn btn-primary' %>
 
