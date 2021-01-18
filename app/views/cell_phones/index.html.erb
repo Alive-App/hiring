@@ -1,0 +1,45 @@
+<%= flash[:notice] %>
+
+<%= link_to "Teste", cell_phones_import_path %>
+
+<% unless @cellphones&.empty? %>
+  <%= form_tag cell_phones_index_path, method: :get do %>
+
+    <%= label_tag :manufacturer %>
+    <%= text_field_tag :manufacturer %>
+    <%= label_tag :model %>
+    <%= text_field_tag :model %>
+    <%= label_tag :carrier_plan_type %>
+    <%= text_field_tag :carrier_plan_type %>
+
+    <%= submit_tag 'Buscar' %>
+  <% end %>
+
+  <br>
+  <table>
+    <thead>
+    <th>Fabricante</th>
+    <th>Modelo</th>
+    <th>Cor</th>
+    <th>Plano</th>
+    <th>Quantidade</th>
+    <th>Preço</th>
+    </thead>
+    <tbody>
+    <% @cellphones.each do |cellphone| %>
+      <tr>
+        <td><%= cellphone.manufacturer %></td>
+        <td><%= cellphone.model %></td>
+        <td><%= cellphone.color %></td>
+        <td><%= cellphone.carrier_plan_type %></td>
+        <td><%= cellphone.quantity %></td>
+        <td><%= cellphone.price %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p>Não temos produtos no inventario</p>
+<% end %>
+
+
