@@ -1,6 +1,6 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-motorola:
+one:
   manufacturer: motorola
   model: motog
   color: preto
@@ -8,7 +8,7 @@ motorola:
   quantity: 1
   price: 1.5
 
-samsung:
+two:
   manufacturer: samsung
   model: galaxy01
   color: branco

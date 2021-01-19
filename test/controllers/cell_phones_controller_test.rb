@@ -1,25 +1,38 @@
 require 'test_helper'
+require 'csv'
 
 class CellPhonesControllerTest < ActionDispatch::IntegrationTest
 
   setup do
-    @cellphone = cell_phones(:motorola)
+    @valid = fixture_file_upload('input_valid.csv', 'text/csv')
+    @invalid = fixture_file_upload('input_invalid.csv', 'text/csv')
   end
 
   test "should get index" do
-    get cell_phones_index_url
-      get cell_phones_url, params: {cell_phone:
-          {manufacturer: Faker::Name.name, model: Faker::Name.name, carrier_plan_type: Faker::Name.name }
-      }
+    get cell_phones_index_path
     assert_response :success
   end
 
-  test "should import cell_phone" do
-    assert_difference('cell_phones.count') do
-      post cell_phones_url, params: {cell_phone: {manufacturer: Faker::Name.name }}
+  test 'should import valid file' do
+    import = CSV.read(@valid.tempfile).length
+
+    assert_no_changes 'cell_phones.count', import do
+      post cell_phones_import_path, params: { file: @valid }
     end
 
-    assert_response :import
+    assert_redirected_to cell_phones_index_path
+  end
+
+  test 'should not import invalid file' do
+    assert_no_changes 'cell_phones.count' do
+      post cell_phones_import_path, params: { file: @invalid }
+    end
+    assert_redirected_to cell_phones_index_path
+  end
+
+  test 'should be able to filter' do
+    get "#{cell_phones_index_path}?model=moto"
+    assert_response :success
   end
 
 end

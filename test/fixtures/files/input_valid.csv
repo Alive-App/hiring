@@ -1,0 +1,13 @@
+manufacturer,model,color,carrier_plan_type,quantity,price
+Motorola,Moto G5 16GB,Preto,pre,20,1299
+Motorola,Moto G5 16GB,Preto,pos,20,599
+Motorola,Moto G5 16GB,Vermelho,pre,20,1299
+Motorola,Moto G5 16GB,Vermelho,pos,20,599
+Samsung,Galaxy S8 64GB,Arctic Gray,pre,20,4500
+Samsung,Galaxy S8 64GB,Arctic Gray,pos,20,3299
+Samsung,Galaxy S8 64GB,Midnight Black,pre,20,4500
+Samsung,Galaxy S8 64GB,Midnight Black,pos,20,3299
+Apple,iPhone SE 16GB,Space Gray,pre,10,2599
+Apple,iPhone SE 16GB,Space Gray,pre,10,1499
+Apple,iPhone SE 16GB,Rose,pre,5,2599
+Apple,iPhone SE 16GB,Rose,pre,5,1499
