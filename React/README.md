@@ -1,47 +1,46 @@
-# Background
+# Getting Started with Create React App
 
-Uma corretora de ações está desenvolvendo um sistema para permitir que pequenos investidores possam tomar decisões melhores sobre seu portfólio. Uma das funcionalidades importantes é a de verificar o desempenho de uma ação em cinco cenários:
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-   - Preço atual;
-   - Preço histórico;
-   - Preço atual em comparação a outras ações;
-   - Projeção de ganhos com compra em data específica.
-   
-Para isso, a equipe de software da empresa optou por desenvolver um WebAPP que dará visibilidade aos dados. Sua missão para este teste é implementar este WebAPP
+## Available Scripts
 
-# Requisitos técnicos da solução
+In the project directory, you can run:
 
-Sua solução deverá ter testes automatizados.
+### `yarn start`
 
-Para obter as informações das ações utilize a Alpha Vantage (https://www.alphavantage.co). Se você encontrar alguma biblioteca para tal, você está autorizado a utilizar.
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-O tratamento de erros não será explicitado nos endpoints. O candidato ou candidata poderá inferir casos que poderão gerar erros ou duplicidades nos dados, e tratá-los de acordo. A ausência de tratamento não desqualifica a proposta; a presença, no entanto, contará pontos a favor.
+The page will reload if you make edits.\
+You will also see any lint errors in the console.
 
-## Projeção de ganhos
+### `yarn test`
 
-A ideia é implementar algo simples, sem preocupações com dividendos, taxas administrativas ou outras incumbências que afetariam o montante total. Em sendo assim, pressuponha que a compradora investiu seu dinheiro numa determinada quantidade de ações de uma empresa em alguma data no passado, e que deseja saber quanto teria ganhado ou perdido caso o fizesse.
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-# Como enviar sua proposta
+### `yarn build`
 
-- Crie um fork deste repositório;
-- Implemente sua solução, fazendo commits da maneira que faria em um projeto profissional;
-- Substitua este README com um específico para sua aplicação, indicando como rodá-la, e como executar os testes (fique à vontade para inserir mais detalhes técnicos, caso deseje);
-- Abra um pull request para este repositório.
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
-# Detalhamento
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
 
-## WebAPP
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-O importante nesta parte do desafio é que saibamos como você lida com os componentes que formam as técnicas contemporâneas de desenvolvimento client-side, no que tange processamento de assets, separação de responsabilidades, minificação, armazenamento local, etc. Por isso, estética não é primordial.
+### `yarn eject`
 
-As funcionalidades esperadas são:
+**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-- Incluir ações no portifólio;
-- Ver situação atual das ações (último preço e data e hora da atualização);
-- Ver histórico de preços de uma ação, podendo delimitar datas de início e fim;
-- Fazer projeção de ganhos de uma ação, determinando o número de ações compradas e a data de compra no passado.
+If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Se você não tiver ideia de como organizar essas funcionalidades, não há problema nenhum em se inspirar no Google Finance ou fazer uma arquitetura master-detail simples.
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
+You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-https://www.alphavantage.co
+## Learn More
+
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+
+To learn React, check out the [React documentation](https://reactjs.org/).
