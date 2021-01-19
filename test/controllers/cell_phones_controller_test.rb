@@ -30,9 +30,4 @@ class CellPhonesControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to cell_phones_index_path
   end
 
-  test 'should be able to filter' do
-    get "#{cell_phones_index_path}?model=moto"
-    assert_response :success
-  end
-
 end
