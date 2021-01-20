@@ -1,0 +1,84 @@
+@import "../../styles/colors"
+  
+.top-bar 
+  color: white
+  padding: 30px calc(50% - 512px)
+
+  display: flex
+  justify-content: space-between
+  align-items: center
+
+  position: fixed
+  top: 0
+  left: 0
+
+  height: 80px
+  width: 100%
+  background-color: $secundary
+  z-index: 3
+
+  .logo
+    display: flex
+    align-items: center
+
+    .title 
+      margin-right: 20px
+
+    .subtitle
+      padding-left: 20px
+      border-left: 1px solid $accent
+
+  .search
+    display: flex
+    align-items: center
+
+    position: relative
+
+    input
+      display: flex
+      margin: 0
+
+    .icon
+      opacity: .7
+      transition: .2s ease
+      cursor: pointer
+      margin-left: 20px
+      
+      &:hover
+        opacity: 1
+
+    .result-box
+      position: absolute
+      display: flex
+      flex-direction: column
+      
+      width: calc(100% - 36px)
+      height: 300px
+      padding: 10px 0
+
+      top: 72px
+      overflow-y: auto
+      
+      background-color: $accent
+      border-radius: 5px
+
+      box-shadow: 0 3px 12px -2px rgba(0, 0, 0, .7)
+
+      .result
+        padding: 15px 20px
+        cursor: pointer
+        transition: .2s ease
+
+        display: flex
+        flex-direction: column
+        align-items: flex-start
+
+        &:hover
+          background-color: $accentLight
+
+        .result-symbol
+          font-size: .95rem
+
+        .result-name
+          opacity: .5
+          font-size: .7rem

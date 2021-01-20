@@ -1,0 +1,34 @@
+@import "../../styles/colors"
+
+.alert-popup
+  display: none
+  align-items: center
+  justify-content: space-between
+  
+  width: 340px
+  padding: 10px 20px
+
+  color: white
+  background-color: $alert
+  border-radius: 5px
+
+  position: fixed
+  top: 10px
+  left: calc(50% - 100px)
+  
+  z-index: 9
+
+  &.active
+    display: flex
+
+  span.message
+    color: white
+    font-size: .9rem
+
+  .icon
+    color: $alertDark
+    cursor: pointer
+    transition: .3s ease
+
+    &:hover
+      color: $secundary

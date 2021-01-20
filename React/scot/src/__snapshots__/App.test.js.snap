@@ -1,0 +1,3219 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render Chart Custom Date view (from jan, 01, 2021 to jan, 20, 2021) 1`] = `
+<App>
+  <div
+    className="App"
+  >
+    <Routes>
+      <BrowserRouter>
+        <Router
+          history={
+            Object {
+              "action": "POP",
+              "block": [Function],
+              "createHref": [Function],
+              "go": [Function],
+              "goBack": [Function],
+              "goForward": [Function],
+              "length": 1,
+              "listen": [Function],
+              "location": Object {
+                "hash": "",
+                "pathname": "/",
+                "search": "",
+                "state": undefined,
+              },
+              "push": [Function],
+              "replace": [Function],
+            }
+          }
+        >
+          <Switch>
+            <Route
+              component={[Function]}
+              computedMatch={
+                Object {
+                  "isExact": true,
+                  "params": Object {},
+                  "path": "/",
+                  "url": "/",
+                }
+              }
+              exact={true}
+              location={
+                Object {
+                  "hash": "",
+                  "pathname": "/",
+                  "search": "",
+                  "state": undefined,
+                }
+              }
+              path="/"
+            >
+              <Home
+                history={
+                  Object {
+                    "action": "POP",
+                    "block": [Function],
+                    "createHref": [Function],
+                    "go": [Function],
+                    "goBack": [Function],
+                    "goForward": [Function],
+                    "length": 1,
+                    "listen": [Function],
+                    "location": Object {
+                      "hash": "",
+                      "pathname": "/",
+                      "search": "",
+                      "state": undefined,
+                    },
+                    "push": [Function],
+                    "replace": [Function],
+                  }
+                }
+                location={
+                  Object {
+                    "hash": "",
+                    "pathname": "/",
+                    "search": "",
+                    "state": undefined,
+                  }
+                }
+                match={
+                  Object {
+                    "isExact": true,
+                    "params": Object {},
+                    "path": "/",
+                    "url": "/",
+                  }
+                }
+              >
+                <div
+                  className="home"
+                >
+                  <TopBar>
+                    <header
+                      className="top-bar"
+                    >
+                      <div
+                        className="logo"
+                      >
+                        <h1
+                          className="title"
+                        >
+                          scot
+                        </h1>
+                        <span
+                          className="subtitle"
+                        >
+                          stock viewer
+                        </span>
+                      </div>
+                      <DateSwitch>
+                        <div
+                          className="date-switch"
+                        >
+                          <span
+                            className="option "
+                            onClick={[Function]}
+                          >
+                            Dia
+                          </span>
+                          <span
+                            className="option "
+                            onClick={[Function]}
+                          >
+                            Mês
+                          </span>
+                          <span
+                            className="option active"
+                            onClick={[Function]}
+                          >
+                            Ano
+                          </span>
+                        </div>
+                      </DateSwitch>
+                      <div
+                        className="search"
+                      >
+                        <styled.input
+                          autoComplete="false"
+                          name="symbol"
+                          onChange={[Function]}
+                          placeholder="Busque uma empresa..."
+                          type="text"
+                        >
+                          <input
+                            autoComplete="false"
+                            className="sc-bdfBwQ dBUbRb"
+                            name="symbol"
+                            onChange={[Function]}
+                            placeholder="Busque uma empresa..."
+                            type="text"
+                          />
+                        </styled.input>
+                        <FontAwesomeIcon
+                          border={false}
+                          className="icon"
+                          fixedWidth={false}
+                          flip={null}
+                          icon="search"
+                          inverse={false}
+                          listItem={false}
+                          mask={null}
+                          onClick={[Function]}
+                          pull={null}
+                          pulse={false}
+                          rotation={null}
+                          size={null}
+                          spin={false}
+                          swapOpacity={false}
+                          symbol={false}
+                          title=""
+                          transform={null}
+                        >
+                          <svg
+                            aria-hidden="true"
+                            className="svg-inline--fa fa-search fa-w-16 icon"
+                            data-icon="search"
+                            data-prefix="fas"
+                            focusable="false"
+                            onClick={[Function]}
+                            role="img"
+                            style={Object {}}
+                            viewBox="0 0 512 512"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                              d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"
+                              fill="currentColor"
+                              style={Object {}}
+                            />
+                          </svg>
+                        </FontAwesomeIcon>
+                      </div>
+                    </header>
+                  </TopBar>
+                  <main>
+                    <Chart
+                      formattedStockSeries={Array []}
+                      selectedStock={
+                        Object {
+                          "1. symbol": "IBM",
+                          "2. name": "International Business Machines Corp",
+                          "3. type": "Equity",
+                          "4. region": "United States",
+                          "5. marketOpen": "09:30",
+                          "6. marketClose": "16:00",
+                          "7. timezone": "UTC-05",
+                          "8. currency": "USD",
+                          "9. matchScore": "1.0000",
+                        }
+                      }
+                    >
+                      <div
+                        className="chart"
+                      >
+                        <div
+                          className="top-info"
+                        >
+                          <h1
+                            className="symbol"
+                          >
+                            IBM
+                          </h1>
+                          <span
+                            className="name"
+                          >
+                            International Business Machines Corp
+                          </span>
+                        </div>
+                        <div
+                          className="graphic"
+                        >
+                          <Chart
+                            chartActions={null}
+                            chartEvents={null}
+                            chartType="AreaChart"
+                            chartWrapperParams={Object {}}
+                            className=""
+                            columns={null}
+                            controls={null}
+                            data={Array []}
+                            diffdata={null}
+                            formatters={null}
+                            getChartEditor={null}
+                            getChartWrapper={[Function]}
+                            graphID={null}
+                            graph_id={null}
+                            height="300px"
+                            legendToggle={false}
+                            legend_toggle={false}
+                            options={
+                              Object {
+                                "hAxis": Object {
+                                  "title": "Data",
+                                },
+                                "title": "International Business Machines Corp (Últimos 12 meses)",
+                                "vAxis": Object {
+                                  "title": "Preço (US$)",
+                                },
+                              }
+                            }
+                            render={null}
+                            rootProps={Object {}}
+                            rows={null}
+                            spreadSheetQueryParameters={
+                              Object {
+                                "gid": 1,
+                                "headers": 1,
+                              }
+                            }
+                            spreadSheetUrl={null}
+                            style={Object {}}
+                            toolbarID={null}
+                            toolbarItems={null}
+                            width="100%"
+                          >
+                            <ContextProvider
+                              value={
+                                Object {
+                                  "chartActions": null,
+                                  "chartEvents": null,
+                                  "chartType": "AreaChart",
+                                  "chartWrapperParams": Object {},
+                                  "className": "",
+                                  "columns": null,
+                                  "controls": null,
+                                  "data": Array [],
+                                  "diffdata": null,
+                                  "formatters": null,
+                                  "getChartEditor": null,
+                                  "getChartWrapper": [Function],
+                                  "graphID": null,
+                                  "graph_id": null,
+                                  "height": "300px",
+                                  "legendToggle": false,
+                                  "legend_toggle": false,
+                                  "options": Object {
+                                    "hAxis": Object {
+                                      "title": "Data",
+                                    },
+                                    "title": "International Business Machines Corp (Últimos 12 meses)",
+                                    "vAxis": Object {
+                                      "title": "Preço (US$)",
+                                    },
+                                  },
+                                  "render": null,
+                                  "rootProps": Object {},
+                                  "rows": null,
+                                  "spreadSheetQueryParameters": Object {
+                                    "gid": 1,
+                                    "headers": 1,
+                                  },
+                                  "spreadSheetUrl": null,
+                                  "style": Object {},
+                                  "toolbarID": null,
+                                  "toolbarItems": null,
+                                  "width": "100%",
+                                }
+                              }
+                            >
+                              <GoogleChartLoader
+                                onError={[Function]}
+                                onLoad={[Function]}
+                              >
+                                <Script
+                                  attributes={Object {}}
+                                  onCreate={[Function]}
+                                  onError={[Function]}
+                                  onLoad={[Function]}
+                                  url="https://www.gstatic.com/charts/loader.js"
+                                />
+                              </GoogleChartLoader>
+                            </ContextProvider>
+                          </Chart>
+                        </div>
+                        <div
+                          className="date-customer"
+                        >
+                          <form
+                            onSubmit={[Function]}
+                          >
+                            <styled.input
+                              name="initialDate"
+                              onChange={[Function]}
+                              placeholder="Data de início"
+                              required={true}
+                              type="date"
+                            >
+                              <input
+                                className="sc-bdfBwQ dBUbRb"
+                                name="initialDate"
+                                onChange={[Function]}
+                                placeholder="Data de início"
+                                required={true}
+                                type="date"
+                              />
+                            </styled.input>
+                            <styled.input
+                              name="finalDate"
+                              onChange={[Function]}
+                              placeholder="Data de fim"
+                              required={true}
+                              type="date"
+                            >
+                              <input
+                                className="sc-bdfBwQ dBUbRb"
+                                name="finalDate"
+                                onChange={[Function]}
+                                placeholder="Data de fim"
+                                required={true}
+                                type="date"
+                              />
+                            </styled.input>
+                            <styled.button
+                              type="submit"
+                            >
+                              <button
+                                className="sc-gsTCUz esPEkQ"
+                                type="submit"
+                              >
+                                Atualizar
+                              </button>
+                            </styled.button>
+                          </form>
+                        </div>
+                      </div>
+                    </Chart>
+                    <StockDetails
+                      stockInfo={null}
+                    >
+                      <div
+                        className="stock-details"
+                      >
+                        <div
+                          className="row"
+                        >
+                          <span
+                            className="data-label"
+                          >
+                            Preço atual
+                          </span>
+                          <span
+                            className="data"
+                          >
+                            N/A
+                          </span>
+                        </div>
+                        <div
+                          className="row"
+                        >
+                          <span
+                            className="data-label"
+                          >
+                            Preço máx.
+                          </span>
+                          <span
+                            className="data"
+                          >
+                            N/A
+                          </span>
+                        </div>
+                        <div
+                          className="row"
+                        >
+                          <span
+                            className="data-label"
+                          >
+                            Preço mín.
+                          </span>
+                          <span
+                            className="data"
+                          >
+                            N/A
+                          </span>
+                        </div>
+                        <div
+                          className="row"
+                        >
+                          <span
+                            className="data-label"
+                          >
+                            Abertura
+                          </span>
+                          <span
+                            className="data"
+                          >
+                            N/A
+                          </span>
+                        </div>
+                        <span
+                          className="last-update"
+                        >
+                          N/A
+                        </span>
+                      </div>
+                    </StockDetails>
+                  </main>
+                  <Simulation>
+                    <div
+                      className="simulation"
+                    >
+                      <h3
+                        className="title"
+                      >
+                        Simulação
+                      </h3>
+                      <form
+                        onSubmit={[Function]}
+                      >
+                        <styled.input
+                          name="amount"
+                          onChange={[Function]}
+                          placeholder="Qntd. de cotas"
+                          required={true}
+                          type="text"
+                        >
+                          <input
+                            className="sc-bdfBwQ dBUbRb"
+                            name="amount"
+                            onChange={[Function]}
+                            placeholder="Qntd. de cotas"
+                            required={true}
+                            type="text"
+                          />
+                        </styled.input>
+                        <styled.input
+                          name="buyDate"
+                          onChange={[Function]}
+                          placeholder="Data de entrada"
+                          required={true}
+                          type="date"
+                        >
+                          <input
+                            className="sc-bdfBwQ dBUbRb"
+                            name="buyDate"
+                            onChange={[Function]}
+                            placeholder="Data de entrada"
+                            required={true}
+                            type="date"
+                          />
+                        </styled.input>
+                        <styled.input
+                          name="sellDate"
+                          onChange={[Function]}
+                          placeholder="Data de saída"
+                          required={true}
+                          type="date"
+                        >
+                          <input
+                            className="sc-bdfBwQ dBUbRb"
+                            name="sellDate"
+                            onChange={[Function]}
+                            placeholder="Data de saída"
+                            required={true}
+                            type="date"
+                          />
+                        </styled.input>
+                        <styled.button
+                          type="submit"
+                        >
+                          <button
+                            className="sc-gsTCUz esPEkQ"
+                            type="submit"
+                          >
+                            Simular
+                          </button>
+                        </styled.button>
+                      </form>
+                    </div>
+                  </Simulation>
+                </div>
+              </Home>
+            </Route>
+          </Switch>
+        </Router>
+      </BrowserRouter>
+    </Routes>
+  </div>
+</App>
+`;
+
+exports[`should render Chart Monthly view 1`] = `
+<App>
+  <div
+    className="App"
+  >
+    <Routes>
+      <BrowserRouter>
+        <Router
+          history={
+            Object {
+              "action": "POP",
+              "block": [Function],
+              "createHref": [Function],
+              "go": [Function],
+              "goBack": [Function],
+              "goForward": [Function],
+              "length": 1,
+              "listen": [Function],
+              "location": Object {
+                "hash": "",
+                "pathname": "/",
+                "search": "",
+                "state": undefined,
+              },
+              "push": [Function],
+              "replace": [Function],
+            }
+          }
+        >
+          <Switch>
+            <Route
+              component={[Function]}
+              computedMatch={
+                Object {
+                  "isExact": true,
+                  "params": Object {},
+                  "path": "/",
+                  "url": "/",
+                }
+              }
+              exact={true}
+              location={
+                Object {
+                  "hash": "",
+                  "pathname": "/",
+                  "search": "",
+                  "state": undefined,
+                }
+              }
+              path="/"
+            >
+              <Home
+                history={
+                  Object {
+                    "action": "POP",
+                    "block": [Function],
+                    "createHref": [Function],
+                    "go": [Function],
+                    "goBack": [Function],
+                    "goForward": [Function],
+                    "length": 1,
+                    "listen": [Function],
+                    "location": Object {
+                      "hash": "",
+                      "pathname": "/",
+                      "search": "",
+                      "state": undefined,
+                    },
+                    "push": [Function],
+                    "replace": [Function],
+                  }
+                }
+                location={
+                  Object {
+                    "hash": "",
+                    "pathname": "/",
+                    "search": "",
+                    "state": undefined,
+                  }
+                }
+                match={
+                  Object {
+                    "isExact": true,
+                    "params": Object {},
+                    "path": "/",
+                    "url": "/",
+                  }
+                }
+              >
+                <div
+                  className="home"
+                >
+                  <TopBar>
+                    <header
+                      className="top-bar"
+                    >
+                      <div
+                        className="logo"
+                      >
+                        <h1
+                          className="title"
+                        >
+                          scot
+                        </h1>
+                        <span
+                          className="subtitle"
+                        >
+                          stock viewer
+                        </span>
+                      </div>
+                      <DateSwitch>
+                        <div
+                          className="date-switch"
+                        >
+                          <span
+                            className="option active"
+                            onClick={[Function]}
+                          >
+                            Dia
+                          </span>
+                          <span
+                            className="option "
+                            onClick={[Function]}
+                          >
+                            Mês
+                          </span>
+                          <span
+                            className="option "
+                            onClick={[Function]}
+                          >
+                            Ano
+                          </span>
+                        </div>
+                      </DateSwitch>
+                      <div
+                        className="search"
+                      >
+                        <styled.input
+                          autoComplete="false"
+                          name="symbol"
+                          onChange={[Function]}
+                          placeholder="Busque uma empresa..."
+                          type="text"
+                        >
+                          <input
+                            autoComplete="false"
+                            className="sc-bdfBwQ dBUbRb"
+                            name="symbol"
+                            onChange={[Function]}
+                            placeholder="Busque uma empresa..."
+                            type="text"
+                          />
+                        </styled.input>
+                        <FontAwesomeIcon
+                          border={false}
+                          className="icon"
+                          fixedWidth={false}
+                          flip={null}
+                          icon="search"
+                          inverse={false}
+                          listItem={false}
+                          mask={null}
+                          onClick={[Function]}
+                          pull={null}
+                          pulse={false}
+                          rotation={null}
+                          size={null}
+                          spin={false}
+                          swapOpacity={false}
+                          symbol={false}
+                          title=""
+                          transform={null}
+                        >
+                          <svg
+                            aria-hidden="true"
+                            className="svg-inline--fa fa-search fa-w-16 icon"
+                            data-icon="search"
+                            data-prefix="fas"
+                            focusable="false"
+                            onClick={[Function]}
+                            role="img"
+                            style={Object {}}
+                            viewBox="0 0 512 512"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                              d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"
+                              fill="currentColor"
+                              style={Object {}}
+                            />
+                          </svg>
+                        </FontAwesomeIcon>
+                      </div>
+                    </header>
+                  </TopBar>
+                  <main>
+                    <Chart
+                      formattedStockSeries={Array []}
+                      selectedStock={
+                        Object {
+                          "1. symbol": "IBM",
+                          "2. name": "International Business Machines Corp",
+                          "3. type": "Equity",
+                          "4. region": "United States",
+                          "5. marketOpen": "09:30",
+                          "6. marketClose": "16:00",
+                          "7. timezone": "UTC-05",
+                          "8. currency": "USD",
+                          "9. matchScore": "1.0000",
+                        }
+                      }
+                    >
+                      <div
+                        className="chart"
+                      >
+                        <div
+                          className="top-info"
+                        >
+                          <h1
+                            className="symbol"
+                          >
+                            IBM
+                          </h1>
+                          <span
+                            className="name"
+                          >
+                            International Business Machines Corp
+                          </span>
+                        </div>
+                        <div
+                          className="graphic"
+                        >
+                          <Chart
+                            chartActions={null}
+                            chartEvents={null}
+                            chartType="AreaChart"
+                            chartWrapperParams={Object {}}
+                            className=""
+                            columns={null}
+                            controls={null}
+                            data={Array []}
+                            diffdata={null}
+                            formatters={null}
+                            getChartEditor={null}
+                            getChartWrapper={[Function]}
+                            graphID={null}
+                            graph_id={null}
+                            height="300px"
+                            legendToggle={false}
+                            legend_toggle={false}
+                            options={
+                              Object {
+                                "hAxis": Object {
+                                  "title": "Data",
+                                },
+                                "title": "International Business Machines Corp (Últimas 24 horas)",
+                                "vAxis": Object {
+                                  "title": "Preço (US$)",
+                                },
+                              }
+                            }
+                            render={null}
+                            rootProps={Object {}}
+                            rows={null}
+                            spreadSheetQueryParameters={
+                              Object {
+                                "gid": 1,
+                                "headers": 1,
+                              }
+                            }
+                            spreadSheetUrl={null}
+                            style={Object {}}
+                            toolbarID={null}
+                            toolbarItems={null}
+                            width="100%"
+                          >
+                            <ContextProvider
+                              value={
+                                Object {
+                                  "chartActions": null,
+                                  "chartEvents": null,
+                                  "chartType": "AreaChart",
+                                  "chartWrapperParams": Object {},
+                                  "className": "",
+                                  "columns": null,
+                                  "controls": null,
+                                  "data": Array [],
+                                  "diffdata": null,
+                                  "formatters": null,
+                                  "getChartEditor": null,
+                                  "getChartWrapper": [Function],
+                                  "graphID": null,
+                                  "graph_id": null,
+                                  "height": "300px",
+                                  "legendToggle": false,
+                                  "legend_toggle": false,
+                                  "options": Object {
+                                    "hAxis": Object {
+                                      "title": "Data",
+                                    },
+                                    "title": "International Business Machines Corp (Últimas 24 horas)",
+                                    "vAxis": Object {
+                                      "title": "Preço (US$)",
+                                    },
+                                  },
+                                  "render": null,
+                                  "rootProps": Object {},
+                                  "rows": null,
+                                  "spreadSheetQueryParameters": Object {
+                                    "gid": 1,
+                                    "headers": 1,
+                                  },
+                                  "spreadSheetUrl": null,
+                                  "style": Object {},
+                                  "toolbarID": null,
+                                  "toolbarItems": null,
+                                  "width": "100%",
+                                }
+                              }
+                            >
+                              <GoogleChartLoader
+                                onError={[Function]}
+                                onLoad={[Function]}
+                              >
+                                <Script
+                                  attributes={Object {}}
+                                  onCreate={[Function]}
+                                  onError={[Function]}
+                                  onLoad={[Function]}
+                                  url="https://www.gstatic.com/charts/loader.js"
+                                />
+                              </GoogleChartLoader>
+                            </ContextProvider>
+                          </Chart>
+                        </div>
+                        <div
+                          className="date-customer"
+                        >
+                          <form
+                            onSubmit={[Function]}
+                          >
+                            <styled.input
+                              name="initialDate"
+                              onChange={[Function]}
+                              placeholder="Data de início"
+                              required={true}
+                              type="date"
+                            >
+                              <input
+                                className="sc-bdfBwQ dBUbRb"
+                                name="initialDate"
+                                onChange={[Function]}
+                                placeholder="Data de início"
+                                required={true}
+                                type="date"
+                              />
+                            </styled.input>
+                            <styled.input
+                              name="finalDate"
+                              onChange={[Function]}
+                              placeholder="Data de fim"
+                              required={true}
+                              type="date"
+                            >
+                              <input
+                                className="sc-bdfBwQ dBUbRb"
+                                name="finalDate"
+                                onChange={[Function]}
+                                placeholder="Data de fim"
+                                required={true}
+                                type="date"
+                              />
+                            </styled.input>
+                            <styled.button
+                              type="submit"
+                            >
+                              <button
+                                className="sc-gsTCUz esPEkQ"
+                                type="submit"
+                              >
+                                Atualizar
+                              </button>
+                            </styled.button>
+                          </form>
+                        </div>
+                      </div>
+                    </Chart>
+                    <StockDetails
+                      stockInfo={null}
+                    >
+                      <div
+                        className="stock-details"
+                      >
+                        <div
+                          className="row"
+                        >
+                          <span
+                            className="data-label"
+                          >
+                            Preço atual
+                          </span>
+                          <span
+                            className="data"
+                          >
+                            N/A
+                          </span>
+                        </div>
+                        <div
+                          className="row"
+                        >
+                          <span
+                            className="data-label"
+                          >
+                            Preço máx.
+                          </span>
+                          <span
+                            className="data"
+                          >
+                            N/A
+                          </span>
+                        </div>
+                        <div
+                          className="row"
+                        >
+                          <span
+                            className="data-label"
+                          >
+                            Preço mín.
+                          </span>
+                          <span
+                            className="data"
+                          >
+                            N/A
+                          </span>
+                        </div>
+                        <div
+                          className="row"
+                        >
+                          <span
+                            className="data-label"
+                          >
+                            Abertura
+                          </span>
+                          <span
+                            className="data"
+                          >
+                            N/A
+                          </span>
+                        </div>
+                        <span
+                          className="last-update"
+                        >
+                          N/A
+                        </span>
+                      </div>
+                    </StockDetails>
+                  </main>
+                  <Simulation>
+                    <div
+                      className="simulation"
+                    >
+                      <h3
+                        className="title"
+                      >
+                        Simulação
+                      </h3>
+                      <form
+                        onSubmit={[Function]}
+                      >
+                        <styled.input
+                          name="amount"
+                          onChange={[Function]}
+                          placeholder="Qntd. de cotas"
+                          required={true}
+                          type="text"
+                        >
+                          <input
+                            className="sc-bdfBwQ dBUbRb"
+                            name="amount"
+                            onChange={[Function]}
+                            placeholder="Qntd. de cotas"
+                            required={true}
+                            type="text"
+                          />
+                        </styled.input>
+                        <styled.input
+                          name="buyDate"
+                          onChange={[Function]}
+                          placeholder="Data de entrada"
+                          required={true}
+                          type="date"
+                        >
+                          <input
+                            className="sc-bdfBwQ dBUbRb"
+                            name="buyDate"
+                            onChange={[Function]}
+                            placeholder="Data de entrada"
+                            required={true}
+                            type="date"
+                          />
+                        </styled.input>
+                        <styled.input
+                          name="sellDate"
+                          onChange={[Function]}
+                          placeholder="Data de saída"
+                          required={true}
+                          type="date"
+                        >
+                          <input
+                            className="sc-bdfBwQ dBUbRb"
+                            name="sellDate"
+                            onChange={[Function]}
+                            placeholder="Data de saída"
+                            required={true}
+                            type="date"
+                          />
+                        </styled.input>
+                        <styled.button
+                          type="submit"
+                        >
+                          <button
+                            className="sc-gsTCUz esPEkQ"
+                            type="submit"
+                          >
+                            Simular
+                          </button>
+                        </styled.button>
+                      </form>
+                    </div>
+                  </Simulation>
+                </div>
+              </Home>
+            </Route>
+          </Switch>
+        </Router>
+      </BrowserRouter>
+    </Routes>
+  </div>
+</App>
+`;
+
+exports[`should render Chart Year view 1`] = `
+<App>
+  <div
+    className="App"
+  >
+    <Routes>
+      <BrowserRouter>
+        <Router
+          history={
+            Object {
+              "action": "POP",
+              "block": [Function],
+              "createHref": [Function],
+              "go": [Function],
+              "goBack": [Function],
+              "goForward": [Function],
+              "length": 1,
+              "listen": [Function],
+              "location": Object {
+                "hash": "",
+                "pathname": "/",
+                "search": "",
+                "state": undefined,
+              },
+              "push": [Function],
+              "replace": [Function],
+            }
+          }
+        >
+          <Switch>
+            <Route
+              component={[Function]}
+              computedMatch={
+                Object {
+                  "isExact": true,
+                  "params": Object {},
+                  "path": "/",
+                  "url": "/",
+                }
+              }
+              exact={true}
+              location={
+                Object {
+                  "hash": "",
+                  "pathname": "/",
+                  "search": "",
+                  "state": undefined,
+                }
+              }
+              path="/"
+            >
+              <Home
+                history={
+                  Object {
+                    "action": "POP",
+                    "block": [Function],
+                    "createHref": [Function],
+                    "go": [Function],
+                    "goBack": [Function],
+                    "goForward": [Function],
+                    "length": 1,
+                    "listen": [Function],
+                    "location": Object {
+                      "hash": "",
+                      "pathname": "/",
+                      "search": "",
+                      "state": undefined,
+                    },
+                    "push": [Function],
+                    "replace": [Function],
+                  }
+                }
+                location={
+                  Object {
+                    "hash": "",
+                    "pathname": "/",
+                    "search": "",
+                    "state": undefined,
+                  }
+                }
+                match={
+                  Object {
+                    "isExact": true,
+                    "params": Object {},
+                    "path": "/",
+                    "url": "/",
+                  }
+                }
+              >
+                <div
+                  className="home"
+                >
+                  <TopBar>
+                    <header
+                      className="top-bar"
+                    >
+                      <div
+                        className="logo"
+                      >
+                        <h1
+                          className="title"
+                        >
+                          scot
+                        </h1>
+                        <span
+                          className="subtitle"
+                        >
+                          stock viewer
+                        </span>
+                      </div>
+                      <DateSwitch>
+                        <div
+                          className="date-switch"
+                        >
+                          <span
+                            className="option "
+                            onClick={[Function]}
+                          >
+                            Dia
+                          </span>
+                          <span
+                            className="option active"
+                            onClick={[Function]}
+                          >
+                            Mês
+                          </span>
+                          <span
+                            className="option "
+                            onClick={[Function]}
+                          >
+                            Ano
+                          </span>
+                        </div>
+                      </DateSwitch>
+                      <div
+                        className="search"
+                      >
+                        <styled.input
+                          autoComplete="false"
+                          name="symbol"
+                          onChange={[Function]}
+                          placeholder="Busque uma empresa..."
+                          type="text"
+                        >
+                          <input
+                            autoComplete="false"
+                            className="sc-bdfBwQ dBUbRb"
+                            name="symbol"
+                            onChange={[Function]}
+                            placeholder="Busque uma empresa..."
+                            type="text"
+                          />
+                        </styled.input>
+                        <FontAwesomeIcon
+                          border={false}
+                          className="icon"
+                          fixedWidth={false}
+                          flip={null}
+                          icon="search"
+                          inverse={false}
+                          listItem={false}
+                          mask={null}
+                          onClick={[Function]}
+                          pull={null}
+                          pulse={false}
+                          rotation={null}
+                          size={null}
+                          spin={false}
+                          swapOpacity={false}
+                          symbol={false}
+                          title=""
+                          transform={null}
+                        >
+                          <svg
+                            aria-hidden="true"
+                            className="svg-inline--fa fa-search fa-w-16 icon"
+                            data-icon="search"
+                            data-prefix="fas"
+                            focusable="false"
+                            onClick={[Function]}
+                            role="img"
+                            style={Object {}}
+                            viewBox="0 0 512 512"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                              d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"
+                              fill="currentColor"
+                              style={Object {}}
+                            />
+                          </svg>
+                        </FontAwesomeIcon>
+                      </div>
+                    </header>
+                  </TopBar>
+                  <main>
+                    <Chart
+                      formattedStockSeries={Array []}
+                      selectedStock={
+                        Object {
+                          "1. symbol": "IBM",
+                          "2. name": "International Business Machines Corp",
+                          "3. type": "Equity",
+                          "4. region": "United States",
+                          "5. marketOpen": "09:30",
+                          "6. marketClose": "16:00",
+                          "7. timezone": "UTC-05",
+                          "8. currency": "USD",
+                          "9. matchScore": "1.0000",
+                        }
+                      }
+                    >
+                      <div
+                        className="chart"
+                      >
+                        <div
+                          className="top-info"
+                        >
+                          <h1
+                            className="symbol"
+                          >
+                            IBM
+                          </h1>
+                          <span
+                            className="name"
+                          >
+                            International Business Machines Corp
+                          </span>
+                        </div>
+                        <div
+                          className="graphic"
+                        >
+                          <Chart
+                            chartActions={null}
+                            chartEvents={null}
+                            chartType="AreaChart"
+                            chartWrapperParams={Object {}}
+                            className=""
+                            columns={null}
+                            controls={null}
+                            data={Array []}
+                            diffdata={null}
+                            formatters={null}
+                            getChartEditor={null}
+                            getChartWrapper={[Function]}
+                            graphID={null}
+                            graph_id={null}
+                            height="300px"
+                            legendToggle={false}
+                            legend_toggle={false}
+                            options={
+                              Object {
+                                "hAxis": Object {
+                                  "title": "Data",
+                                },
+                                "title": "International Business Machines Corp (Últimos 30 dias)",
+                                "vAxis": Object {
+                                  "title": "Preço (US$)",
+                                },
+                              }
+                            }
+                            render={null}
+                            rootProps={Object {}}
+                            rows={null}
+                            spreadSheetQueryParameters={
+                              Object {
+                                "gid": 1,
+                                "headers": 1,
+                              }
+                            }
+                            spreadSheetUrl={null}
+                            style={Object {}}
+                            toolbarID={null}
+                            toolbarItems={null}
+                            width="100%"
+                          >
+                            <ContextProvider
+                              value={
+                                Object {
+                                  "chartActions": null,
+                                  "chartEvents": null,
+                                  "chartType": "AreaChart",
+                                  "chartWrapperParams": Object {},
+                                  "className": "",
+                                  "columns": null,
+                                  "controls": null,
+                                  "data": Array [],
+                                  "diffdata": null,
+                                  "formatters": null,
+                                  "getChartEditor": null,
+                                  "getChartWrapper": [Function],
+                                  "graphID": null,
+                                  "graph_id": null,
+                                  "height": "300px",
+                                  "legendToggle": false,
+                                  "legend_toggle": false,
+                                  "options": Object {
+                                    "hAxis": Object {
+                                      "title": "Data",
+                                    },
+                                    "title": "International Business Machines Corp (Últimos 30 dias)",
+                                    "vAxis": Object {
+                                      "title": "Preço (US$)",
+                                    },
+                                  },
+                                  "render": null,
+                                  "rootProps": Object {},
+                                  "rows": null,
+                                  "spreadSheetQueryParameters": Object {
+                                    "gid": 1,
+                                    "headers": 1,
+                                  },
+                                  "spreadSheetUrl": null,
+                                  "style": Object {},
+                                  "toolbarID": null,
+                                  "toolbarItems": null,
+                                  "width": "100%",
+                                }
+                              }
+                            >
+                              <GoogleChartLoader
+                                onError={[Function]}
+                                onLoad={[Function]}
+                              >
+                                <Script
+                                  attributes={Object {}}
+                                  onCreate={[Function]}
+                                  onError={[Function]}
+                                  onLoad={[Function]}
+                                  url="https://www.gstatic.com/charts/loader.js"
+                                />
+                              </GoogleChartLoader>
+                            </ContextProvider>
+                          </Chart>
+                        </div>
+                        <div
+                          className="date-customer"
+                        >
+                          <form
+                            onSubmit={[Function]}
+                          >
+                            <styled.input
+                              name="initialDate"
+                              onChange={[Function]}
+                              placeholder="Data de início"
+                              required={true}
+                              type="date"
+                            >
+                              <input
+                                className="sc-bdfBwQ dBUbRb"
+                                name="initialDate"
+                                onChange={[Function]}
+                                placeholder="Data de início"
+                                required={true}
+                                type="date"
+                              />
+                            </styled.input>
+                            <styled.input
+                              name="finalDate"
+                              onChange={[Function]}
+                              placeholder="Data de fim"
+                              required={true}
+                              type="date"
+                            >
+                              <input
+                                className="sc-bdfBwQ dBUbRb"
+                                name="finalDate"
+                                onChange={[Function]}
+                                placeholder="Data de fim"
+                                required={true}
+                                type="date"
+                              />
+                            </styled.input>
+                            <styled.button
+                              type="submit"
+                            >
+                              <button
+                                className="sc-gsTCUz esPEkQ"
+                                type="submit"
+                              >
+                                Atualizar
+                              </button>
+                            </styled.button>
+                          </form>
+                        </div>
+                      </div>
+                    </Chart>
+                    <StockDetails
+                      stockInfo={null}
+                    >
+                      <div
+                        className="stock-details"
+                      >
+                        <div
+                          className="row"
+                        >
+                          <span
+                            className="data-label"
+                          >
+                            Preço atual
+                          </span>
+                          <span
+                            className="data"
+                          >
+                            N/A
+                          </span>
+                        </div>
+                        <div
+                          className="row"
+                        >
+                          <span
+                            className="data-label"
+                          >
+                            Preço máx.
+                          </span>
+                          <span
+                            className="data"
+                          >
+                            N/A
+                          </span>
+                        </div>
+                        <div
+                          className="row"
+                        >
+                          <span
+                            className="data-label"
+                          >
+                            Preço mín.
+                          </span>
+                          <span
+                            className="data"
+                          >
+                            N/A
+                          </span>
+                        </div>
+                        <div
+                          className="row"
+                        >
+                          <span
+                            className="data-label"
+                          >
+                            Abertura
+                          </span>
+                          <span
+                            className="data"
+                          >
+                            N/A
+                          </span>
+                        </div>
+                        <span
+                          className="last-update"
+                        >
+                          N/A
+                        </span>
+                      </div>
+                    </StockDetails>
+                  </main>
+                  <Simulation>
+                    <div
+                      className="simulation"
+                    >
+                      <h3
+                        className="title"
+                      >
+                        Simulação
+                      </h3>
+                      <form
+                        onSubmit={[Function]}
+                      >
+                        <styled.input
+                          name="amount"
+                          onChange={[Function]}
+                          placeholder="Qntd. de cotas"
+                          required={true}
+                          type="text"
+                        >
+                          <input
+                            className="sc-bdfBwQ dBUbRb"
+                            name="amount"
+                            onChange={[Function]}
+                            placeholder="Qntd. de cotas"
+                            required={true}
+                            type="text"
+                          />
+                        </styled.input>
+                        <styled.input
+                          name="buyDate"
+                          onChange={[Function]}
+                          placeholder="Data de entrada"
+                          required={true}
+                          type="date"
+                        >
+                          <input
+                            className="sc-bdfBwQ dBUbRb"
+                            name="buyDate"
+                            onChange={[Function]}
+                            placeholder="Data de entrada"
+                            required={true}
+                            type="date"
+                          />
+                        </styled.input>
+                        <styled.input
+                          name="sellDate"
+                          onChange={[Function]}
+                          placeholder="Data de saída"
+                          required={true}
+                          type="date"
+                        >
+                          <input
+                            className="sc-bdfBwQ dBUbRb"
+                            name="sellDate"
+                            onChange={[Function]}
+                            placeholder="Data de saída"
+                            required={true}
+                            type="date"
+                          />
+                        </styled.input>
+                        <styled.button
+                          type="submit"
+                        >
+                          <button
+                            className="sc-gsTCUz esPEkQ"
+                            type="submit"
+                          >
+                            Simular
+                          </button>
+                        </styled.button>
+                      </form>
+                    </div>
+                  </Simulation>
+                </div>
+              </Home>
+            </Route>
+          </Switch>
+        </Router>
+      </BrowserRouter>
+    </Routes>
+  </div>
+</App>
+`;
+
+exports[`should render simulation with 10 stocks of IBM from jan, 01, 2021 to jan, 20, 2021 1`] = `
+<App>
+  <div
+    className="App"
+  >
+    <Routes>
+      <BrowserRouter>
+        <Router
+          history={
+            Object {
+              "action": "POP",
+              "block": [Function],
+              "createHref": [Function],
+              "go": [Function],
+              "goBack": [Function],
+              "goForward": [Function],
+              "length": 1,
+              "listen": [Function],
+              "location": Object {
+                "hash": "",
+                "pathname": "/",
+                "search": "",
+                "state": undefined,
+              },
+              "push": [Function],
+              "replace": [Function],
+            }
+          }
+        >
+          <Switch>
+            <Route
+              component={[Function]}
+              computedMatch={
+                Object {
+                  "isExact": true,
+                  "params": Object {},
+                  "path": "/",
+                  "url": "/",
+                }
+              }
+              exact={true}
+              location={
+                Object {
+                  "hash": "",
+                  "pathname": "/",
+                  "search": "",
+                  "state": undefined,
+                }
+              }
+              path="/"
+            >
+              <Home
+                history={
+                  Object {
+                    "action": "POP",
+                    "block": [Function],
+                    "createHref": [Function],
+                    "go": [Function],
+                    "goBack": [Function],
+                    "goForward": [Function],
+                    "length": 1,
+                    "listen": [Function],
+                    "location": Object {
+                      "hash": "",
+                      "pathname": "/",
+                      "search": "",
+                      "state": undefined,
+                    },
+                    "push": [Function],
+                    "replace": [Function],
+                  }
+                }
+                location={
+                  Object {
+                    "hash": "",
+                    "pathname": "/",
+                    "search": "",
+                    "state": undefined,
+                  }
+                }
+                match={
+                  Object {
+                    "isExact": true,
+                    "params": Object {},
+                    "path": "/",
+                    "url": "/",
+                  }
+                }
+              >
+                <div
+                  className="home"
+                >
+                  <TopBar>
+                    <header
+                      className="top-bar"
+                    >
+                      <div
+                        className="logo"
+                      >
+                        <h1
+                          className="title"
+                        >
+                          scot
+                        </h1>
+                        <span
+                          className="subtitle"
+                        >
+                          stock viewer
+                        </span>
+                      </div>
+                      <DateSwitch>
+                        <div
+                          className="date-switch"
+                        >
+                          <span
+                            className="option "
+                            onClick={[Function]}
+                          >
+                            Dia
+                          </span>
+                          <span
+                            className="option "
+                            onClick={[Function]}
+                          >
+                            Mês
+                          </span>
+                          <span
+                            className="option "
+                            onClick={[Function]}
+                          >
+                            Ano
+                          </span>
+                        </div>
+                      </DateSwitch>
+                      <div
+                        className="search"
+                      >
+                        <styled.input
+                          autoComplete="false"
+                          name="symbol"
+                          onChange={[Function]}
+                          placeholder="Busque uma empresa..."
+                          type="text"
+                        >
+                          <input
+                            autoComplete="false"
+                            className="sc-bdfBwQ dBUbRb"
+                            name="symbol"
+                            onChange={[Function]}
+                            placeholder="Busque uma empresa..."
+                            type="text"
+                          />
+                        </styled.input>
+                        <FontAwesomeIcon
+                          border={false}
+                          className="icon"
+                          fixedWidth={false}
+                          flip={null}
+                          icon="search"
+                          inverse={false}
+                          listItem={false}
+                          mask={null}
+                          onClick={[Function]}
+                          pull={null}
+                          pulse={false}
+                          rotation={null}
+                          size={null}
+                          spin={false}
+                          swapOpacity={false}
+                          symbol={false}
+                          title=""
+                          transform={null}
+                        >
+                          <svg
+                            aria-hidden="true"
+                            className="svg-inline--fa fa-search fa-w-16 icon"
+                            data-icon="search"
+                            data-prefix="fas"
+                            focusable="false"
+                            onClick={[Function]}
+                            role="img"
+                            style={Object {}}
+                            viewBox="0 0 512 512"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                              d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"
+                              fill="currentColor"
+                              style={Object {}}
+                            />
+                          </svg>
+                        </FontAwesomeIcon>
+                      </div>
+                    </header>
+                  </TopBar>
+                  <main>
+                    <Chart
+                      formattedStockSeries={Array []}
+                      selectedStock={
+                        Object {
+                          "1. symbol": "IBM",
+                          "2. name": "International Business Machines Corp",
+                          "3. type": "Equity",
+                          "4. region": "United States",
+                          "5. marketOpen": "09:30",
+                          "6. marketClose": "16:00",
+                          "7. timezone": "UTC-05",
+                          "8. currency": "USD",
+                          "9. matchScore": "1.0000",
+                        }
+                      }
+                    >
+                      <div
+                        className="chart"
+                      >
+                        <div
+                          className="top-info"
+                        >
+                          <h1
+                            className="symbol"
+                          >
+                            IBM
+                          </h1>
+                          <span
+                            className="name"
+                          >
+                            International Business Machines Corp
+                          </span>
+                        </div>
+                        <div
+                          className="graphic"
+                        >
+                          <Chart
+                            chartActions={null}
+                            chartEvents={null}
+                            chartType="AreaChart"
+                            chartWrapperParams={Object {}}
+                            className=""
+                            columns={null}
+                            controls={null}
+                            data={Array []}
+                            diffdata={null}
+                            formatters={null}
+                            getChartEditor={null}
+                            getChartWrapper={[Function]}
+                            graphID={null}
+                            graph_id={null}
+                            height="300px"
+                            legendToggle={false}
+                            legend_toggle={false}
+                            options={
+                              Object {
+                                "hAxis": Object {
+                                  "title": "Data",
+                                },
+                                "title": "International Business Machines Corp (Últimos 12 meses)",
+                                "vAxis": Object {
+                                  "title": "Preço (US$)",
+                                },
+                              }
+                            }
+                            render={null}
+                            rootProps={Object {}}
+                            rows={null}
+                            spreadSheetQueryParameters={
+                              Object {
+                                "gid": 1,
+                                "headers": 1,
+                              }
+                            }
+                            spreadSheetUrl={null}
+                            style={Object {}}
+                            toolbarID={null}
+                            toolbarItems={null}
+                            width="100%"
+                          >
+                            <ContextProvider
+                              value={
+                                Object {
+                                  "chartActions": null,
+                                  "chartEvents": null,
+                                  "chartType": "AreaChart",
+                                  "chartWrapperParams": Object {},
+                                  "className": "",
+                                  "columns": null,
+                                  "controls": null,
+                                  "data": Array [],
+                                  "diffdata": null,
+                                  "formatters": null,
+                                  "getChartEditor": null,
+                                  "getChartWrapper": [Function],
+                                  "graphID": null,
+                                  "graph_id": null,
+                                  "height": "300px",
+                                  "legendToggle": false,
+                                  "legend_toggle": false,
+                                  "options": Object {
+                                    "hAxis": Object {
+                                      "title": "Data",
+                                    },
+                                    "title": "International Business Machines Corp (Últimos 12 meses)",
+                                    "vAxis": Object {
+                                      "title": "Preço (US$)",
+                                    },
+                                  },
+                                  "render": null,
+                                  "rootProps": Object {},
+                                  "rows": null,
+                                  "spreadSheetQueryParameters": Object {
+                                    "gid": 1,
+                                    "headers": 1,
+                                  },
+                                  "spreadSheetUrl": null,
+                                  "style": Object {},
+                                  "toolbarID": null,
+                                  "toolbarItems": null,
+                                  "width": "100%",
+                                }
+                              }
+                            >
+                              <GoogleChartLoader
+                                onError={[Function]}
+                                onLoad={[Function]}
+                              >
+                                <Script
+                                  attributes={Object {}}
+                                  onCreate={[Function]}
+                                  onError={[Function]}
+                                  onLoad={[Function]}
+                                  url="https://www.gstatic.com/charts/loader.js"
+                                />
+                              </GoogleChartLoader>
+                            </ContextProvider>
+                          </Chart>
+                        </div>
+                        <div
+                          className="date-customer"
+                        >
+                          <form
+                            onSubmit={[Function]}
+                          >
+                            <styled.input
+                              name="initialDate"
+                              onChange={[Function]}
+                              placeholder="Data de início"
+                              required={true}
+                              type="date"
+                            >
+                              <input
+                                className="sc-bdfBwQ dBUbRb"
+                                name="initialDate"
+                                onChange={[Function]}
+                                placeholder="Data de início"
+                                required={true}
+                                type="date"
+                              />
+                            </styled.input>
+                            <styled.input
+                              name="finalDate"
+                              onChange={[Function]}
+                              placeholder="Data de fim"
+                              required={true}
+                              type="date"
+                            >
+                              <input
+                                className="sc-bdfBwQ dBUbRb"
+                                name="finalDate"
+                                onChange={[Function]}
+                                placeholder="Data de fim"
+                                required={true}
+                                type="date"
+                              />
+                            </styled.input>
+                            <styled.button
+                              type="submit"
+                            >
+                              <button
+                                className="sc-gsTCUz esPEkQ"
+                                type="submit"
+                              >
+                                Atualizar
+                              </button>
+                            </styled.button>
+                          </form>
+                        </div>
+                      </div>
+                    </Chart>
+                    <StockDetails
+                      stockInfo={null}
+                    >
+                      <div
+                        className="stock-details"
+                      >
+                        <div
+                          className="row"
+                        >
+                          <span
+                            className="data-label"
+                          >
+                            Preço atual
+                          </span>
+                          <span
+                            className="data"
+                          >
+                            N/A
+                          </span>
+                        </div>
+                        <div
+                          className="row"
+                        >
+                          <span
+                            className="data-label"
+                          >
+                            Preço máx.
+                          </span>
+                          <span
+                            className="data"
+                          >
+                            N/A
+                          </span>
+                        </div>
+                        <div
+                          className="row"
+                        >
+                          <span
+                            className="data-label"
+                          >
+                            Preço mín.
+                          </span>
+                          <span
+                            className="data"
+                          >
+                            N/A
+                          </span>
+                        </div>
+                        <div
+                          className="row"
+                        >
+                          <span
+                            className="data-label"
+                          >
+                            Abertura
+                          </span>
+                          <span
+                            className="data"
+                          >
+                            N/A
+                          </span>
+                        </div>
+                        <span
+                          className="last-update"
+                        >
+                          N/A
+                        </span>
+                      </div>
+                    </StockDetails>
+                  </main>
+                  <Simulation>
+                    <div
+                      className="simulation"
+                    >
+                      <h3
+                        className="title"
+                      >
+                        Simulação
+                      </h3>
+                      <form
+                        onSubmit={[Function]}
+                      >
+                        <styled.input
+                          name="amount"
+                          onChange={[Function]}
+                          placeholder="Qntd. de cotas"
+                          required={true}
+                          type="text"
+                        >
+                          <input
+                            className="sc-bdfBwQ dBUbRb"
+                            name="amount"
+                            onChange={[Function]}
+                            placeholder="Qntd. de cotas"
+                            required={true}
+                            type="text"
+                          />
+                        </styled.input>
+                        <styled.input
+                          name="buyDate"
+                          onChange={[Function]}
+                          placeholder="Data de entrada"
+                          required={true}
+                          type="date"
+                        >
+                          <input
+                            className="sc-bdfBwQ dBUbRb"
+                            name="buyDate"
+                            onChange={[Function]}
+                            placeholder="Data de entrada"
+                            required={true}
+                            type="date"
+                          />
+                        </styled.input>
+                        <styled.input
+                          name="sellDate"
+                          onChange={[Function]}
+                          placeholder="Data de saída"
+                          required={true}
+                          type="date"
+                        >
+                          <input
+                            className="sc-bdfBwQ dBUbRb"
+                            name="sellDate"
+                            onChange={[Function]}
+                            placeholder="Data de saída"
+                            required={true}
+                            type="date"
+                          />
+                        </styled.input>
+                        <styled.button
+                          type="submit"
+                        >
+                          <button
+                            className="sc-gsTCUz esPEkQ"
+                            type="submit"
+                          >
+                            Simular
+                          </button>
+                        </styled.button>
+                      </form>
+                    </div>
+                  </Simulation>
+                </div>
+              </Home>
+            </Route>
+          </Switch>
+        </Router>
+      </BrowserRouter>
+    </Routes>
+  </div>
+</App>
+`;
+
+exports[`should render the chart with symbol (IBM) setted 1`] = `
+<App>
+  <div
+    className="App"
+  >
+    <Routes>
+      <BrowserRouter>
+        <Router
+          history={
+            Object {
+              "action": "POP",
+              "block": [Function],
+              "createHref": [Function],
+              "go": [Function],
+              "goBack": [Function],
+              "goForward": [Function],
+              "length": 1,
+              "listen": [Function],
+              "location": Object {
+                "hash": "",
+                "pathname": "/",
+                "search": "",
+                "state": undefined,
+              },
+              "push": [Function],
+              "replace": [Function],
+            }
+          }
+        >
+          <Switch>
+            <Route
+              component={[Function]}
+              computedMatch={
+                Object {
+                  "isExact": true,
+                  "params": Object {},
+                  "path": "/",
+                  "url": "/",
+                }
+              }
+              exact={true}
+              location={
+                Object {
+                  "hash": "",
+                  "pathname": "/",
+                  "search": "",
+                  "state": undefined,
+                }
+              }
+              path="/"
+            >
+              <Home
+                history={
+                  Object {
+                    "action": "POP",
+                    "block": [Function],
+                    "createHref": [Function],
+                    "go": [Function],
+                    "goBack": [Function],
+                    "goForward": [Function],
+                    "length": 1,
+                    "listen": [Function],
+                    "location": Object {
+                      "hash": "",
+                      "pathname": "/",
+                      "search": "",
+                      "state": undefined,
+                    },
+                    "push": [Function],
+                    "replace": [Function],
+                  }
+                }
+                location={
+                  Object {
+                    "hash": "",
+                    "pathname": "/",
+                    "search": "",
+                    "state": undefined,
+                  }
+                }
+                match={
+                  Object {
+                    "isExact": true,
+                    "params": Object {},
+                    "path": "/",
+                    "url": "/",
+                  }
+                }
+              >
+                <div
+                  className="home"
+                >
+                  <TopBar>
+                    <header
+                      className="top-bar"
+                    >
+                      <div
+                        className="logo"
+                      >
+                        <h1
+                          className="title"
+                        >
+                          scot
+                        </h1>
+                        <span
+                          className="subtitle"
+                        >
+                          stock viewer
+                        </span>
+                      </div>
+                      <DateSwitch>
+                        <div
+                          className="date-switch"
+                        >
+                          <span
+                            className="option active"
+                            onClick={[Function]}
+                          >
+                            Dia
+                          </span>
+                          <span
+                            className="option "
+                            onClick={[Function]}
+                          >
+                            Mês
+                          </span>
+                          <span
+                            className="option "
+                            onClick={[Function]}
+                          >
+                            Ano
+                          </span>
+                        </div>
+                      </DateSwitch>
+                      <div
+                        className="search"
+                      >
+                        <styled.input
+                          autoComplete="false"
+                          name="symbol"
+                          onChange={[Function]}
+                          placeholder="Busque uma empresa..."
+                          type="text"
+                        >
+                          <input
+                            autoComplete="false"
+                            className="sc-bdfBwQ dBUbRb"
+                            name="symbol"
+                            onChange={[Function]}
+                            placeholder="Busque uma empresa..."
+                            type="text"
+                          />
+                        </styled.input>
+                        <FontAwesomeIcon
+                          border={false}
+                          className="icon"
+                          fixedWidth={false}
+                          flip={null}
+                          icon="search"
+                          inverse={false}
+                          listItem={false}
+                          mask={null}
+                          onClick={[Function]}
+                          pull={null}
+                          pulse={false}
+                          rotation={null}
+                          size={null}
+                          spin={false}
+                          swapOpacity={false}
+                          symbol={false}
+                          title=""
+                          transform={null}
+                        >
+                          <svg
+                            aria-hidden="true"
+                            className="svg-inline--fa fa-search fa-w-16 icon"
+                            data-icon="search"
+                            data-prefix="fas"
+                            focusable="false"
+                            onClick={[Function]}
+                            role="img"
+                            style={Object {}}
+                            viewBox="0 0 512 512"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                              d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"
+                              fill="currentColor"
+                              style={Object {}}
+                            />
+                          </svg>
+                        </FontAwesomeIcon>
+                      </div>
+                    </header>
+                  </TopBar>
+                  <main>
+                    <Chart
+                      formattedStockSeries={Array []}
+                      selectedStock={Object {}}
+                    >
+                      <div
+                        className="chart"
+                      >
+                        <div
+                          className="top-info"
+                        >
+                          <h1
+                            className="symbol"
+                          >
+                            Nenhuma empresa selecionada
+                          </h1>
+                          <span
+                            className="name"
+                          />
+                        </div>
+                        <div
+                          className="graphic"
+                        >
+                          <Chart
+                            chartActions={null}
+                            chartEvents={null}
+                            chartType="AreaChart"
+                            chartWrapperParams={Object {}}
+                            className=""
+                            columns={null}
+                            controls={null}
+                            data={Array []}
+                            diffdata={null}
+                            formatters={null}
+                            getChartEditor={null}
+                            getChartWrapper={[Function]}
+                            graphID={null}
+                            graph_id={null}
+                            height="300px"
+                            legendToggle={false}
+                            legend_toggle={false}
+                            options={
+                              Object {
+                                "hAxis": Object {
+                                  "title": "Data",
+                                },
+                                "title": "undefined (Últimas 24 horas)",
+                                "vAxis": Object {
+                                  "title": "Preço (US$)",
+                                },
+                              }
+                            }
+                            render={null}
+                            rootProps={Object {}}
+                            rows={null}
+                            spreadSheetQueryParameters={
+                              Object {
+                                "gid": 1,
+                                "headers": 1,
+                              }
+                            }
+                            spreadSheetUrl={null}
+                            style={Object {}}
+                            toolbarID={null}
+                            toolbarItems={null}
+                            width="100%"
+                          >
+                            <ContextProvider
+                              value={
+                                Object {
+                                  "chartActions": null,
+                                  "chartEvents": null,
+                                  "chartType": "AreaChart",
+                                  "chartWrapperParams": Object {},
+                                  "className": "",
+                                  "columns": null,
+                                  "controls": null,
+                                  "data": Array [],
+                                  "diffdata": null,
+                                  "formatters": null,
+                                  "getChartEditor": null,
+                                  "getChartWrapper": [Function],
+                                  "graphID": null,
+                                  "graph_id": null,
+                                  "height": "300px",
+                                  "legendToggle": false,
+                                  "legend_toggle": false,
+                                  "options": Object {
+                                    "hAxis": Object {
+                                      "title": "Data",
+                                    },
+                                    "title": "undefined (Últimas 24 horas)",
+                                    "vAxis": Object {
+                                      "title": "Preço (US$)",
+                                    },
+                                  },
+                                  "render": null,
+                                  "rootProps": Object {},
+                                  "rows": null,
+                                  "spreadSheetQueryParameters": Object {
+                                    "gid": 1,
+                                    "headers": 1,
+                                  },
+                                  "spreadSheetUrl": null,
+                                  "style": Object {},
+                                  "toolbarID": null,
+                                  "toolbarItems": null,
+                                  "width": "100%",
+                                }
+                              }
+                            >
+                              <GoogleChartLoader
+                                onError={[Function]}
+                                onLoad={[Function]}
+                              >
+                                <Script
+                                  attributes={Object {}}
+                                  onCreate={[Function]}
+                                  onError={[Function]}
+                                  onLoad={[Function]}
+                                  url="https://www.gstatic.com/charts/loader.js"
+                                />
+                              </GoogleChartLoader>
+                            </ContextProvider>
+                          </Chart>
+                        </div>
+                        <div
+                          className="date-customer"
+                        >
+                          <form
+                            onSubmit={[Function]}
+                          >
+                            <styled.input
+                              name="initialDate"
+                              onChange={[Function]}
+                              placeholder="Data de início"
+                              required={true}
+                              type="date"
+                            >
+                              <input
+                                className="sc-bdfBwQ dBUbRb"
+                                name="initialDate"
+                                onChange={[Function]}
+                                placeholder="Data de início"
+                                required={true}
+                                type="date"
+                              />
+                            </styled.input>
+                            <styled.input
+                              name="finalDate"
+                              onChange={[Function]}
+                              placeholder="Data de fim"
+                              required={true}
+                              type="date"
+                            >
+                              <input
+                                className="sc-bdfBwQ dBUbRb"
+                                name="finalDate"
+                                onChange={[Function]}
+                                placeholder="Data de fim"
+                                required={true}
+                                type="date"
+                              />
+                            </styled.input>
+                            <styled.button
+                              type="submit"
+                            >
+                              <button
+                                className="sc-gsTCUz esPEkQ"
+                                type="submit"
+                              >
+                                Atualizar
+                              </button>
+                            </styled.button>
+                          </form>
+                        </div>
+                      </div>
+                    </Chart>
+                    <StockDetails
+                      stockInfo={null}
+                    >
+                      <div
+                        className="stock-details"
+                      >
+                        <div
+                          className="row"
+                        >
+                          <span
+                            className="data-label"
+                          >
+                            Preço atual
+                          </span>
+                          <span
+                            className="data"
+                          >
+                            N/A
+                          </span>
+                        </div>
+                        <div
+                          className="row"
+                        >
+                          <span
+                            className="data-label"
+                          >
+                            Preço máx.
+                          </span>
+                          <span
+                            className="data"
+                          >
+                            N/A
+                          </span>
+                        </div>
+                        <div
+                          className="row"
+                        >
+                          <span
+                            className="data-label"
+                          >
+                            Preço mín.
+                          </span>
+                          <span
+                            className="data"
+                          >
+                            N/A
+                          </span>
+                        </div>
+                        <div
+                          className="row"
+                        >
+                          <span
+                            className="data-label"
+                          >
+                            Abertura
+                          </span>
+                          <span
+                            className="data"
+                          >
+                            N/A
+                          </span>
+                        </div>
+                        <span
+                          className="last-update"
+                        >
+                          N/A
+                        </span>
+                      </div>
+                    </StockDetails>
+                  </main>
+                  <Simulation>
+                    <div
+                      className="simulation"
+                    >
+                      <h3
+                        className="title"
+                      >
+                        Simulação
+                      </h3>
+                      <form
+                        onSubmit={[Function]}
+                      >
+                        <styled.input
+                          name="amount"
+                          onChange={[Function]}
+                          placeholder="Qntd. de cotas"
+                          required={true}
+                          type="text"
+                        >
+                          <input
+                            className="sc-bdfBwQ dBUbRb"
+                            name="amount"
+                            onChange={[Function]}
+                            placeholder="Qntd. de cotas"
+                            required={true}
+                            type="text"
+                          />
+                        </styled.input>
+                        <styled.input
+                          name="buyDate"
+                          onChange={[Function]}
+                          placeholder="Data de entrada"
+                          required={true}
+                          type="date"
+                        >
+                          <input
+                            className="sc-bdfBwQ dBUbRb"
+                            name="buyDate"
+                            onChange={[Function]}
+                            placeholder="Data de entrada"
+                            required={true}
+                            type="date"
+                          />
+                        </styled.input>
+                        <styled.input
+                          name="sellDate"
+                          onChange={[Function]}
+                          placeholder="Data de saída"
+                          required={true}
+                          type="date"
+                        >
+                          <input
+                            className="sc-bdfBwQ dBUbRb"
+                            name="sellDate"
+                            onChange={[Function]}
+                            placeholder="Data de saída"
+                            required={true}
+                            type="date"
+                          />
+                        </styled.input>
+                        <styled.button
+                          type="submit"
+                        >
+                          <button
+                            className="sc-gsTCUz esPEkQ"
+                            type="submit"
+                          >
+                            Simular
+                          </button>
+                        </styled.button>
+                      </form>
+                    </div>
+                  </Simulation>
+                </div>
+              </Home>
+            </Route>
+          </Switch>
+        </Router>
+      </BrowserRouter>
+    </Routes>
+  </div>
+</App>
+`;
+
+exports[`should render the homepage initially 1`] = `
+<App>
+  <div
+    className="App"
+  >
+    <Routes>
+      <BrowserRouter>
+        <Router
+          history={
+            Object {
+              "action": "POP",
+              "block": [Function],
+              "createHref": [Function],
+              "go": [Function],
+              "goBack": [Function],
+              "goForward": [Function],
+              "length": 1,
+              "listen": [Function],
+              "location": Object {
+                "hash": "",
+                "pathname": "/",
+                "search": "",
+                "state": undefined,
+              },
+              "push": [Function],
+              "replace": [Function],
+            }
+          }
+        >
+          <Switch>
+            <Route
+              component={[Function]}
+              computedMatch={
+                Object {
+                  "isExact": true,
+                  "params": Object {},
+                  "path": "/",
+                  "url": "/",
+                }
+              }
+              exact={true}
+              location={
+                Object {
+                  "hash": "",
+                  "pathname": "/",
+                  "search": "",
+                  "state": undefined,
+                }
+              }
+              path="/"
+            >
+              <Home
+                history={
+                  Object {
+                    "action": "POP",
+                    "block": [Function],
+                    "createHref": [Function],
+                    "go": [Function],
+                    "goBack": [Function],
+                    "goForward": [Function],
+                    "length": 1,
+                    "listen": [Function],
+                    "location": Object {
+                      "hash": "",
+                      "pathname": "/",
+                      "search": "",
+                      "state": undefined,
+                    },
+                    "push": [Function],
+                    "replace": [Function],
+                  }
+                }
+                location={
+                  Object {
+                    "hash": "",
+                    "pathname": "/",
+                    "search": "",
+                    "state": undefined,
+                  }
+                }
+                match={
+                  Object {
+                    "isExact": true,
+                    "params": Object {},
+                    "path": "/",
+                    "url": "/",
+                  }
+                }
+              >
+                <div
+                  className="home"
+                >
+                  <TopBar>
+                    <header
+                      className="top-bar"
+                    >
+                      <div
+                        className="logo"
+                      >
+                        <h1
+                          className="title"
+                        >
+                          scot
+                        </h1>
+                        <span
+                          className="subtitle"
+                        >
+                          stock viewer
+                        </span>
+                      </div>
+                      <DateSwitch>
+                        <div
+                          className="date-switch"
+                        >
+                          <span
+                            className="option active"
+                            onClick={[Function]}
+                          >
+                            Dia
+                          </span>
+                          <span
+                            className="option "
+                            onClick={[Function]}
+                          >
+                            Mês
+                          </span>
+                          <span
+                            className="option "
+                            onClick={[Function]}
+                          >
+                            Ano
+                          </span>
+                        </div>
+                      </DateSwitch>
+                      <div
+                        className="search"
+                      >
+                        <styled.input
+                          autoComplete="false"
+                          name="symbol"
+                          onChange={[Function]}
+                          placeholder="Busque uma empresa..."
+                          type="text"
+                        >
+                          <input
+                            autoComplete="false"
+                            className="sc-bdfBwQ dBUbRb"
+                            name="symbol"
+                            onChange={[Function]}
+                            placeholder="Busque uma empresa..."
+                            type="text"
+                          />
+                        </styled.input>
+                        <FontAwesomeIcon
+                          border={false}
+                          className="icon"
+                          fixedWidth={false}
+                          flip={null}
+                          icon="search"
+                          inverse={false}
+                          listItem={false}
+                          mask={null}
+                          onClick={[Function]}
+                          pull={null}
+                          pulse={false}
+                          rotation={null}
+                          size={null}
+                          spin={false}
+                          swapOpacity={false}
+                          symbol={false}
+                          title=""
+                          transform={null}
+                        >
+                          <svg
+                            aria-hidden="true"
+                            className="svg-inline--fa fa-search fa-w-16 icon"
+                            data-icon="search"
+                            data-prefix="fas"
+                            focusable="false"
+                            onClick={[Function]}
+                            role="img"
+                            style={Object {}}
+                            viewBox="0 0 512 512"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                              d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"
+                              fill="currentColor"
+                              style={Object {}}
+                            />
+                          </svg>
+                        </FontAwesomeIcon>
+                      </div>
+                    </header>
+                  </TopBar>
+                  <main>
+                    <Chart
+                      formattedStockSeries={Array []}
+                      selectedStock={Object {}}
+                    >
+                      <div
+                        className="chart"
+                      >
+                        <div
+                          className="top-info"
+                        >
+                          <h1
+                            className="symbol"
+                          >
+                            Nenhuma empresa selecionada
+                          </h1>
+                          <span
+                            className="name"
+                          />
+                        </div>
+                        <div
+                          className="graphic"
+                        >
+                          <Chart
+                            chartActions={null}
+                            chartEvents={null}
+                            chartType="AreaChart"
+                            chartWrapperParams={Object {}}
+                            className=""
+                            columns={null}
+                            controls={null}
+                            data={Array []}
+                            diffdata={null}
+                            formatters={null}
+                            getChartEditor={null}
+                            getChartWrapper={[Function]}
+                            graphID={null}
+                            graph_id={null}
+                            height="300px"
+                            legendToggle={false}
+                            legend_toggle={false}
+                            options={
+                              Object {
+                                "hAxis": Object {
+                                  "title": "Data",
+                                },
+                                "title": "undefined (Últimas 24 horas)",
+                                "vAxis": Object {
+                                  "title": "Preço (US$)",
+                                },
+                              }
+                            }
+                            render={null}
+                            rootProps={Object {}}
+                            rows={null}
+                            spreadSheetQueryParameters={
+                              Object {
+                                "gid": 1,
+                                "headers": 1,
+                              }
+                            }
+                            spreadSheetUrl={null}
+                            style={Object {}}
+                            toolbarID={null}
+                            toolbarItems={null}
+                            width="100%"
+                          >
+                            <ContextProvider
+                              value={
+                                Object {
+                                  "chartActions": null,
+                                  "chartEvents": null,
+                                  "chartType": "AreaChart",
+                                  "chartWrapperParams": Object {},
+                                  "className": "",
+                                  "columns": null,
+                                  "controls": null,
+                                  "data": Array [],
+                                  "diffdata": null,
+                                  "formatters": null,
+                                  "getChartEditor": null,
+                                  "getChartWrapper": [Function],
+                                  "graphID": null,
+                                  "graph_id": null,
+                                  "height": "300px",
+                                  "legendToggle": false,
+                                  "legend_toggle": false,
+                                  "options": Object {
+                                    "hAxis": Object {
+                                      "title": "Data",
+                                    },
+                                    "title": "undefined (Últimas 24 horas)",
+                                    "vAxis": Object {
+                                      "title": "Preço (US$)",
+                                    },
+                                  },
+                                  "render": null,
+                                  "rootProps": Object {},
+                                  "rows": null,
+                                  "spreadSheetQueryParameters": Object {
+                                    "gid": 1,
+                                    "headers": 1,
+                                  },
+                                  "spreadSheetUrl": null,
+                                  "style": Object {},
+                                  "toolbarID": null,
+                                  "toolbarItems": null,
+                                  "width": "100%",
+                                }
+                              }
+                            >
+                              <GoogleChartLoader
+                                onError={[Function]}
+                                onLoad={[Function]}
+                              >
+                                <Script
+                                  attributes={Object {}}
+                                  onCreate={[Function]}
+                                  onError={[Function]}
+                                  onLoad={[Function]}
+                                  url="https://www.gstatic.com/charts/loader.js"
+                                />
+                              </GoogleChartLoader>
+                            </ContextProvider>
+                          </Chart>
+                        </div>
+                        <div
+                          className="date-customer"
+                        >
+                          <form
+                            onSubmit={[Function]}
+                          >
+                            <styled.input
+                              name="initialDate"
+                              onChange={[Function]}
+                              placeholder="Data de início"
+                              required={true}
+                              type="date"
+                            >
+                              <input
+                                className="sc-bdfBwQ dBUbRb"
+                                name="initialDate"
+                                onChange={[Function]}
+                                placeholder="Data de início"
+                                required={true}
+                                type="date"
+                              />
+                            </styled.input>
+                            <styled.input
+                              name="finalDate"
+                              onChange={[Function]}
+                              placeholder="Data de fim"
+                              required={true}
+                              type="date"
+                            >
+                              <input
+                                className="sc-bdfBwQ dBUbRb"
+                                name="finalDate"
+                                onChange={[Function]}
+                                placeholder="Data de fim"
+                                required={true}
+                                type="date"
+                              />
+                            </styled.input>
+                            <styled.button
+                              type="submit"
+                            >
+                              <button
+                                className="sc-gsTCUz esPEkQ"
+                                type="submit"
+                              >
+                                Atualizar
+                              </button>
+                            </styled.button>
+                          </form>
+                        </div>
+                      </div>
+                    </Chart>
+                    <StockDetails
+                      stockInfo={null}
+                    >
+                      <div
+                        className="stock-details"
+                      >
+                        <div
+                          className="row"
+                        >
+                          <span
+                            className="data-label"
+                          >
+                            Preço atual
+                          </span>
+                          <span
+                            className="data"
+                          >
+                            N/A
+                          </span>
+                        </div>
+                        <div
+                          className="row"
+                        >
+                          <span
+                            className="data-label"
+                          >
+                            Preço máx.
+                          </span>
+                          <span
+                            className="data"
+                          >
+                            N/A
+                          </span>
+                        </div>
+                        <div
+                          className="row"
+                        >
+                          <span
+                            className="data-label"
+                          >
+                            Preço mín.
+                          </span>
+                          <span
+                            className="data"
+                          >
+                            N/A
+                          </span>
+                        </div>
+                        <div
+                          className="row"
+                        >
+                          <span
+                            className="data-label"
+                          >
+                            Abertura
+                          </span>
+                          <span
+                            className="data"
+                          >
+                            N/A
+                          </span>
+                        </div>
+                        <span
+                          className="last-update"
+                        >
+                          N/A
+                        </span>
+                      </div>
+                    </StockDetails>
+                  </main>
+                  <Simulation>
+                    <div
+                      className="simulation"
+                    >
+                      <h3
+                        className="title"
+                      >
+                        Simulação
+                      </h3>
+                      <form
+                        onSubmit={[Function]}
+                      >
+                        <styled.input
+                          name="amount"
+                          onChange={[Function]}
+                          placeholder="Qntd. de cotas"
+                          required={true}
+                          type="text"
+                        >
+                          <input
+                            className="sc-bdfBwQ dBUbRb"
+                            name="amount"
+                            onChange={[Function]}
+                            placeholder="Qntd. de cotas"
+                            required={true}
+                            type="text"
+                          />
+                        </styled.input>
+                        <styled.input
+                          name="buyDate"
+                          onChange={[Function]}
+                          placeholder="Data de entrada"
+                          required={true}
+                          type="date"
+                        >
+                          <input
+                            className="sc-bdfBwQ dBUbRb"
+                            name="buyDate"
+                            onChange={[Function]}
+                            placeholder="Data de entrada"
+                            required={true}
+                            type="date"
+                          />
+                        </styled.input>
+                        <styled.input
+                          name="sellDate"
+                          onChange={[Function]}
+                          placeholder="Data de saída"
+                          required={true}
+                          type="date"
+                        >
+                          <input
+                            className="sc-bdfBwQ dBUbRb"
+                            name="sellDate"
+                            onChange={[Function]}
+                            placeholder="Data de saída"
+                            required={true}
+                            type="date"
+                          />
+                        </styled.input>
+                        <styled.button
+                          type="submit"
+                        >
+                          <button
+                            className="sc-gsTCUz esPEkQ"
+                            type="submit"
+                          >
+                            Simular
+                          </button>
+                        </styled.button>
+                      </form>
+                    </div>
+                  </Simulation>
+                </div>
+              </Home>
+            </Route>
+          </Switch>
+        </Router>
+      </BrowserRouter>
+    </Routes>
+  </div>
+</App>
+`;
