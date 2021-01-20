@@ -1,3 +1,3 @@
-const handleErrors = error => {};
+const handleErrors = (error) => {};
 
 export default handleErrors;

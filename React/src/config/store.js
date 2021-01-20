@@ -4,7 +4,7 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import thunkMiddleware from 'redux-thunk';
 
 // Import custom components
-import rootReducer, { StoreState } from '../reducers';
+import rootReducer, {/*  StoreState */ } from '../reducers';
 
 /* declare global {
   interface Window {
@@ -12,14 +12,14 @@ import rootReducer, { StoreState } from '../reducers';
   }
 } */
 
-function saveToLocalStorage(state: StoreState) {
+/* function saveToLocalStorage(state: StoreState) {
 	try {
 		const serializedState = JSON.stringify(state);
 		localStorage.setItem('state', serializedState);
 	} catch (e) {
 		console.log(e);
 	}
-}
+} */
 
 function loadFromLocalStorage() {
 	try {
