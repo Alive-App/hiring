@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 
-import mainReducer from './main';
+import historyReducer from './history';
 import portfolioReducer from './portfolio';
 
-export default combineReducers({ main: mainReducer, portfolio: portfolioReducer });
+export default combineReducers({ history: historyReducer, portfolio: portfolioReducer });

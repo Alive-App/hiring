@@ -1,5 +1,6 @@
 .App {
-  text-align: center;
+  // padding: 10px;
+  // text-align: center;
 }
 
 .App-logo {
@@ -35,4 +36,22 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.header {
+  padding: 10px 20px;
+  background-color: #eee;
+  // display: inline;
+  .stock-search {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    align-self: flex-end;
+    button {
+      margin-left: 10px;
+    }
+  }
+}
+.p-dialog-content {
+  height: 90vh;
 }
