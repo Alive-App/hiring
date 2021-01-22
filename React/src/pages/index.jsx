@@ -104,9 +104,9 @@ const Navigation = () => {
 };
 
 export default Navigation;
-export const StockItem = ({ data, inPortfolio }) => {
+export const StockItem = ({ data, inPortfolio, onClick }) => {
   return (
-    <div className="p-card p-mt-2">
+    <div className="p-card p-mt-2" onClick={onClick}>
       <div className="product-item">
         <div className="product-detail">
           <div className="product-name">{data.name || data.Name}</div>
