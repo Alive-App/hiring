@@ -81,7 +81,7 @@ const Navigation = () => {
       <Dialog
         header={
           <form className="p-col-12" onSubmit={handleSubmit(({ s }) => search(s))}>
-            <input placeholder="Pesquisar Ações" ref={register} className="p-inputtext " name="s" />
+            <input autoFocus placeholder="Pesquisar Ações" ref={register} className="p-inputtext " name="s" />
             <Button className="p-ml-2" icon="pi pi-search" />
           </form>
         }
@@ -106,14 +106,14 @@ const Navigation = () => {
 export default Navigation;
 export const StockItem = ({ data, inPortfolio, onClick }) => {
   return (
-    <div className="p-card p-mt-2" onClick={onClick}>
+    <div className="p-card p-mt-2" style={{cursor:'pointer'}} onClick={onClick}>
       <div className="product-item">
         <div className="product-detail">
           <div className="product-name">{data.name || data.Name}</div>
           <div className="product-description">{data.symbol || data.Symbol}</div>
 
           <i className="pi pi-flag product-category-icon"></i>
-          <span className="product-category">{data.region || data.Region}</span>
+          <span className="product-category">{data.region || data.Country} ({data.currency||data.Currency})</span>
         </div>
       </div>
       <div className="product-item p-justify-end">

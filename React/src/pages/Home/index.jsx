@@ -1,3 +1,4 @@
+import { navigate } from 'hookrouter';
 import React from 'react';
 import { shallowEqual, useSelector } from 'react-redux';
 import { StockItem } from '..';
@@ -6,7 +7,7 @@ import './styles.scss';
 const Home = () => {
   const portfolio = useSelector((state) => state.portfolio, shallowEqual);
 
-  const renderPortfolio = React.useCallback((data) => <StockItem data={data} />, []);
+  const renderPortfolio = React.useCallback((data) => <StockItem data={data} onClick={() => navigate(`/stock/${data.Symbol}`)} />, []);
 
   return (
     <div className="p-mt-4">

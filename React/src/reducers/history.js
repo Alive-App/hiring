@@ -10,7 +10,7 @@ const historyReducer = (state = initialState, { type, payload }) => {
   switch (type) {
     case REFRESH_HISTORY:
       const { symbol, type, list, metadata } = payload;
-      return { ...state, [type]: { ...state[type], [symbol]: { list, metadata } } };
+      return { ...state, [type]: { ...state[type], [String(symbol).toUpperCase()]: { list, metadata } } };
     default:
       return state;
   }

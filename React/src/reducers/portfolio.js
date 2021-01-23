@@ -8,8 +8,7 @@ const portfolioReducer = (state = initialState, { type, payload }) => {
       return [...state, payload];
     case REMOVE_FROM_PORTFOLIO:
       const newState = [...state];
-      newState.splice(payload.index);
-      return newState;
+      return newState.filter(({ Symbol: s }) => String(s).toLowerCase() != String(payload.Symbol).toLowerCase());
     default:
       return state;
   }
