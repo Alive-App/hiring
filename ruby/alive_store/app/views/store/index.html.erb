@@ -1,0 +1,41 @@
+<%= link_to "NOVO ANEXO CSV", upload_csv_path , class:"button2"%>
+
+<%= render partial: "notice" %>
+
+<br>
+<br>
+
+
+<%= search_form_for @q , url: root_path do |f| %>
+          <%= f.search_field :manufacturer_or_model_or_carrier_plan_type_cont, class: "", placeholder: "Fabricante, modelo, plano de operadora"%>
+<%= f.submit "Pesquisar" %>
+<%= link_to "Limpar", request.path %>
+
+<% end %>
+
+<br>
+
+<table class="minimalistBlack">
+  <thead>
+    <tr>
+      <th class="" nowrap>Fabricante</th>
+      <th class="" nowrap>Modelo</th>
+      <th class="" nowrap>Cor</th>
+      <th class="" nowrap>Tipo de plano de operadora</th>
+      <th class="" nowrap>Quantidade</th>
+      <th class="" nowrap>Preço</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @stores.each do |store| %>
+    <tr>
+      <td class=""> <%= store.manufacturer %> </td>
+      <td class=""> <%= store.model %> </td>
+      <td class=""> <%= store.color %> </td>
+      <td class=""> <%= store.carrier_plan_type %> </td>
+      <td class=""> <%= store.quantity %> </td>
+      <td class=""> <%= store.price %> </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

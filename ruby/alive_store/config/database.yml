@@ -1,0 +1,18 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  username: root
+  password: root
+  host: localhost
+  port: 5432
+
+development:
+  <<: *default
+  database: alive_store_development
+test:
+  <<: *default
+  database: alive_store_test
+production:
+  <<: *default
+  database: alive_store_production

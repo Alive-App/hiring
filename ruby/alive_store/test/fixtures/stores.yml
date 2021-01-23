@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  manufacturer: MyString
+  model: MyString
+  color: MyString
+  carrier_plan_type: MyString
+  quantity: 1
+  price: 1.5
+
+two:
+  manufacturer: MyString
+  model: MyString
+  color: MyString
+  carrier_plan_type: MyString
+  quantity: 1
+  price: 1.5
