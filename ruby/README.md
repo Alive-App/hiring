@@ -24,3 +24,32 @@ Para facilitar esse processo, é necessário criar uma interface para upload des
 2. Codifique a aplicação nesse fork;
 3. Escreva um README explicando como rodar sua aplicação e os testes. Dê o máximo de detalhes;
 4. Abra um pull request quando estiver pronto.
+
+# Tecnologias utilizadas:
+
+- Ruby 3.0.0p0
+- Rails 6.1.1
+- Banco de dados Postgresql
+
+# Gems mais utilizadas:
+- gem 'pg'
+- gem 'rspec-rails'
+- gem 'ransack'
+
+# Iniciar o projeto
+
+**Requisitos necessario para iniciar o projeto**
+
+- Ter instalado Ruby na versão 3.0.0 ou superior, Rails na versão 6.1.1 ou superior e o uso do banco de dados Postgresql
+
+**Clonando o projeto**
+
+- Execute o comando  `git clone https://github.com/arissonb/hiring`
+
+**Execução do projeto**
+
+- Entre no projeto e depois entre no repositorio ruby/alive_store
+- Execute o comando `bundle install` para instalar todas as gems
+- Depois rode o comando `rails db:create db:migrate` para criar o banco de dados e as tabelas
+- E por ultimo execute o comando `rails s` para subir a aplicação
+
