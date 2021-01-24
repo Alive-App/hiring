@@ -1,90 +1,79 @@
-import { useState } from 'react';
-import axios, { Method } from 'axios';
-import handleErrors from './handleErrors';
-import parser from 'query-string-parser';
+import React from 'react';
 import alphavantage from 'alphavantage';
-export const API_URL = 'https://alphavantage.co/query';
-const key = '7QGBL6ZJU67O7EPP';
-/* const isDebuggingEnabled = typeof atob !== 'undefined'; */
+import Toaster from './toaster';
+import { refreshHistory, refreshStock } from '../actions/history';
+import { parseISO } from 'date-fns';
 
+const key = '7QGBL6ZJU67O7EPP';
 export const av = alphavantage({ key });
 
-const DEFAULT_TIMEOUT = 15000;
-const initialState = { success: null, msg: 'carregando...' };
-/** API Hook
- * @param {object}  options options
- * @param {'TIME_SERIES_INTRADAY' | 'TIME_SERIES_DAILY' | 'TIME_SERIES_WEEKLY' | 'TIME_SERIES_MONTHLY' | 'SYMBOL_SEARCH'}  options.resource options
- * @param {Method} options.method
- * @param {any} options.params
- * @param {(error: any) => any}  options.onError
- * @param {string} options.url
- * @param {number} options.timeout
-
+/**
+ *|api hook
+ * @param {('daily'|'weekly'|'monthly'|'search'|'company_overview')} _fn função de retorno
+ * @param {('data'|'fundamental')} [_type='data'] tipo de função de retorno
  */
-export const useAPI = (
-  {
-    resource: hookResource,
-    method: hookMethod = 'GET',
-    params: hookParams = {},
-    onError: onErrorAPI = handleErrors,
-    url: hookUrl = API_URL,
-    timeout: hookTimeout = DEFAULT_TIMEOUT,
-    body: hookBody,
-  } /* : APIHook */,
-) => {
-  const [respData, setData] = useState(initialState);
+export const useAPI = (_fn = '', _type = 'data') => {
+  const [state, setState] = React.useState({ error: null, data: null, loading: false });
 
-  const [loading, setLoading] = useState(false);
-  const [isError, setError] = useState(false);
+  /**
+   *
+   * @param {object} options
+   * @param {string} [options.fn= _fn]
+   * @param {string} [options.type= _type]
+   * @param {any[]} options.params
+   */
+  const fetchData = async (options = {}) => {
+    const { fn = _fn, type = _type, params = [] } = options;
+    try {
+      setState((old) => ({ ...old, error: false, loading: true }));
 
-  function fetchData({
-    resource = hookResource,
-    timeout = hookTimeout,
-    onError = onErrorAPI,
-    body = hookBody,
-    url = hookUrl,
-    query = hookParams,
-    method = hookMethod,
-  } = {}) {
-    return new Promise(async (resolve) => {
-      const q = { ...query };
-      const source = axios.CancelToken.source();
+      let result = await av[type][fn](...params);
+      result = polData(fn, result);
+      setState((old) => ({ ...old, data: result, loading: false }));
+      return result;
+    } catch (err) {
+      const error = handleError(err);
+      setState((old) => ({ ...old, error, loading: false }));
+    }
+  };
+  return [state, fetchData];
+};
 
-      url += '?' + parser.toQuery({ ...q, function: resource, apikey: key });
+const handleError = (error) => {
+  let msg = 'Ops... não foi possível realizar sua consulta';
+  if (String(error).includes('Note')) {
+    msg = 'Calma aê campeão... Você só pode fazer 5 consultas por minuto';
+  }
+  Toaster.show({ detail: msg, severity: 'error' });
+  return msg;
+};
 
-      setError(false);
-      setLoading(true);
-      try {
-        const options = {
-          cancelToken: source.token,
-          timeout,
-          method,
-          headers: {
-            'Access-Control-Allow-Origin': 'http://localhost:3000',
-            crossDomain: true,
-            'Content-Type': 'text/plain;charset=utf-8',
-          },
-        };
-        if (method != 'GET') options.data = body;
+const polData = (type, data) => {
+  switch (type) {
+    case 'company_overview':
+      refreshStock(data);
+      break;
+    case 'search':
+      let { bestMatches } = data;
+      data = bestMatches.map((data) => av.util.polish(data));
+      break;
+    default:
+      //daily weekly monthly
+      let [metadata, list = []] = Object.keys(data);
+      metadata = av.util.polish(data[metadata]);
+      list = data[list];
 
-        const { result } = await axios(url, options);
-        // const result = av['data'].search;
-        setLoading(false);
-
-        if (!!result.data['Error Message']) {
-          setError(true);
-          onError(result.data);
-        }
-        setData({ ...initialState, ...result.data });
-        resolve(result.data);
-      } catch (err) {
-        setLoading(false);
-        setError(true);
-        if (err.message && err.message == 'cancel') return;
-      }
-      setLoading(false);
-    });
+      let newData = { metadata, list: [] };
+      newData.list = [
+        ...Object.entries(list).map(([key, d]) => {
+          const { close, high, low, open } = av.util.polish(d);
+          return [parseISO(key), parseFloat(close), parseFloat(high), parseFloat(low), parseFloat(open)];
+        }),
+      ].reverse();
+      newData.list.unshift(['x', 'Preço', 'Alta', 'Baixa', 'Abertura']);
+      refreshHistory({ symbol: metadata.symbol, type, ...newData });
+      return newData;
   }
 
-  return [{ loading, data: respData, isError }, fetchData];
+  return data;
 };

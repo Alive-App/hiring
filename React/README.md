@@ -1,46 +1,52 @@
-# Getting Started with Create React App
+# Buscador de ações
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Este é um projeto de desavio da Alive
+O objetivo desta Web Application é
 
-## Available Scripts
+- buscar ações
+- visualizar dados das ações
+- Preço atual;
+- Preço histórico;
+- Preço atual em comparação a outras ações;
+- Projeção de ganhos com compra em data específica.
 
-In the project directory, you can run:
+### Atenção
 
-### `yarn start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Antes de tudo
+Este projeto utiliza a API da AlphaVantage para obter os dados das ações.
 
-### `yarn test`
+Esta permite a utilização de uma chave gratuíta que pode realizar até 5 consultas por minuto e 500 por dia.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+A aplicação lida com esse tipo de limitação de uma forma simples para o entendimento do usuário.
+Visando melhorar a experiencia do usuário, sempre que uma ação é visualizada, seus dados são salvos localmente,
+permitindo que o usuário visualize mais facilmente os dados que foram baixados anteriormente.
 
-### `yarn build`
+## Demonstração
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+<!-- O app pode ser visualizado neste [link] -->
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Na tela inicial você terá acesso as suas ações favoritadas o menu no topo contendo o botão de pesquisa.
+Inicialmente você não terá nenhuma ação favoritada, então toque no botão de pesquisa para buscar suas ações
+<img src="https://i.ibb.co/6ybryNB/portfolio.png"/>
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Um modal de pesquisa será exibido
+<img src="https://i.ibb.co/7QJdKtj/pesquisa.png"/>
 
-### `yarn eject`
+Após selecionar uma ação, você será direcionado para a tela de detalhes das ações.
+Nesta tela você tem os detalhes da ação como preço, baixa, alta, porcentagem e diferença em relação ao fechamento anterior
+<img src="https://i.ibb.co/mXCJM8q/header.png"/>
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+logo abaixo você verá um gráfico onde é possível visualizar os dados do histórico de preços de acordo com o período selecionado
+<img src="https://i.ibb.co/C8vLGg9/grafico.png"/>
+Na projeção de ganhos o usuário digita a quantidade de ações, a data inicial e final, assim o site trará a previsão de ganho.
+<img src="https://i.ibb.co/qFGmGnY/ganho.png"/>
+Para realizar uma comparação, o usuário deve adicionar ações, assim será exibido um gráfico contendo a ação atual e as selecionadas para a comparação.
+<img src="https://i.ibb.co/VH5M824/comparacao.png"/>
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Configuração
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+Para rodar o projeto, basta clonar este repósitório com o `git clone`
+rodar o comando `npm i` ou `yarn`
+e por fim rodar `npm start` ou `yarn start` e aguardar o projeto abrir no browser

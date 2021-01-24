@@ -1,9 +1,11 @@
 import store from '../config/store';
-import { ADD_TO_PORTFOLIO, REFRESH_HISTORY } from './types';
+import { REFRESH_HISTORY, REFRESH_STOCK } from './types';
 
 const dispatch = store.dispatch;
-const getState = store.getState;
 
-export const refreshHistory = ({ metadata = {}, list = [], symbol, type }) => {
-  dispatch({ type: REFRESH_HISTORY, payload: { metadata, list, symbol, type } });
+export const refreshHistory = (payload) => {
+  dispatch({ type: REFRESH_HISTORY, payload });
+};
+export const refreshStock = (data) => {
+  dispatch({ type: REFRESH_STOCK, payload: data });
 };
