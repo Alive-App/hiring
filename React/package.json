@@ -8,6 +8,7 @@
     "classnames": "^2.2.6",
     "date-fns": "^2.16.1",
     "hookrouter": "^1.2.5",
+    "jest": "^26.6.3",
     "primeflex": "^2.0.0",
     "primeicons": "^4.1.0",
     "primereact": "^6.0.0",
@@ -25,7 +26,7 @@
     "sass-loader": "^10.1.1",
     "tiny-debounce": "^0.1.1",
     "web-vitals": "^0.2.4",
-    "webpack": "^5.16.0"
+    "webpack": "4.44.2"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -64,7 +65,6 @@
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
     "core-js": "^3.8.2",
-    "jest": "^26.6.3",
     "jsdom": "^16.4.0",
     "jsdom-global": "^3.0.2",
     "redux-devtools-extension": "^2.13.8",
