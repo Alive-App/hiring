@@ -4,7 +4,7 @@ import React from 'react';
 
 const StockItem = ({ data, onClick }) => {
   return (
-    <div className="p-card p-mt-2" style={{ cursor: 'pointer' }} onClick={onClick}>
+    <div className="p-card p-mt-2" id="stock-item-wrapper" style={{ cursor: 'pointer' }} onClick={onClick}>
       <div className="product-item">
         <div className="product-detail">
           <div className="p-d-flex p-flex-row p-justify-between">

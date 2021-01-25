@@ -40,9 +40,17 @@ function SearchDialog({ onSearch }) {
   }, []);
 
   return (
-    <Dialog header="Pesquisar" visible={showing} style={{ maxWidth: 768, height: '90vh' }} onHide={close}>
+    <Dialog id="search-modal" header="Pesquisar" visible={showing} style={{ maxWidth: 768, height: '90vh' }} onHide={close}>
       <form className="p-col-12" onSubmit={handleSubmit(({ s }) => search(s))}>
-        <input disabled={loading} autoFocus placeholder="Pesquisar Ações" ref={register} className="p-inputtext " name="s" />
+        <input
+          id="search-input"
+          disabled={loading}
+          autoFocus
+          placeholder="Pesquisar Ações"
+          ref={register}
+          className="p-inputtext "
+          name="s"
+        />
         <Button disabled={loading} className="p-ml-2" icon="pi pi-search" />
       </form>
       {!!loading && <ProgressBar mode="indeterminate" style={{ height: 5, margin: '0 10px' }} />}

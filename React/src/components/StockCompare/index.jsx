@@ -3,15 +3,15 @@ import { Skeleton } from 'primereact/skeleton';
 import React from 'react';
 import Chart from 'react-google-charts';
 
-import { shallowEqual, useSelector } from 'react-redux';
-import store from '../../config/store';
+import { useSelector } from 'react-redux';
+
 import { SearchContext } from '../../pages';
 import { useAPI } from '../../utils/api';
 import { defaultData } from '../StockDetails';
 
 // import { Container } from './styles';
 
-function StockProjection({ id }) {
+function StockCompare({ id }) {
   const [{ loading, error }, fetchData] = useAPI('daily');
   const { open, close } = React.useContext(SearchContext);
   const [stocks, setStocks] = React.useState([]);
@@ -103,4 +103,4 @@ function StockProjection({ id }) {
   );
 }
 
-export default StockProjection;
+export default StockCompare;

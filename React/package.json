@@ -3,12 +3,17 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@testing-library/jest-dom": "^5.11.4",
+    "@testing-library/react": "^11.1.0",
+    "@testing-library/user-event": "^12.1.10",
+    "@wojtekmaj/enzyme-adapter-react-17": "^0.4.1",
     "alphavantage": "^2.2.0",
     "axios": "^0.21.1",
     "classnames": "^2.2.6",
     "date-fns": "^2.16.1",
+    "enzyme": "^3.11.0",
+    "enzyme-to-json": "^3.6.1",
     "hookrouter": "^1.2.5",
-    "jest": "^26.6.0",
     "primeflex": "^2.0.0",
     "primeicons": "^4.1.0",
     "primereact": "^6.0.0",
@@ -19,26 +24,23 @@
     "react-hook-form": "^6.14.2",
     "react-redux": "^7.2.2",
     "react-scripts": "4.0.1",
+    "react-test-renderer": "^17.0.1",
     "react-transition-group": "^4.4.1",
     "redux": "^4.0.5",
+    "redux-devtools-extension": "^2.13.8",
     "redux-thunk": "^2.3.0",
     "sass": "^1.32.4",
     "sass-loader": "^10.1.1",
     "tiny-debounce": "^0.1.1",
-    "web-vitals": "^0.2.4",
-    "webpack": "4.44.2"
+    "web-vitals": "^0.2.4"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "jest",
+    "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
-    "rules": {
-      "semi": "off",
-      "eqeqeq": "off"
-    },
     "extends": [
       "react-app",
       "react-app/jest"
@@ -55,19 +57,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "@babel/plugin-syntax-dynamic-import": "^7.8.3",
-    "@babel/plugin-transform-runtime": "^7.12.10",
-    "@babel/preset-flow": "^7.12.1",
-    "@babel/preset-react": "^7.12.10",
-    "@testing-library/jest-dom": "^5.11.4",
-    "@testing-library/react": "^11.1.0",
-    "@testing-library/user-event": "^12.1.10",
-    "core-js": "^3.8.2",
-    "jsdom": "^16.4.0",
-    "jsdom-global": "^3.0.2",
-    "redux-devtools-extension": "^2.13.8",
-    "regenerator-runtime": "^0.13.7"
   }
 }

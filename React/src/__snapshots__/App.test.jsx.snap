@@ -1,0 +1,929 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`rendering components should render StockChart without crashing 1`] = `
+<Provider
+  store={
+    Object {
+      "dispatch": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+      Symbol(observable): [Function],
+    }
+  }
+>
+  <StockChart
+    id="AAPL"
+  >
+    <TabMenu
+      activeItem={
+        Object {
+          "icon": "pi pi-fw pi-calendar",
+          "label": "Diário",
+          "value": "daily",
+        }
+      }
+      className={null}
+      id={null}
+      model={
+        Array [
+          Object {
+            "icon": "pi pi-fw pi-calendar",
+            "label": "24h",
+            "value": "intraday",
+          },
+          Object {
+            "icon": "pi pi-fw pi-calendar",
+            "label": "Diário",
+            "value": "daily",
+          },
+          Object {
+            "icon": "pi pi-fw pi-calendar",
+            "label": "Semanal",
+            "value": "weekly",
+          },
+          Object {
+            "icon": "pi pi-fw pi-calendar",
+            "label": "Mensal",
+            "value": "monthly",
+          },
+        ]
+      }
+      onTabChange={[Function]}
+      style={null}
+    >
+      <div
+        className="p-tabmenu p-component"
+        id={null}
+        style={null}
+      >
+        <ul
+          className="p-tabmenu-nav p-reset"
+          role="tablist"
+        >
+          <li
+            aria-expanded={false}
+            aria-selected={false}
+            className="p-tabmenuitem"
+            key="24h_0"
+            role="tab"
+          >
+            <a
+              className="p-menuitem-link"
+              href="#"
+              onClick={[Function]}
+              role="presentation"
+            >
+              <span
+                className="p-menuitem-icon pi pi-fw pi-calendar"
+              />
+              <span
+                className="p-menuitem-text"
+              >
+                24h
+              </span>
+              <Ripple />
+            </a>
+          </li>
+          <li
+            aria-expanded={true}
+            aria-selected={true}
+            className="p-tabmenuitem p-highlight"
+            key="Diário_1"
+            role="tab"
+          >
+            <a
+              className="p-menuitem-link"
+              href="#"
+              onClick={[Function]}
+              role="presentation"
+            >
+              <span
+                className="p-menuitem-icon pi pi-fw pi-calendar"
+              />
+              <span
+                className="p-menuitem-text"
+              >
+                Diário
+              </span>
+              <Ripple />
+            </a>
+          </li>
+          <li
+            aria-expanded={false}
+            aria-selected={false}
+            className="p-tabmenuitem"
+            key="Semanal_2"
+            role="tab"
+          >
+            <a
+              className="p-menuitem-link"
+              href="#"
+              onClick={[Function]}
+              role="presentation"
+            >
+              <span
+                className="p-menuitem-icon pi pi-fw pi-calendar"
+              />
+              <span
+                className="p-menuitem-text"
+              >
+                Semanal
+              </span>
+              <Ripple />
+            </a>
+          </li>
+          <li
+            aria-expanded={false}
+            aria-selected={false}
+            className="p-tabmenuitem"
+            key="Mensal_3"
+            role="tab"
+          >
+            <a
+              className="p-menuitem-link"
+              href="#"
+              onClick={[Function]}
+              role="presentation"
+            >
+              <span
+                className="p-menuitem-icon pi pi-fw pi-calendar"
+              />
+              <span
+                className="p-menuitem-text"
+              >
+                Mensal
+              </span>
+              <Ripple />
+            </a>
+          </li>
+          <li
+            className="p-tabmenu-ink-bar"
+          />
+        </ul>
+      </div>
+    </TabMenu>
+    <div
+      className="p-card chart-container p-mt-3 p-d-flex p-p-3 p-flex-column"
+    >
+      <ProgressBar
+        className="top-progress"
+        color={null}
+        displayValueTemplate={null}
+        id={null}
+        mode="indeterminate"
+        showValue={true}
+        style={null}
+        unit="%"
+        value={null}
+      >
+        <div
+          className="p-progressbar p-component p-progressbar-indeterminate top-progress"
+          id={null}
+          role="progressbar"
+          style={null}
+        >
+          <div
+            className="p-progressbar-indeterminate-container"
+          >
+            <div
+              className="p-progressbar-value p-progressbar-value-animate"
+              style={
+                Object {
+                  "backgroundColor": null,
+                }
+              }
+            />
+          </div>
+        </div>
+      </ProgressBar>
+      <Skeleton
+        animation="wave"
+        borderRadius={null}
+        className={null}
+        height="25px"
+        shape="rectangle"
+        size={null}
+        style={null}
+        width="400px"
+      >
+        <div
+          className="p-skeleton p-component"
+          style={
+            Object {
+              "borderRadius": null,
+              "height": "25px",
+              "width": "400px",
+            }
+          }
+        />
+      </Skeleton>
+      <Skeleton
+        animation="wave"
+        borderRadius={null}
+        className="p-mt-2"
+        height="150px"
+        shape="rectangle"
+        size={null}
+        style={null}
+        width="100%"
+      >
+        <div
+          className="p-skeleton p-component p-mt-2"
+          style={
+            Object {
+              "borderRadius": null,
+              "height": "150px",
+              "width": "100%",
+            }
+          }
+        />
+      </Skeleton>
+    </div>
+  </StockChart>
+  );
+</Provider>
+`;
+
+exports[`rendering components should render StockCompare without crashing 1`] = `
+<Provider
+  store={
+    Object {
+      "dispatch": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+      Symbol(observable): [Function],
+    }
+  }
+>
+  <StockCompare
+    id="AAPL"
+  >
+    <div
+      className="p-card p-p-2  p-mt-2"
+    >
+      <div
+        className="p-grid"
+      >
+        <div
+          className="p-col p-text-bold p-d-flex p-align-center"
+        >
+          Comparar ação
+          <Button
+            badge={null}
+            badgeClassName={null}
+            className="p-ml-3 p-button-sm p-button-text"
+            icon="pi pi-plus"
+            iconPos="left"
+            label="Adicionar ação"
+            onClick={[Function]}
+            tooltip={null}
+            tooltipOptions={null}
+          >
+            <button
+              className="p-button p-component p-ml-3 p-button-sm p-button-text"
+              onClick={[Function]}
+            >
+              <span
+                className="pi pi-plus p-c p-button-icon-left"
+              />
+              <span
+                className="p-button-label p-c"
+              >
+                Adicionar ação
+              </span>
+              <Ripple />
+            </button>
+          </Button>
+        </div>
+        <div
+          className="p-col"
+        />
+      </div>
+      <div />
+    </div>
+  </StockCompare>
+  );
+</Provider>
+`;
+
+exports[`rendering components should render StockCompare without crashing 2`] = `
+<Provider
+  store={
+    Object {
+      "dispatch": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+      Symbol(observable): [Function],
+    }
+  }
+>
+  <StockCompare
+    id="AAPL"
+  >
+    <div
+      className="p-card p-p-2  p-mt-2"
+    >
+      <div
+        className="p-grid"
+      >
+        <div
+          className="p-col p-text-bold p-d-flex p-align-center"
+        >
+          Comparar ação
+          <Button
+            badge={null}
+            badgeClassName={null}
+            className="p-ml-3 p-button-sm p-button-text"
+            icon="pi pi-plus"
+            iconPos="left"
+            label="Adicionar ação"
+            onClick={[Function]}
+            tooltip={null}
+            tooltipOptions={null}
+          >
+            <button
+              className="p-button p-component p-ml-3 p-button-sm p-button-text"
+              onClick={[Function]}
+            >
+              <span
+                className="pi pi-plus p-c p-button-icon-left"
+              />
+              <span
+                className="p-button-label p-c"
+              >
+                Adicionar ação
+              </span>
+              <Ripple />
+            </button>
+          </Button>
+        </div>
+        <div
+          className="p-col"
+        />
+      </div>
+      <div />
+    </div>
+  </StockCompare>
+  );
+</Provider>
+`;
+
+exports[`rendering components should render StockDetails without crashing 1`] = `
+<Provider
+  store={
+    Object {
+      "dispatch": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+      Symbol(observable): [Function],
+    }
+  }
+>
+  <StockDetails
+    id="AAPL"
+  >
+    <div
+      className="p-card p-mb-2 p-p-2"
+    >
+      <ProgressBar
+        className="top-progress"
+        color={null}
+        displayValueTemplate={null}
+        id={null}
+        mode="indeterminate"
+        showValue={true}
+        style={null}
+        unit="%"
+        value={null}
+      >
+        <div
+          className="p-progressbar p-component p-progressbar-indeterminate top-progress"
+          id={null}
+          role="progressbar"
+          style={null}
+        >
+          <div
+            className="p-progressbar-indeterminate-container"
+          >
+            <div
+              className="p-progressbar-value p-progressbar-value-animate"
+              style={
+                Object {
+                  "backgroundColor": null,
+                }
+              }
+            />
+          </div>
+        </div>
+      </ProgressBar>
+      <div
+        className="p-grid"
+      >
+        <div
+          className="p-col"
+        >
+          <h3
+            className="p-m-0 p-d-flex p-align-center"
+            style={
+              Object {
+                "fontSize": "18pt",
+              }
+            }
+          >
+            <Button
+              badge={null}
+              badgeClassName={null}
+              className="p-button-text"
+              disabled={true}
+              icon="pi pi-star-o"
+              iconPos="left"
+              label={null}
+              onClick={[Function]}
+              tooltip={null}
+              tooltipOptions={null}
+            >
+              <button
+                className="p-button p-component p-button-text p-button-icon-only p-disabled"
+                disabled={true}
+                onClick={[Function]}
+              >
+                <span
+                  className="pi pi-star-o p-c"
+                />
+                <span
+                  className="p-button-label p-c"
+                  dangerouslySetInnerHTML={
+                    Object {
+                      "__html": "&nbsp;",
+                    }
+                  }
+                />
+                <Ripple />
+              </button>
+            </Button>
+          </h3>
+          <div
+            className="p-d-flex p-flex-row p-justify-between p-text-secondary"
+          >
+            <div>
+              <span
+                className="p-mr-2"
+                id="symbol"
+                style={
+                  Object {
+                    "fontSize": 20,
+                  }
+                }
+              />
+              <span
+                className="p-text-bold"
+                id="close"
+                style={
+                  Object {
+                    "fontSize": 16,
+                  }
+                }
+              >
+                 
+                0.00
+              </span>
+               
+              <span
+                id="diff"
+                style={
+                  Object {
+                    "color": "red",
+                  }
+                }
+              >
+                 0.00 (0.00%)
+              </span>
+              <span
+                className="p-ml-2"
+                id="high"
+              >
+                <i
+                  className="pi pi-arrow-up"
+                  style={
+                    Object {
+                      "color": "green",
+                    }
+                  }
+                />
+                 
+                <span>
+                  0.00
+                </span>
+              </span>
+              <span
+                className="p-ml-2"
+                id="low"
+              >
+                <i
+                  className="pi pi-arrow-down"
+                  style={
+                    Object {
+                      "color": "red",
+                    }
+                  }
+                />
+                 
+                <span>
+                  0.00
+                </span>
+              </span>
+            </div>
+            <span />
+          </div>
+        </div>
+      </div>
+      <Tooltip
+        appendTo={null}
+        at={null}
+        autoZIndex={true}
+        baseZIndex={0}
+        className="p-ml-2"
+        content="Ação"
+        event={null}
+        hideDelay={0}
+        hideEvent="mouseleave"
+        mouseTrack={false}
+        mouseTrackLeft={5}
+        mouseTrackTop={5}
+        my={null}
+        onBeforeHide={null}
+        onBeforeShow={null}
+        onHide={null}
+        onShow={null}
+        position="top"
+        showDelay={0}
+        showEvent="mouseenter"
+        style={null}
+        target="#symbol"
+        updateDelay={0}
+      />
+      <Tooltip
+        appendTo={null}
+        at={null}
+        autoZIndex={true}
+        baseZIndex={0}
+        className="p-ml-2"
+        content="Valor"
+        event={null}
+        hideDelay={0}
+        hideEvent="mouseleave"
+        mouseTrack={false}
+        mouseTrackLeft={5}
+        mouseTrackTop={5}
+        my={null}
+        onBeforeHide={null}
+        onBeforeShow={null}
+        onHide={null}
+        onShow={null}
+        position="top"
+        showDelay={0}
+        showEvent="mouseenter"
+        style={null}
+        target="#close"
+        updateDelay={0}
+      />
+      <Tooltip
+        appendTo={null}
+        at={null}
+        autoZIndex={true}
+        baseZIndex={0}
+        className="p-ml-2"
+        content="Diferença e percentual em relação ao dia anterior"
+        event={null}
+        hideDelay={0}
+        hideEvent="mouseleave"
+        mouseTrack={false}
+        mouseTrackLeft={5}
+        mouseTrackTop={5}
+        my={null}
+        onBeforeHide={null}
+        onBeforeShow={null}
+        onHide={null}
+        onShow={null}
+        position="top"
+        showDelay={0}
+        showEvent="mouseenter"
+        style={null}
+        target="#diff"
+        updateDelay={0}
+      />
+      <Tooltip
+        appendTo={null}
+        at={null}
+        autoZIndex={true}
+        baseZIndex={0}
+        className="p-ml-2"
+        content="Alta"
+        event={null}
+        hideDelay={0}
+        hideEvent="mouseleave"
+        mouseTrack={false}
+        mouseTrackLeft={5}
+        mouseTrackTop={5}
+        my={null}
+        onBeforeHide={null}
+        onBeforeShow={null}
+        onHide={null}
+        onShow={null}
+        position="top"
+        showDelay={0}
+        showEvent="mouseenter"
+        style={null}
+        target="#high"
+        updateDelay={0}
+      />
+      <Tooltip
+        appendTo={null}
+        at={null}
+        autoZIndex={true}
+        baseZIndex={0}
+        className="p-ml-2"
+        content="Baixa"
+        event={null}
+        hideDelay={0}
+        hideEvent="mouseleave"
+        mouseTrack={false}
+        mouseTrackLeft={5}
+        mouseTrackTop={5}
+        my={null}
+        onBeforeHide={null}
+        onBeforeShow={null}
+        onHide={null}
+        onShow={null}
+        position="top"
+        showDelay={0}
+        showEvent="mouseenter"
+        style={null}
+        target="#low"
+        updateDelay={0}
+      />
+    </div>
+  </StockDetails>
+  );
+</Provider>
+`;
+
+exports[`rendering components should render StockProjection without crashing 1`] = `
+<Provider
+  store={
+    Object {
+      "dispatch": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+      Symbol(observable): [Function],
+    }
+  }
+>
+  <StockProjection
+    id="AAPL"
+  >
+    <div
+      className="p-card p-p-2 p-mt-2"
+    >
+      <h5>
+        Projeção de ganhos
+      </h5>
+      <div
+        className="p-grid"
+      >
+        <div
+          className="p-col p-col-2"
+        >
+          <input
+            className="p-inputtext"
+            defaultValue="1"
+            name="qty"
+            placeholder="quantidade"
+            required={true}
+          />
+        </div>
+        <div
+          className="p-col p-col-2"
+        >
+          <input
+            className="p-inputtext"
+            name="start_date"
+            required={true}
+            type="date"
+          />
+        </div>
+        <div
+          className="p-col p-col-2"
+        >
+          <input
+            className="p-inputtext"
+            max={2021-01-25T02:58:42.424Z}
+            name="end_date"
+            required={true}
+            type="date"
+          />
+        </div>
+        <div
+          className="p-col p-col-1"
+        >
+          <Button
+            badge={null}
+            badgeClassName={null}
+            icon="pi pi-search"
+            iconPos="left"
+            label={null}
+            tooltip={null}
+            tooltipOptions={null}
+          >
+            <button
+              className="p-button p-component p-button-icon-only"
+            >
+              <span
+                className="pi pi-search p-c"
+              />
+              <span
+                className="p-button-label p-c"
+                dangerouslySetInnerHTML={
+                  Object {
+                    "__html": "&nbsp;",
+                  }
+                }
+              />
+              <Ripple />
+            </button>
+          </Button>
+        </div>
+        <div
+          className="p-col p-col-3"
+        >
+          Lucro: 
+          <span
+            className="p-text-bold "
+            style={
+              Object {
+                "color": "green",
+                "fontSize": 20,
+              }
+            }
+          >
+            0.00
+          </span>
+        </div>
+      </div>
+    </div>
+  </StockProjection>
+  );
+</Provider>
+`;
+
+exports[`rendering components should render a stock item 1`] = `
+<div
+  className="product-name"
+>
+  Apple inc
+</div>
+`;
+
+exports[`rendering components should render app without crashing 1`] = `
+<App>
+  <div
+    className="App"
+  >
+    <Provider
+      store={
+        Object {
+          "dispatch": [Function],
+          "getState": [Function],
+          "replaceReducer": [Function],
+          "subscribe": [Function],
+          Symbol(observable): [Function],
+        }
+      }
+    >
+      <Navigation>
+        <Header>
+          <header
+            className="header p-flex-row p-d-flex p-justify-between"
+            id="header"
+          >
+            <div />
+            <Button
+              badge={null}
+              badgeClassName={null}
+              className="p-button-outlined"
+              icon="pi pi-search"
+              iconPos="left"
+              id="search-btn"
+              label="Buscar ações"
+              onClick={[Function]}
+              tooltip={null}
+              tooltipOptions={null}
+            >
+              <button
+                className="p-button p-component p-button-outlined"
+                id="search-btn"
+                onClick={[Function]}
+              >
+                <span
+                  className="pi pi-search p-c p-button-icon-left"
+                />
+                <span
+                  className="p-button-label p-c"
+                >
+                  Buscar ações
+                </span>
+                <Ripple />
+              </button>
+            </Button>
+          </header>
+        </Header>
+        <SearchDialog
+          onSearch={null}
+        >
+          <Dialog
+            appendTo={null}
+            ariaCloseIconLabel="Close"
+            baseZIndex={0}
+            blockScroll={false}
+            className={null}
+            closable={true}
+            closeOnEscape={true}
+            contentClassName={null}
+            contentStyle={null}
+            dismissableMask={false}
+            focusOnShow={true}
+            footer={null}
+            header="Pesquisar"
+            icons={null}
+            id="search-modal"
+            maskClassName={null}
+            maximizable={false}
+            maximized={false}
+            modal={true}
+            onHide={[Function]}
+            onMaximize={null}
+            onShow={null}
+            position="center"
+            rtl={false}
+            showHeader={true}
+            style={
+              Object {
+                "height": "90vh",
+                "maxWidth": 768,
+              }
+            }
+            visible={false}
+          />
+        </SearchDialog>
+        <div
+          className="p-p-4"
+        >
+          <Home>
+            <div
+              className="p-mt-4"
+            >
+              <h3>
+                Meu portfolio
+              </h3>
+              <div
+                className="p-col-4 p-col"
+              >
+                <h5>
+                  Lista vazia, busque uma empresa e favorite-a para aparecer aqui.
+                </h5>
+              </div>
+            </div>
+          </Home>
+        </div>
+      </Navigation>
+    </Provider>
+    <Toast
+      baseZIndex={0}
+      className={null}
+      id={null}
+      onClick={null}
+      onRemove={null}
+      position="top-right"
+      style={null}
+    >
+      <div
+        className="p-toast p-component p-toast-top-right"
+        id={null}
+        style={null}
+      >
+        <TransitionGroup
+          childFactory={[Function]}
+          component="div"
+        >
+          <div />
+        </TransitionGroup>
+      </div>
+    </Toast>
+  </div>
+</App>
+`;

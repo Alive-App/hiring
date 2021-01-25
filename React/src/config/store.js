@@ -41,7 +41,7 @@ const store = createStore(
   ),
 );
 
-const unsubscribe = store.subscribe(() => {
+store.subscribe(() => {
   const state = store.getState();
   saveToLocalStorage(state);
 });

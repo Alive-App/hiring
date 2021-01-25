@@ -50,3 +50,8 @@ Para realizar uma comparação, o usuário deve adicionar ações, assim será e
 Para rodar o projeto, basta clonar este repósitório com o `git clone`
 rodar o comando `npm i` ou `yarn`
 e por fim rodar `npm start` ou `yarn start` e aguardar o projeto abrir no browser
+
+## Teste
+Basta rodar o comando ```yarn test```
+os testes foram feitos utilizando jest e enzyme
+não foi possível completar todos os testes a tempo, então fiz apenas o necessário...

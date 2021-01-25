@@ -5,13 +5,11 @@ import { useRoutes } from 'hookrouter';
 import Stock from './Stock';
 import Header from '../components/Header';
 import SearchDialog from '../components/SearchDialog';
-import Test from './Test';
 
 export const SearchContext = React.createContext({ open: () => {}, callback: null, close: () => {}, showing: false });
 const routes = {
   '/': (props) => <Home {...props} />,
   '/stock/:id': (props) => <Stock {...props} />,
-  '/test': (props) => <Test {...props} />,
 };
 const Navigation = () => {
   const [callback, setCallback] = React.useState(null);
