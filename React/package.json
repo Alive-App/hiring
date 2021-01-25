@@ -8,7 +8,7 @@
     "classnames": "^2.2.6",
     "date-fns": "^2.16.1",
     "hookrouter": "^1.2.5",
-    "jest": "^26.6.3",
+    "jest": "^26.6.0",
     "primeflex": "^2.0.0",
     "primeicons": "^4.1.0",
     "primereact": "^6.0.0",
