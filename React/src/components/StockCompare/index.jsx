@@ -88,7 +88,7 @@ function StockCompare({ id }) {
             loader={<div>Desenhando gráficos</div>}
             data={chartData}
             options={{
-              title: 'Population of Largest U.S. Cities',
+              title: '',
               chartArea: { width: '50%' },
               hAxis: {
                 title: 'Valor',
