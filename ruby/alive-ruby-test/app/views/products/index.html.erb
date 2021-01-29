@@ -1,0 +1,52 @@
+<div class="list">
+    <h2>Inventory</h2>
+
+    <div class="options">
+        <a href="products/new">New product</a>
+        <a href="products/import">Import products (CSV)</a>
+    </div>
+
+    <div class="search">
+        <%= form_with url: products_path, method: "get" do |form| %>
+            <%= form.label :manufacturer %>
+            <%= form.search_field :manufacturer %>
+            <%= form.label :model %>
+            <%= form.search_field :model %>
+            <%= form.label :carrier_plan_type %>
+            <%= form.search_field :carrier_plan_type %>
+            <%= form.submit :search %>
+        <% end %>
+    </div>
+
+    <%= paginate @products %>
+    <table id="products_list">
+        <tr>
+            <th>Id</th>
+            <th>Manufacturer</th>
+            <th>Model</th>
+            <th>Color</th>
+            <th>Carrier plan type</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th>Options</th>
+        </tr>
+
+        <% @products.each do |product| %>
+        <tr>
+            <td><%= link_to "#{product.id}", product_path(product) %></td>
+            <td><%= product.manufacturer %></td>
+            <td><%= product.model %></td>
+            <td><%= product.color %></td>
+            <td><%= product.carrier_plan_type %></td>
+            <td><%= product.quantity %></td>
+            <td><%= product.price %></td>
+            <td>
+                <%= link_to "Edit", edit_product_path(product) %> | 
+                <%= button_to "Delete", product_path(product), method: "delete" %>
+            </td>
+        </tr>
+        <% end %>
+
+    </table>
+    <%= paginate @products %>
+</div>

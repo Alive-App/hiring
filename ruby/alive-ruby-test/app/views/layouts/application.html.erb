@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>AliveRubyTest</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%# <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %> %>
+  </head>
+
+  <body>
+    <div class="parent">
+      <header class=""><%= link_to "Inventory management", products_path %></header>
+      <main class="">
+        <div class="content">
+
+          <% if flash.alert %>
+            <div class="alert-box warning">
+              <p><%= flash.alert %></p>
+            </div>
+          <% end %> 
+
+          
+          <% if flash.notice %>
+            <div class="alert-box notice">
+              <p><%= flash.notice %></p>
+            </div>
+          <% end %> 
+
+          <%= yield %>
+        </div>
+      </main>
+      <footer class="">
+        <p>Lucas Vieira - 2021</p>
+        <p><a href="https://github.com/Lucasvn">github.com/Lucasvn</a></p>
+      </footer>
+  </div>
+  </body>
+</html>

@@ -1,0 +1,38 @@
+<div class="form_wrapper">
+    <div class="form">
+        <span class="field">
+            <p>Manufacturer</p>
+            <p><%= @product.manufacturer %></p>
+        </span>
+
+        <span class="field">
+            <p>Model</p>
+            <p><%= @product.model %></p>
+        </span>
+
+        <span class="field">
+            <p>Color</p>
+            <p><%= @product.color %></p>
+        </span>
+
+        <span class="field">
+            <p>Carrier plan type</p>
+            <p><%= @product.carrier_plan_type %></p>
+        </span>
+
+        <span class="field">
+            <p>Quantity</p>
+            <p><%= @product.quantity %></p>
+        </span>
+
+        <span class="field">
+            <p>Price</p>
+            <p><%= @product.price %></p>
+        </span>
+
+        <div class="button_field">
+            <%= button_to "Edit", edit_product_path(@product), method: "get" %>
+            <%= button_to "Delete", product_path(@product), method: :delete %>
+        </div>
+    </div>
+</div>

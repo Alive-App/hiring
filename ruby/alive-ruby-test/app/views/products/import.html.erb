@@ -1,0 +1,16 @@
+<div class="form_wrapper">
+    <h2>Import products via CSV file</h2>
+    <%= form_with url: "/products/import", method: "post", multipart: true, html: { class: "form" } do |form| %>
+        <span class="field">
+            <%= form.label :file, "Insert file" %>
+            <%= form.file_field :file %>
+        </span>
+        <span class="checkbox-field">
+            <%= form.check_box :fail_on_error %>
+            <%= form.label :fail_on_error, "Fail on error" %>
+        </span>
+        <span class="field">
+            <%= form.submit %>
+        </span>
+    <% end %>
+</div>

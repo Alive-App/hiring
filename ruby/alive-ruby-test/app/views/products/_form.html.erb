@@ -1,0 +1,35 @@
+<%= form_with model: @product, html: { class: "form" } do |form| %>
+    <span class="field">
+        <%= form.label :manufacturer, "Manufacturer" %>
+        <%= form.text_field :manufacturer %>
+    </span>
+
+    <span class="field">
+        <%= form.label :model, "Model" %>
+        <%= form.text_field :model %>
+    </span>
+
+    <span class="field">
+        <%= form.label :color, "Color" %>
+        <%= form.text_field :color %>
+    </span>
+
+    <span class="field">
+        <%= form.label :carrier_plan_type, "Carrier plan type" %>
+        <%= form.text_field :carrier_plan_type %>
+    </span>
+
+    <span class="field">
+        <%= form.label :quantity, "Quantity" %>
+        <%= form.number_field :quantity %>
+    </span>
+
+    <span class="field">
+        <%= form.label :price, "Price" %>
+        <%= form.number_field :price %>
+    </span>
+
+    <span class="field">
+        <%= form.submit %>
+    </span>
+<% end %>
