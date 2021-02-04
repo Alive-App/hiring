@@ -29,9 +29,12 @@ Projeção de ganhos com compra em data específica.
 ## Execução do Projeto
 
 Clone o projeto `git clone`
-Executar o comando `yarn` ou `npm install` para instalação das dependências
-Criar a conta em https://www.alphavantage.co/support/#api-key para obter a `api-key`
+Executar o comando `yarn` ou `npm install` para instalação das dependências.
+
+Criar a conta em https://www.alphavantage.co/support/#api-key para obter a `api-key`. A `api-key` fornecida gratuitamente permite 5 requisições por minuto, sendo um total de 500 requisições por dia.
+
 Editar o arquivo `.env` e informar a `api-key` obtida na variável `APIKEY`
+
 Executar o comando `yarn start` para iniciar a aplicação.
 
 Por padrão o endereço e porta são `localhost` e porta `3000`, caso seja necessário deve-se alterar
