@@ -11,6 +11,21 @@ Preço histórico;
 Preço atual em comparação a outras ações;
 Projeção de ganhos com compra em data específica.
 
+## Tecnologias
+
+- [Node.js](https://nodejs.org/en/)
+- [Javascript]
+- [Express](https://expressjs.com/pt-br/)
+- [Jest](https://jestjs.io/)
+- [SuperTest](https://github.com/visionmedia/supertest)
+- [Eslint](https://eslint.org/)
+- [Prettier](https://prettier.io/)
+
+## Requerimentos
+
+- [Node.js](https://nodejs.org/en/)
+- [Yarn](https://classic.yarnpkg.com/) or [npm](https://www.npmjs.com/)
+
 ## Execução do Projeto
 
 Clone o projeto `git clone`
