@@ -14,7 +14,7 @@ Projeção de ganhos com compra em data específica.
 ## Tecnologias
 
 - [Node.js](https://nodejs.org/en/)
-- [Javascript]
+- Javascript
 - [Express](https://expressjs.com/pt-br/)
 - [Jest](https://jestjs.io/)
 - [SuperTest](https://github.com/visionmedia/supertest)
