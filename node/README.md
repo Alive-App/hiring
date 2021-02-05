@@ -26,7 +26,7 @@ Instale as dependências usando `npm install` ou `yarn`.
 
 Abra o arquivo `.env.example` e lá estára como infomar as keys usada no projeto.
 
-Execute `yarn start` para iniciar o projeto.
+Execute `yarn dev` para iniciar o projeto.
 
 ## Testes
 

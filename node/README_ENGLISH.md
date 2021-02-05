@@ -26,7 +26,7 @@ Install the dependencies using `npm install` or` yarn`.
 
 Open the `.env.example` file and there is how to key in the keys used in the project.
 
-Run `yarn start` to start the project.
+Run `yarn dev` to start the project.
 
 ## Tests
 
