@@ -11,4 +11,4 @@ O arquivo `.env` contem as informações para a conexão com o banco de dados em
 
 Tests implementadas utilizando `mocha` e `chai`.
 
-Para executando os test: `npm test`.
+Executando os test: `npm test`.
