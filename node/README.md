@@ -1,4 +1,4 @@
-## Execução do Projeto
+## Definições do Projeto
 
 Clone o projeto com o comandoÇ `git clone`.
 Executar `npm install` para instalar as dependências do projeto.
