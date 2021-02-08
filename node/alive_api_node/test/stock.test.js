@@ -65,7 +65,7 @@ test('Stock - Compare - Deve retornar a comparação de cotas entre Ações.', a
   Testes referente a Rota Stock - Gains
 */
 
-/*
+
 test('Stock - Gains - Deve retornar a projeção de ganhos em uma data específica.', async() => {
   const res = await request(app).get(`/stocks/${QUOTE_ACT}/gains?purchasedAmount=${PURCHASED_AMOUNT}&purchasedAt=${PURCHASED_AT}`);
   expect(res.status).toBe(200);
@@ -88,14 +88,14 @@ test('Stock - Gains - Deve retornar erro quando informada uma data sem cota.', a
   expect(res.status).toBe(400);
   expect(res.body.error).toBe(`Price on purchase date ${INVALID_PURCHASED_AT} for stock was not found ${QUOTE_ACT}`);
 });
-*/
+
 
 
 /*
   Testes referente a Rota Stock - History
 */
 
-/*
+
 test('Stock - History - Deve retornar o preço histórico da ação em um intervalo incluso.', async() => {
   const res = await request(app).get(`/stocks/${QUOTE_ACT}/history?from=${FROM_DATE}&to=${TO_DATE}`);
   expect(res.status).toBe(200);
@@ -108,4 +108,3 @@ test('Stock - History - Deve retornar erro ao informar uma Ação inválida.', a
   expect(res.status).toBe(400);
   expect(res.body.error).toBe(`Invalid Stock Name ${INVALID_QUOTE_ACT}`);
 });
-*/

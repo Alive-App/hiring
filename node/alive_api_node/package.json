@@ -7,6 +7,7 @@
   "scripts": {
     "test": "jest --watchAll --verbose=true",
     "dev": "nodemon ./src/server.js",
+    "start": "nodemon ./src/server.js",
     "dev-f": "nodemon ./functions/server.js",
     "build": "mkdir dist && babel src -s -d dist"
   },
