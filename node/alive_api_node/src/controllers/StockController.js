@@ -141,7 +141,9 @@ const gains = async (req, res) => {
   try {
     const { stock_name } = req.params;
     const { purchasedAmount, purchasedAt } = req.query;
-
+    console.log(req.query);
+    console.log(purchasedAmount, purchasedAt);
+                                 
     const result = await api.get(
       `query?function=TIME_SERIES_DAILY&symbol=${stock_name}&outputsize=full&apikey=${process.env.APIKEY}`
     );

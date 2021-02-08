@@ -52,7 +52,7 @@ test('Stock - Quote - Deve retornar erro ao informar uma Ação inválida.', asy
 */
 
 test('Stock - Compare - Deve retornar a comparação de cotas entre Ações.', async() => {
-  const res = await request(app).get(`/stocks/${QUOTE_ACT}/compare`).send({
+  const res = await request(app).post(`/stocks/${QUOTE_ACT}/compare`).send({
     "stocks": LIST_QUOTE_COMPARE
   });
   expect(res.status).toBe(200);
