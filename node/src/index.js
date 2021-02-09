@@ -1,6 +1,5 @@
 const express = require("express");
 const bodyParser = require("body-parser");
-const sequelize = require("./database/database");
 const cors = require("cors");
 require("dotenv").config();
 
@@ -21,11 +20,4 @@ app.use((error, req, res, next) => {
   res.status(status).json({ message: message, data: data });
 });
 
-sequelize
-  .sync()
-  .then(() => {
-    app.listen(process.env.HOST || "3000");
-  })
-  .catch((err) => {
-    console.log(err);
-  });
+app.listen(process.env.HOST || "3000");
