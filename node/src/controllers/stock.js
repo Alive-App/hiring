@@ -38,7 +38,7 @@ exports.getHistoryQuote = (req, res, next) => {
       let quotesData = quotes.data["Time Series (Daily)"];
       for (const quote in quotesData) {
         let dateParsed = new Date(quote);
-        if (dateParsed >= initialDate && dateParsed >= finalDate) {
+        if (dateParsed >= initialDate && dateParsed <= finalDate) {
           pricing.push({
             opening: quotesData[quote]["1. open"],
             low: quotesData[quote]["3. low"],
