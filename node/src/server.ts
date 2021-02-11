@@ -21,11 +21,14 @@ export class Server {
   }
 
   routes() {
-    this.app.use("/stock", routes);
+    this.app.use("/stocks", routes);
   }
 
-  async listen(port: Number) {
-    await this.app.listen(port);
-    console.log("Server run");
+  listen(port: Number) {
+    this.app.listen(port);
+    console.log("Server run on " + port);
+  }
+  getExpressInstance(): Application {
+    return this.app;
   }
 }

@@ -104,7 +104,7 @@ export class StockController {
       });
 
       const response = await Promise.all(requests);
-      response.some((item: any) => {
+      response.some((item: any): any => {
         if (item.data.hasOwnProperty("Note")) {
           hasError = item.data.Note;
           return true;
