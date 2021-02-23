@@ -7,7 +7,7 @@ Uma corretora de ações está desenvolvendo um sistema para permitir que pequen
    - Preço atual em comparação a outras ações;
    - Projeção de ganhos com compra em data específica.
    
-Para isso, a equipe de software da empresa optou por desenvolver um APP que dará visibilidade aos dados. Sua missão para este teste é implementar este APP
+Para isso, a equipe de software da empresa optou por desenvolver um WebAPP que dará visibilidade aos dados. Sua missão para este teste é implementar este WebAPP
 
 # Requisitos técnicos da solução
 
@@ -30,9 +30,9 @@ A ideia é implementar algo simples, sem preocupações com dividendos, taxas ad
 
 # Detalhamento
 
-## APP
+## WebAPP
 
-O importante nesta parte do desafio é que saibamos como você lida com os componentes que formam as técnicas contemporâneas de desenvolvimento client-side, no que tange processamento de assets, transpilers, separação de responsabilidades, minificação, armazenamento local, etc. Por isso, estética não é primordial.
+O importante nesta parte do desafio é que saibamos como você lida com os componentes que formam as técnicas contemporâneas de desenvolvimento client-side, no que tange processamento de assets, separação de responsabilidades, minificação, armazenamento local, etc. Por isso, estética não é primordial.
 
 As funcionalidades esperadas são:
 
