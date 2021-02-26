@@ -4,11 +4,14 @@ const api = require('../utils/api');
 module.exports = {
   async actualQuote(req, res) {
     const { symbol } = req.params;
-    if (symbol) {
-      const { data } = await api.get(`query?function=GLOBAL_QUOTE&symbol=${symbol}&apikey=A15TFI52OO3BO9KP`);
-      if (data['Global Quote'].length === 0) {
-        return res.status(400).json({ error: 'Tem certeza que os dados informados estão corretos?' });
-      }
+
+    const response = await api.get(`query?function=GLOBAL_QUOTE&symbol=${symbol}&apikey=${process.env.APIKEY}`);
+    const { data } = response;
+
+    if (data.Note) {
+      return res.status(400).json({ error: 'tente novamente mais tarde, são possiveis apenas 5 requisições por minuto' });
+    }
+    if (data['Global Quote']['01. symbol']) {
       const Quote = {
         name: data['Global Quote']['01. symbol'],
         lastPrice: parseFloat(data['Global Quote']['05. price']),
@@ -18,16 +21,17 @@ module.exports = {
       };
       return res.json(Quote);
     }
-    return res.status(400).json({ error: 'forneça um ativo para consulta' });
+
+    return res.status(404).json({ error: 'ativo não encontrado' });
   },
   async gainsProjection(req, res) {
     const { symbol } = req.params;
     const { purchasedAmount, purchasedAt, finalDate } = req.query;
     const { data } = await api.get(
-      `query?function=TIME_SERIES_DAILY&symbol=${symbol}&outputsize=full&apikey=&apikey=A15TFI52OO3BO9KP`,
+      `query?function=TIME_SERIES_DAILY&symbol=${symbol}&outputsize=full&apikey=&apikey=${process.env.APIKEY}`,
     );
 
-    if (data['Time Series (Daily)'][purchasedAt] !== undefined) {
+    if (data['Time Series (Daily)'][purchasedAt] && data['Time Series (Daily)'][finalDate] !== undefined) {
       const purchasePriceAtDate = Number.parseFloat(
         data['Time Series (Daily)'][purchasedAt]['4. close'],
       );
@@ -78,7 +82,7 @@ module.exports = {
     const { symbol } = req.params;
     const { from, to } = req.query;
     const { data } = await api.get(
-      `query?function=TIME_SERIES_DAILY&symbol=${symbol}&outputsize=full&apikey=&apikey=A15TFI52OO3BO9KP`,
+      `query?function=TIME_SERIES_DAILY&symbol=${symbol}&outputsize=full&apikey=&apikey=${process.env.APIKEY}`,
     );
 
     if (data['Time Series (Daily)'][from] && data['Time Series (Daily)'][to]) {
@@ -112,7 +116,7 @@ module.exports = {
       stocks.forEach((stock) => {
         data.push(
           api.get(
-            `query?function=GLOBAL_QUOTE&symbol=${stock}&apikey=A15TFI52OO3BO9KP`,
+            `query?function=GLOBAL_QUOTE&symbol=${stock}&apikey=${process.env.APIKEY}`,
           ),
         );
       });
