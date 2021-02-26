@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 export const Container = styled.header`
   display: flex;
@@ -18,7 +19,7 @@ export const Container = styled.header`
   }
 `;
 
-export const Logout = styled.button`
+export const Wallet = styled(Link)`
   display: flex;
   align-items: center;
   text-decoration: none;

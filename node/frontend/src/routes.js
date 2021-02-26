@@ -4,6 +4,7 @@ import Main from './pages/main';
 import Compare from './pages/compare';
 import Gain from './pages/gain';
 import History from './pages/history';
+import Wallet from './pages/wallet';
 
 export default function Routes() {
   return (
@@ -12,6 +13,7 @@ export default function Routes() {
       <Route path="/compare/:stock" component={Compare} />
       <Route path="/gain/:stock" component={Gain} />
       <Route path="/history/:stock" component={History} />
+      <Route path="/wallet" component={Wallet} />
     </Switch>
   );
 }
