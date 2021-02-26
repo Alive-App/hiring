@@ -1,3 +1,54 @@
+![lang](https://img.shields.io/badge/language-Javascript-yellow) ![status](https://img.shields.io/badge/Status-WIP-orange)
+
+
+# Stock-Analyzer
+nesta aplicação é possivel consultar, comparar, analizar histórico e projetar ganhos de ativos de acordo com os dados da [Alpha Vantage API](https://www.alphavantage.co)
+
+
+## telas:
+![Screenshot from 2021-02-26 17-07-14](https://user-images.githubusercontent.com/54459438/109350133-c48c1480-7855-11eb-8301-cbb20c8797cf.png)
+![Screenshot from 2021-02-26 17-07-25](https://user-images.githubusercontent.com/54459438/109350139-c5bd4180-7855-11eb-98b3-064273e53468.png)
+![Screenshot from 2021-02-26 17-07-41](https://user-images.githubusercontent.com/54459438/109350144-c5bd4180-7855-11eb-9b24-d2466e795c08.png)
+![Screenshot from 2021-02-26 17-08-13](https://user-images.githubusercontent.com/54459438/109350145-c655d800-7855-11eb-8eb3-6c871d6872b4.png)
+
+Você pode testar [aqui](https://stock-analizer.vercel.app/gain/IBM)
+
+## Como Rodar este projeto:
+
+### Frontednd:
+1. clone o projeto em sua maquina ```git clone https://github.com/MelquiasRibeiro/hiring.git```;
+2. navegue até a pastaonde estão os projetos ```cd hiring/node/fronted```;
+3. instale as dependencias necessárias ```npm install```;
+4. inicie o projeto ```npm start``` e acesse localhost:3000.
+***`O Backend está online no Heroku contudo,se você quiser consumir o backend localmente é necessario alterar a baseURL no aquivo api.js no caminho src/services/api.js`***,
+#### Backend:
+1. clone o projeto em sua maquina ```git clone https://github.com/MelquiasRibeiro/hiring.git```;
+2. navegue até a pastaonde estão os projetos ```cd hiring/node/backend```;
+3. instale as dependencias necessárias ```npm install```;
+4. crie um arquivo `.env` com a variável `APIKEY=''`, faça seu cadastro na (api)[https://www.alphavantage.co/support/#api-key] para obter sua chave e cole entre as aspas;
+5. inicie o projeto ```npm start``` e acesse localhost:3333.
+
+## Padrão de commits:
+O padrão adotado para os commits deste projeto foi o do [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/)
+
+
+## Conceitos abordados neste projeto:
++ Padronização de código com [Eslint](https://eslint.org/) e [Prettier](https://prettier.io/);
++ Roteamento com [React Router Dom](https://reacttraining.com/react-router/web/guides/quick-start);
++ [Styled Components](https://styled-components.com/);
++ Gerenciamento de estado usando [Context API](https://pt-br.reactjs.org/docs/context.html);
++ Armazenamento de dados no LocalStorage;
++ CI/CD
++ Responsividade
++ Renderização Condicional;
++ Tratamento de Erros;
++ Backend desenvolvido em [NODE.js](https://nodejs.org/en/about/) e [Express](https://expressjs.com/pt-br/);
++ Desenvolvimento de Api rest;
++ conexão a api utilizando [Axios](https://github.com/axios/axios).
+
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
 # Background
 
 Uma corretora de ações está desenvolvendo um sistema para permitir que pequenos investidores possam tomar decisões melhores sobre seu portfólio. Uma das funcionalidades importantes é a de verificar o desempenho de uma ação em cinco cenários:
