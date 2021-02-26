@@ -1,18 +1,21 @@
 import React, { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { FaSearch } from 'react-icons/fa';
+import { FaSearch, FaSpinner } from 'react-icons/fa';
 import { GlobalContext } from '../../providers/globalState';
 // import axios from 'axios';
 import {
-  Container, SerchContainer, GeneralContainer, ButtonsContainer,
+  Container, SerchContainer, GeneralContainer, ButtonsContainer, SearchButton,
 } from './styles';
 import api from '../../services/api';
 import empty from '../../assets/img/search.svg';
+import notify from '../../utils/notification';
 
 export default function Main() {
   const [quote, setQuote] = useState('');
   const [selectedSymbol, setSelectedSymbol] = useState('');
   const [inWallet, setInWallet] = useState('');
+  const [loading, setLoading] = useState(false);
+
   const { addStock } = useContext(GlobalContext);
 
   // const [results, setResults] = useState([]);
@@ -29,10 +32,14 @@ export default function Main() {
 
   async function getQuote(e) {
     e.preventDefault();
+    setLoading(true);
     api.get(`/stocks/${selectedSymbol}/quote`).then((response) => {
       setQuote(response.data);
+    }).catch((err) => {
+      notify(err.response.data.error, 'error');
     });
     setInWallet(false);
+    setLoading(false);
   }
 
   return (
@@ -41,9 +48,9 @@ export default function Main() {
         <h1>Pesquise um ativo</h1>
         <form onSubmit={getQuote}>
           <input placeholder="IBM" value={selectedSymbol} onChange={(e) => setSelectedSymbol(e.target.value)} />
-          <button type="submit">
-            <FaSearch />
-          </button>
+          <SearchButton type="submit" loading={loading}>
+            {loading ? <FaSpinner /> : <FaSearch />}
+          </SearchButton>
         </form>
         {/* { searching
           ? results.map((result) => (
@@ -60,7 +67,7 @@ export default function Main() {
         quote !== ''
           ? (
             <>
-              <button type="button" onClick={() => [addStock(quote), setInWallet(true)]}>
+              <button type="button" onClick={() => [addStock(quote), setInWallet(true), notify('Adicionado com sucesso', 'sucess')]}>
                 { inWallet
                   ? null
                   : ' ADICIONAR A CARTEIRA'}

@@ -5,6 +5,7 @@ import empty from '../../assets/img/search.svg';
 import {
   Container, GeneralContainer,
 } from './styles';
+import notify from '../../utils/notification';
 
 export default function Compare({ match }) {
   const { stock } = match.params;
@@ -18,6 +19,8 @@ export default function Compare({ match }) {
       stocks: data,
     }).then((response) => {
       setResults(response.data);
+    }).catch((err) => {
+      notify(err.response.data.error, 'error');
     });
   }
 

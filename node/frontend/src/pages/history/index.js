@@ -5,6 +5,7 @@ import empty from '../../assets/img/search.svg';
 import {
   Container, GeneralContainer,
 } from './styles';
+import notify from '../../utils/notification';
 
 export default function History({ match }) {
   const { stock } = match.params;
@@ -17,6 +18,8 @@ export default function History({ match }) {
     e.preventDefault();
     api.get(`http://localhost:3333/stocks/${stock}/history?from=${from}&to=${to}`).then((response) => {
       setResults(response.data);
+    }).catch((err) => {
+      notify(err.response.data.error, 'error');
     });
   }
 

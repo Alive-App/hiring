@@ -5,6 +5,7 @@ import empty from '../../assets/img/search.svg';
 import {
   Container, GeneralContainer,
 } from './styles';
+import notify from '../../utils/notification';
 
 export default function Gain({ match }) {
   const { stock } = match.params;
@@ -17,6 +18,8 @@ export default function Gain({ match }) {
     e.preventDefault();
     api.get(`http://localhost:3333/stocks/${stock}/gains?purchasedAmount=${purchasedAmount}&purchasedAt=${purchasedAt}&finalDate=${finalDate}`).then((response) => {
       setResult(response.data);
+    }).catch((err) => {
+      notify(err.response.data.error, 'error');
     });
   }
 

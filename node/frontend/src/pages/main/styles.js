@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { keyframes, css } from 'styled-components';
 
 export const Container = styled.div`
 display:flex;
@@ -13,6 +13,37 @@ align-items:center;
 }
 `;
 
+const rotate = keyframes`
+  from {
+    transform: rotate(0deg);
+  }
+  to{
+    transform: rotate(360deg)
+  }
+`;
+
+export const SearchButton = styled.button.attrs((props) => ({
+  disabled: props.loading,
+}))`
+    width:50px;
+    margin-left:8px;
+    color:#191920;
+    border:none;
+    border-radius:4px;
+    background-color:#ffff;   
+
+    &[disabled] {
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+     ${(props) => props.loading
+    && css`
+      svg {
+        animation: ${rotate} 2s infinite;
+      }
+    `} 
+
+`;
 export const SerchContainer = styled.div`
 position:absolute;
 display:flex;
@@ -21,14 +52,7 @@ align-items:center;
 width:50%;   
 form{
     display:flex;
-    >button{
-        width:50px;
-        margin-left:8px;
-        color:#191920;
-        border:none;
-        border-radius:4px;
-        background-color:#ffff;
-    }
+   
 }
 
 h1{
