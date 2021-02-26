@@ -47,7 +47,7 @@ export default function Main() {
       <SerchContainer>
         <h1>Pesquise um ativo</h1>
         <form onSubmit={getQuote}>
-          <input placeholder="IBM" value={selectedSymbol} onChange={(e) => setSelectedSymbol(e.target.value)} />
+          <input required placeholder="IBM" value={selectedSymbol} onChange={(e) => setSelectedSymbol(e.target.value)} />
           <SearchButton type="submit" loading={loading}>
             {loading ? <FaSpinner /> : <FaSearch />}
           </SearchButton>

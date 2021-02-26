@@ -31,9 +31,12 @@ export default function Gain({ match }) {
         {stock}
       </h1>
       <form onSubmit={getCompare}>
-        <input type="date" value={purchasedAt} onChange={(e) => setPurchasedAt(e.target.value)} />
+        <p>Data de compra</p>
+        <input type="date" required value={purchasedAt} onChange={(e) => setPurchasedAt(e.target.value)} />
+        <p>Data final</p>
         <input type="date" value={finalDate} onChange={(e) => setFinalDate(e.target.value)} />
-        <input type="number" value={purchasedAmount} onChange={(e) => setPurchasedAmount(e.target.value)} />
+        <p>Quantide de ativos</p>
+        <input type="number" required value={purchasedAmount} onChange={(e) => setPurchasedAmount(e.target.value)} />
         <button type="submit">Projetar</button>
       </form>
       <GeneralContainer>

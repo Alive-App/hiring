@@ -32,9 +32,9 @@ export default function History({ match }) {
       </h1>
       <form on onSubmit={getCompare}>
         <p>DE</p>
-        <input type="date" value={from} onChange={(e) => setFrom(e.target.value)} />
+        <input required type="date" value={from} onChange={(e) => setFrom(e.target.value)} />
         <p>Até</p>
-        <input type="date" value={to} onChange={(e) => setTo(e.target.value)} />
+        <input required type="date" value={to} onChange={(e) => setTo(e.target.value)} />
         <button type="submit">Historia</button>
       </form>
       <GeneralContainer>

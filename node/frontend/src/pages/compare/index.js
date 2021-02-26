@@ -32,7 +32,7 @@ export default function Compare({ match }) {
         {stock}
       </h1>
       <form onSubmit={getCompare}>
-        <input placeholder="IBM,TESCO,PETRA" value={stocks} onChange={(e) => setStocks(e.target.value)} />
+        <input required placeholder="IBM,TESCO,PETRA" value={stocks} onChange={(e) => setStocks(e.target.value)} />
         <button type="submit">Comparar</button>
       </form>
       <GeneralContainer>
