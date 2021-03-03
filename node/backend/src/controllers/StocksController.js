@@ -9,7 +9,7 @@ module.exports = {
     const { data } = response;
 
     if (data.Note) {
-      return res.status(400).json({ error: 'tente novamente mais tarde, são possiveis apenas 5 requisições por minuto' });
+      return res.status(429).json({ error: 'Muitos ativos, aguarde 1 minuto para realizar novas consultas' });
     }
     if (data['Global Quote']['01. symbol']) {
       const Quote = {
@@ -30,6 +30,9 @@ module.exports = {
     const { data } = await api.get(
       `query?function=TIME_SERIES_DAILY&symbol=${symbol}&outputsize=full&apikey=&apikey=${process.env.APIKEY}`,
     );
+    if (data.Note) {
+      return res.status(429).json({ error: 'Muitos ativos, aguarde 1 minuto para realizar novas consultas' });
+    }
 
     if (data['Time Series (Daily)'][purchasedAt] && data['Time Series (Daily)'][finalDate] !== undefined) {
       const purchasePriceAtDate = Number.parseFloat(
@@ -84,6 +87,9 @@ module.exports = {
     const { data } = await api.get(
       `query?function=TIME_SERIES_DAILY&symbol=${symbol}&outputsize=full&apikey=&apikey=${process.env.APIKEY}`,
     );
+    if (data.Note) {
+      return res.status(429).json({ error: 'Muitos ativos, aguarde 1 minuto para realizar novas consultas' });
+    }
 
     if (data['Time Series (Daily)'][from] && data['Time Series (Daily)'][to]) {
       const startDate = new Date(from);
@@ -121,7 +127,11 @@ module.exports = {
         );
       });
       const response = await Promise.all(data);
+      console.log(response);
       response.map((item) => {
+        if (item.data.Note) {
+          return res.status(400).json({ error: 'Muitos ativos, aguarde 1 minuto para realizar novas consultas' });
+        }
         if (item.data['Global Quote']['01. symbol']) {
           listPrices.push({
             name: item.data['Global Quote']['01. symbol'],
