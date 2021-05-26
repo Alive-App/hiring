@@ -1,0 +1,301 @@
+.container-home {
+    flex-direction: row;
+    flex: 1;
+    min-height: 100vh;
+    background: #d1d1d1;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+aside.navigation-container{
+    height: 100vh;
+    background-color: #fff;
+    width: 18%;
+    
+}
+
+aside.navigation-container a {
+    text-decoration: none;
+}
+
+.logo{
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    color: #f74231 ;
+}
+.logo * {
+    margin: 0 5px;
+}
+
+p.title-nav{
+    margin-left: 10px;
+    color: #666;
+}
+
+li.item-nav{
+    list-style: none;
+    margin: 10px 0;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 90%;
+    cursor: pointer;
+    color: #000;
+
+}
+li.item-nav:hover {
+    opacity: 0.7;
+    transition: 0.8s;
+}
+
+.content {
+    width: 100%;
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+}
+
+.search-box {
+    width: 500px;
+    height: 50px;
+    background-color: #fff;
+    border-radius: 10px;
+
+    box-shadow: #666 1px 1px 7px;
+    border: none;
+    padding: 0px 15px;
+}
+
+.search-container {
+    display: flex;
+    margin-top: 40px;
+    align-items: center;
+}
+
+img.icon-search {
+    position: absolute;
+    margin-left: 490px;
+}
+.search-content {
+    width: 520px;
+    background-color: #fff;
+    margin-top: 10px;
+    margin-right: 40px;
+    position: absolute;
+}
+.search-content li {
+    margin: 0 15px;
+    margin-right: 40px;
+    list-style: none;
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-size: 15px;
+}
+.search-content p.symbol {
+    font-weight: bold;
+}
+
+.stock {
+    width: 480px;
+    height: 240px;
+    background-color: #fff;
+    margin-top: 100px;
+    border-radius: 10px;
+    padding: 15px;
+}
+.stock .symbol {
+    font-size: 18px;
+}
+
+.stock .date {
+    font-size: 15px;
+    color: #666;
+}
+.stock .date strong {
+    color: #000;
+    font-size: 18px;
+}
+
+.stock .buy {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 0px;
+}
+
+.stock .buy input {
+    height: 30px;
+    margin-right: 20px;
+}
+
+.stock button {
+   margin-left: 300px;
+   height: 40px;
+   width: 150px;
+   margin-top: 0;
+   border-radius: 10px;
+   border: none;
+   background-color: #f74231;
+   color: #fff;
+   cursor: pointer;
+}
+
+.stock button:hover {
+    opacity: 0.8;
+    transition: 0.8;
+}
+
+.history {
+    width: 500px;
+    min-height: 150px;
+    background-color: #fff;
+    padding: 10px 15px;
+    border-radius: 10px;
+}
+.history input{
+    margin: 0 10px;
+}
+
+.history button{
+    margin-left: 350px;
+    height: 30px;
+    width: 130px;
+    margin-top: 0;
+    border-radius: 10px;
+    border: none;
+    background-color: #f74231;
+    color: #fff;
+    cursor: pointer;
+}
+
+.stock-title {
+    font-size: 18px;
+    font-weight: 600;
+    align-self: center;
+    display: flex;
+}
+.stock-container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.history .history-data {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+.history .history-data li {
+   list-style: none; 
+}
+
+.compare {
+    width: 500px;
+    min-height: 150px;
+    background-color: #fff;
+    padding: 10px 15px;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+.compare .stocks-container ul{
+    display: flex;
+    flex-direction: row;
+    margin: 0;
+}
+
+.compare .stocks-container li{
+    list-style: none;
+    margin: 0 5px;
+    background-color: #d1d1d1;
+    padding: 2px 5px;
+    border-radius: 5px;
+}
+
+
+.compare button.submit{
+    margin-left: 350px;
+    height: 30px;
+    width: 130px;
+    margin-top: 0;
+    border-radius: 10px;
+    border: none;
+    background-color: #f74231;
+    color: #fff;
+    cursor: pointer;
+}
+
+.compare .add-stock{
+    display: flex;
+    flex-direction: row;
+}
+.compare .add-stock input{
+    padding: 5px;
+    border-radius: 5px 0px 0px 5px;
+    background-color:#d1d1d1;
+    color: #000;
+    border: none;
+}
+.compare .add-stock button{
+    padding: 5px;
+    border-radius: 0px 5px 5px 0px;
+    border-color: #666;
+    border-width: 2px;
+    border: none;
+    background-color: #f74231;
+    color: #fff;
+}
+
+.compare .stocks-results {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.compare .stocks-results p {
+    margin-right: 15px;
+}
+.compare .stocks-results li {
+    list-style: none;
+}
+.compare .stocks-results ul {
+    margin: 5px 10px;
+    padding: 0;
+} 
+
+.gains {
+    width: 500px;
+    min-height: 150px;
+    background-color: #fff;
+    padding: 10px 15px;
+    border-radius: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.gains button{
+    margin-left: 350px;
+    height: 30px;
+    width: 130px;
+    margin-top: 0;
+    border-radius: 10px;
+    border: none;
+    background-color: #f74231;
+    color: #fff;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+.gains input.amount {
+    padding: 5px;
+    border-radius: 5px;
+    border: #666 solid 1px;
+}
+
+.gains li {
+    list-style: none;
+}
