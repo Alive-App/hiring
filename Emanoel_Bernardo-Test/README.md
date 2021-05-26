@@ -12,6 +12,10 @@ Now run the project via yarn or npm
     cd frontend && yarn start
     cd backend && yarn start
  
+Using Jest for tests
+
+    cd backend && yarn test
+ 
 Using Nodemon on backend
 
     cd backend && yarn d
