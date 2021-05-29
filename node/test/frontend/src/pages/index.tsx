@@ -1,3 +1,16 @@
+import { useState } from 'react'
+
+import Header from 'components/Header'
+import Modal from 'components/Modal'
+
 export default function Home() {
-  return <h1>Index</h1>
+  return (
+    <>
+      <Header />
+
+      <Modal />
+
+      <h1>Body</h1>
+    </>
+  )
 }

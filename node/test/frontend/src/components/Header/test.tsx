@@ -1,10 +1,10 @@
 import { render, screen } from '@testing-library/react'
 
-import Main from '.'
+import Header from '.'
 
-describe('<Main />', () => {
+describe('<Header />', () => {
   it('should render heading title', () => {
-    render(<Main />)
+    render(<Header />)
 
     expect(screen.getByRole('heading')).toBeInTheDocument()
   })
