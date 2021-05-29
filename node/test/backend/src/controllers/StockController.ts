@@ -1,5 +1,12 @@
 import { Request, Response } from 'express'
 import { AppError } from '../errors/AppError'
+import {
+  isValid,
+  eachDayOfInterval,
+  parseISO,
+  isBefore,
+  format
+} from 'date-fns'
 import api from '../services/api'
 
 interface IQuoteResponse {
@@ -8,6 +15,20 @@ interface IQuoteResponse {
     '05. price': string
     '07. latest trading day': string
   }
+}
+
+type IPrices = {
+  '1. open': string
+  '2. high': string
+  '3. low': string
+  '4. close': string
+}
+
+interface IHistoricResponse {
+  'Meta Data': {
+    '2. Symbol': string
+  }
+  'Time Series (Daily)': Array<IPrices>
 }
 
 class StockController {
@@ -24,10 +45,73 @@ class StockController {
       throw new AppError('Symbol not found', 404)
     }
 
-    return response.send({
+    return response.status(200).json({
       name: data['Global Quote']['01. symbol'],
       lastPrice: Number(data['Global Quote']['05. price']),
       pricedAt: data['Global Quote']['07. latest trading day']
+    })
+  }
+
+  async history(request: Request, response: Response) {
+    const { stock_name } = request.params
+    const { from, to } = request.query
+
+    if (!from || !to) {
+      throw new AppError('Date interval is required')
+    }
+
+    const start = parseISO(from as string)
+    const end = parseISO(to as string)
+
+    if (!isValid(start) || !isValid(end) || isBefore(end, start)) {
+      throw new AppError('Date interval is not valid')
+    }
+
+    const intervalDays = eachDayOfInterval({
+      start,
+      end
+    })
+
+    const { data } = await api.get<IHistoricResponse>('/query', {
+      params: {
+        symbol: stock_name,
+        function: 'TIME_SERIES_DAILY_ADJUSTED',
+        outputsize: 'full'
+      }
+    })
+
+    if (
+      !data['Meta Data'] ||
+      !data['Meta Data']['2. Symbol'] ||
+      data['Time Series (Daily)'].length === 0
+    ) {
+      throw new AppError('Symbol not found', 404)
+    }
+
+    const prices = intervalDays.map((date) => {
+      const dateFormatted = format(date, 'yyyy-MM-dd')
+      const price: IPrices = data['Time Series (Daily)'][dateFormatted]
+
+      // probably closed market
+      if (!price) {
+        return {
+          closed: true,
+          pricedAt: dateFormatted
+        }
+      }
+
+      return {
+        opening: Number(price['1. open']),
+        high: Number(price['2. high']),
+        low: Number(price['3. low']),
+        closing: Number(price['4. close']),
+        pricedAt: dateFormatted
+      }
+    })
+
+    return response.status(200).json({
+      name: data['Meta Data']['2. Symbol'],
+      prices
     })
   }
 }
