@@ -114,6 +114,54 @@ class StockController {
       prices
     })
   }
+
+  async compare(request: Request, response: Response) {
+    const { stock_name } = request.params
+    const { stocks } = request.body
+
+    if (!stocks || stocks.length === 0) {
+      throw new AppError('Array of stocks is required')
+    }
+
+    const params = {
+      function: 'GLOBAL_QUOTE'
+    }
+
+    const responsePrices = await Promise.all([
+      api.get('query', {
+        params: {
+          ...params,
+          symbol: stock_name
+        }
+      }),
+      ...stocks.map((stock) =>
+        api.get('query', {
+          params: {
+            ...params,
+            symbol: stock
+          }
+        })
+      )
+    ]).catch(() => {
+      throw new AppError('One or more stocks has not been found', 404)
+    })
+
+    const lastPrices = responsePrices.map(
+      ({ data }: { data: IQuoteResponse }) => {
+        if (!data['Global Quote']['01. symbol']) {
+          throw new AppError('One stock not found', 404)
+        }
+
+        return {
+          name: data['Global Quote']['01. symbol'],
+          lastPrice: Number(data['Global Quote']['05. price']),
+          pricedAt: data['Global Quote']['07. latest trading day']
+        }
+      }
+    )
+
+    return response.status(200).json({ lastPrices })
+  }
 }
 
 export default new StockController()

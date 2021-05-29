@@ -100,4 +100,41 @@ describe('StockController', () => {
       })
     )
   })
+
+  it('compare(): should respond a object with a array of last prices', async () => {
+    const symbol = 'IBM'
+    const stocks = ['OIBR4.SA', 'VALE5.SA']
+    const { body } = await request(app)
+      .post(`/stocks/${symbol}/compare`)
+      .send({ stocks })
+      .expect(200)
+
+    expect(body).toEqual(
+      expect.objectContaining({
+        lastPrices: expect.arrayContaining([
+          expect.objectContaining({
+            name: expect.any(String),
+            lastPrice: expect.any(Number),
+            pricedAt: expect.any(String)
+          })
+        ])
+      })
+    )
+  })
+
+  it('compare(): should respond 400 if array of stocks is empty', async () => {
+    const symbol = 'IBM'
+    const stocks = []
+    const { body } = await request(app)
+      .post(`/stocks/${symbol}/compare`)
+      .send({ stocks })
+      .expect(400)
+
+    expect(body).toEqual(
+      expect.objectContaining({
+        status: 'error',
+        message: expect.any(String)
+      })
+    )
+  })
 })
