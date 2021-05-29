@@ -27,6 +27,7 @@ type IPrices = {
 interface IHistoricResponse {
   'Meta Data': {
     '2. Symbol': string
+    '3. Last Refreshed': string
   }
   'Time Series (Daily)': Array<IPrices>
 }
@@ -161,6 +162,64 @@ class StockController {
     )
 
     return response.status(200).json({ lastPrices })
+  }
+
+  async gains(request: Request, response: Response) {
+    const { stock_name } = request.params
+    const { purchasedAmount, purchasedAt } = request.query
+
+    if (!purchasedAmount || !purchasedAt || isNaN(Number(purchasedAmount))) {
+      throw new AppError('Amount and date are required')
+    }
+
+    const purchasedDate = parseISO(purchasedAt as string)
+
+    if (!isValid(purchasedDate) || !isBefore(purchasedDate, Date.now())) {
+      throw new AppError('Purchased date must be a valid date')
+    }
+
+    const { data } = await api.get<IHistoricResponse>('/query', {
+      params: {
+        symbol: stock_name,
+        function: 'TIME_SERIES_DAILY_ADJUSTED',
+        outputsize: 'full'
+      }
+    })
+
+    if (
+      !data['Meta Data'] ||
+      !data['Meta Data']['2. Symbol'] ||
+      data['Time Series (Daily)'].length === 0
+    ) {
+      throw new AppError('Symbol not found', 404)
+    }
+
+    try {
+      const newPrice = Number(
+        data['Time Series (Daily)'][data['Meta Data']['3. Last Refreshed']][
+        '4. close'
+        ]
+      )
+
+      const dateFormatted = format(purchasedDate, 'yyyy-MM-dd')
+      const oldPrice = Number(
+        data['Time Series (Daily)'][dateFormatted]['4. close']
+      )
+
+      const amount = Number(purchasedAmount)
+      const valueGains = (newPrice - oldPrice) * amount
+
+      return response.status(200).json({
+        name: data['Meta Data']['2. Symbol'],
+        purchasedAmount: amount,
+        purchasedAt: dateFormatted,
+        priceAtDate: oldPrice,
+        lastPrice: newPrice,
+        capitalGains: valueGains
+      })
+    } catch {
+      throw new AppError('Prices not available, try another date')
+    }
   }
 }
 

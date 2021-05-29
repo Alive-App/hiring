@@ -137,4 +137,44 @@ describe('StockController', () => {
       })
     )
   })
+
+  it('gains(): should respond a object of gains in a interval', async () => {
+    const symbol = 'IBM'
+    const { body } = await request(app)
+      .get(`/stocks/${symbol}/gains`)
+      .query({
+        purchasedAmount: '100',
+        purchasedAt: '2017-04-07'
+      })
+      .expect(200)
+
+    expect(body).toEqual(
+      expect.objectContaining({
+        name: expect.any(String),
+        purchasedAmount: expect.any(Number),
+        purchasedAt: expect.any(String),
+        priceAtDate: expect.any(Number),
+        lastPrice: expect.any(Number),
+        capitalGains: expect.any(Number)
+      })
+    )
+  })
+
+  it('gains(): should respond 400 if invalid query params', async () => {
+    const symbol = 'IBM'
+    const { body } = await request(app)
+      .get(`/stocks/${symbol}/gains`)
+      .query({
+        purchasedAmount: 'WRONG',
+        purchasedAt: '2017-04'
+      })
+      .expect(400)
+
+    expect(body).toEqual(
+      expect.objectContaining({
+        status: 'error',
+        message: expect.any(String)
+      })
+    )
+  })
 })
