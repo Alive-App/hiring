@@ -18,6 +18,7 @@
     "@typescript-eslint"
   ],
   "rules": {
-    "prettier/prettier": "error"
+    "prettier/prettier": "error",
+    "camelcase": "off"
   }
 }
