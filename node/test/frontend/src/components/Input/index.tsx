@@ -2,7 +2,6 @@ import * as S from './styles'
 
 interface IInputProps {
   name: string
-  fieldName: string
   label?: string
 }
 

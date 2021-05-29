@@ -1,7 +1,10 @@
 import { ModalProvider } from './modal'
+import { StocksProvider } from './stocks'
 
 const AppProvider: React.FC = ({ children }) => (
-  <ModalProvider>{children}</ModalProvider>
+  <StocksProvider>
+    <ModalProvider>{children}</ModalProvider>
+  </StocksProvider>
 )
 
 export default AppProvider

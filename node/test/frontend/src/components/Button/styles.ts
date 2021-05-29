@@ -2,11 +2,11 @@ import styled, { css, keyframes } from 'styled-components'
 import { darken } from 'polished'
 
 export interface IButton {
-  background?: string
+  bg?: string
   color?: string
   width?: string
   height?: string
-  loading?: boolean
+  loading?: string
 }
 
 const rotate = keyframes`
@@ -46,7 +46,11 @@ export const Button = styled.button<IButton>`
   ${(props) =>
     props.loading &&
     css`
-      width: 60px !important;
+      width: 60px;
+
+      &:hover {
+        background: ${(props) => props.background || '#3861fb'};
+      }
 
       svg {
         animation: ${rotate} 1s linear infinite;

@@ -1,15 +1,42 @@
-import { useState } from 'react'
+import { FormEvent, useState } from 'react'
 import { FiXCircle } from 'react-icons/fi'
 
-import * as S from './styles'
 import { useModal } from 'contexts/modal'
+import { useStocks } from 'contexts/stocks'
+import api from 'services/api'
 
+import * as S from './styles'
 import Input from 'components/Input'
 import Button from 'components/Button'
 
 const Modal = () => {
   const [loading, setLoading] = useState(false)
+  const [stockName, setStockName] = useState('')
+
+  const { addStock } = useStocks()
   const { active, setActive } = useModal()
+
+  const handleSubmit = async (e: FormEvent) => {
+    e.preventDefault()
+    setLoading(true)
+
+    if (!stockName) {
+      setLoading(false)
+      return
+    }
+
+    try {
+      const { data } = await api.get(`/stocks/${stockName}/quote`)
+
+      addStock(data)
+    } catch (error) {
+      console.log(error)
+    }
+
+    setActive(false)
+    setStockName('')
+    setLoading(false)
+  }
 
   return (
     <S.Container active={active}>
@@ -24,21 +51,25 @@ const Modal = () => {
         </div>
 
         <div className="body">
-          <Input
-            name="stock_name"
-            placeholder="Nome do ativo, ex: PETR4.SA"
-            label="Ativo"
-            fieldName="stock_name"
-          />
+          <form name="newStock" onSubmit={handleSubmit}>
+            <Input
+              value={stockName}
+              onChange={(e) => setStockName(e.target.value)}
+              name="stock_name"
+              placeholder="Nome do ativo, ex: PETR4.SA"
+              label="Ativo"
+              autoComplete="off"
+            />
 
-          <Button
-            loading={loading}
-            width="100px"
-            height="40px"
-            onClick={() => setLoading(!loading)}
-          >
-            Adicionar
-          </Button>
+            <Button
+              loading={String(loading)}
+              width="100px"
+              height="40px"
+              type="submit"
+            >
+              Adicionar
+            </Button>
+          </form>
         </div>
       </S.Content>
     </S.Container>

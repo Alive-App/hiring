@@ -1,16 +1,3 @@
-import { useState } from 'react'
+import Home from 'pages/Home'
 
-import Header from 'components/Header'
-import Modal from 'components/Modal'
-
-export default function Home() {
-  return (
-    <>
-      <Header />
-
-      <Modal />
-
-      <h1>Body</h1>
-    </>
-  )
-}
+export default Home

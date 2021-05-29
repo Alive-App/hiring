@@ -17,6 +17,7 @@ export const Container = styled.div<IModalContainer>`
   opacity: 0;
   transition: all 0.2s ease-in-out;
   padding: 0 2rem;
+  z-index: 10;
 
   ${(props) =>
     props.active &&
