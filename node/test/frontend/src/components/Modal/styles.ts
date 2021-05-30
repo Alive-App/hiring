@@ -49,6 +49,12 @@ export const Content = styled.div`
   border-radius: 1rem;
   overflow: hidden;
 
+  small {
+    font-size: 12px;
+    display: block;
+    color: #808a9d;
+  }
+
   .close {
     position: absolute;
     right: 2rem;

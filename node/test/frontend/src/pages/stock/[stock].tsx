@@ -6,6 +6,7 @@ import { isValid, format, parseISO } from 'date-fns'
 import { useStocks, IStockList } from 'contexts/stocks'
 import * as S from './styles'
 import Content from 'components/Content'
+import Container from 'components/Container'
 import Input from 'components/Input'
 import Button from 'components/Button'
 import api from 'services/api'
@@ -70,7 +71,7 @@ const Stock = () => {
 
   return (
     <Content>
-      <S.Container>
+      <Container>
         {loading && !stock ? (
           <div className="header">
             <h1>Carregando...</h1>
@@ -152,7 +153,7 @@ const Stock = () => {
             )}
           </>
         )}
-      </S.Container>
+      </Container>
     </Content>
   )
 }

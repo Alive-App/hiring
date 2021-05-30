@@ -53,6 +53,7 @@ const Modal = () => {
       <S.Content>
         <div className="header">
           <h2>Adicionar novo ativo</h2>
+          <small>Ao adicionar novamente um ativo, ele será atualizado</small>
           <button className="close" onClick={() => setActive(!active)}>
             <FiXCircle />
           </button>

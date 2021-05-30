@@ -19,10 +19,10 @@ const StockCard: React.FC<IStockCardProps> = ({ stock }) => {
         </a>
       </Link>
 
-      <Link href={`/stock/${stock.name}/compare`}>
+      <Link href={`/stock/${stock.name}/gains`}>
         <a
           className="compare"
-          title={`Compare ${stock.name} com outros ativos`}
+          title={`Faça projeções de ganhos com a ${stock.name}`}
         >
           <DiGitCompare />
         </a>
