@@ -41,6 +41,8 @@ const Modal = () => {
       router.push('/')
       setActive(false)
     } catch (error) {
+      console.log(error)
+
       if (error.response) {
         setError(error.response.data.message)
       }

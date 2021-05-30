@@ -7,8 +7,15 @@ interface ModalContextData {
 
 const ModalContext = createContext<ModalContextData>({} as ModalContextData)
 
-export const ModalProvider: React.FC = ({ children }) => {
-  const [active, setActive] = useState(false)
+interface ModalProviderProps {
+  visible?: boolean
+}
+
+export const ModalProvider: React.FC<ModalProviderProps> = ({
+  children,
+  visible
+}) => {
+  const [active, setActive] = useState(visible || false)
 
   return (
     <ModalContext.Provider value={{ active, setActive }}>
