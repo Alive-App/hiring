@@ -1,8 +1,9 @@
-import * as S from './styles'
 import { ImSpinner2 } from 'react-icons/im'
 
+import * as S from './styles'
+
 type IButtonProps = {
-  children?: HTMLCollection | string
+  children?: any
   onClick?(): void
 } & S.IButton &
   React.ButtonHTMLAttributes<HTMLButtonElement>

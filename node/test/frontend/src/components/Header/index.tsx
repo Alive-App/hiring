@@ -7,7 +7,7 @@ import Content from 'components/Content'
 import Button from 'components/Button'
 
 const Header = () => {
-  const { active, setActive } = useModal()
+  const { setActive } = useModal()
 
   return (
     <S.Container>
@@ -20,7 +20,7 @@ const Header = () => {
           </Link>
         </h1>
 
-        <Button onClick={() => setActive(!active)}>
+        <Button onClick={() => setActive(true)}>
           <FiPlus />
           Adicionar ativo
         </Button>

@@ -16,12 +16,17 @@ interface StocksContextData {
   stocks: IStockList[]
   getStocks(): void
   addStock(stock: IStockList): void
+  findStock(stock_name: string): IStockList | undefined
 }
 
 const StocksContext = createContext<StocksContextData>({} as StocksContextData)
 
 export const StocksProvider: React.FC = ({ children }) => {
   const [stocks, setStocks] = useState<IStockList[]>([])
+
+  const findStock = (stock_name: string) => {
+    return stocks.find((s) => s.name === stock_name)
+  }
 
   const getStocks = useCallback(() => {
     const localStocks = localStorage.getItem('stocks')
@@ -53,7 +58,7 @@ export const StocksProvider: React.FC = ({ children }) => {
   }, [])
 
   return (
-    <StocksContext.Provider value={{ stocks, addStock, getStocks }}>
+    <StocksContext.Provider value={{ stocks, addStock, getStocks, findStock }}>
       {children}
     </StocksContext.Provider>
   )

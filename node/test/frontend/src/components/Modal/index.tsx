@@ -1,8 +1,10 @@
 import { FormEvent, useState } from 'react'
+import { useRouter } from 'next/router'
 import { FiXCircle } from 'react-icons/fi'
+import { format, parseISO } from 'date-fns'
 
 import { useModal } from 'contexts/modal'
-import { useStocks } from 'contexts/stocks'
+import { IStockList, useStocks } from 'contexts/stocks'
 import api from 'services/api'
 
 import * as S from './styles'
@@ -15,6 +17,7 @@ const Modal = () => {
 
   const { addStock } = useStocks()
   const { active, setActive } = useModal()
+  const router = useRouter()
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault()
@@ -26,13 +29,18 @@ const Modal = () => {
     }
 
     try {
-      const { data } = await api.get(`/stocks/${stockName}/quote`)
+      const response = await api.get(`/stocks/${stockName}/quote`)
+      const data = {
+        ...response.data,
+        pricedAt: format(parseISO(response.data.pricedAt), 'dd/MM/yyyy')
+      }
 
       addStock(data)
     } catch (error) {
       console.log(error)
     }
 
+    router.push('/')
     setActive(false)
     setStockName('')
     setLoading(false)

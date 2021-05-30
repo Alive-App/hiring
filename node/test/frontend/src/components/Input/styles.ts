@@ -5,6 +5,7 @@ export const Container = styled.div`
     display: block;
     font-size: 14px;
     font-weight: 600;
+    color: #808a9d;
   }
 
   input {
@@ -17,6 +18,7 @@ export const Container = styled.div`
     outline: none;
     transition: border-color 0.2s;
     font-size: 1.6rem;
+    height: 5rem;
 
     &:focus {
       border-color: #3861fb;

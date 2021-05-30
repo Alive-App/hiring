@@ -4,6 +4,9 @@ import Head from 'next/head'
 import AppProvider from 'contexts'
 import GlobalStyles from 'styles/global'
 
+import Header from 'components/Header'
+import Modal from 'components/Modal'
+
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
@@ -17,7 +20,10 @@ function MyApp({ Component, pageProps }: AppProps) {
       </Head>
 
       <GlobalStyles />
+
       <AppProvider>
+        <Header />
+        <Modal />
         <Component {...pageProps} />
       </AppProvider>
     </>

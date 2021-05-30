@@ -2,7 +2,7 @@ import styled, { css, keyframes } from 'styled-components'
 import { darken } from 'polished'
 
 export interface IButton {
-  bg?: string
+  background?: string
   color?: string
   width?: string
   height?: string

@@ -9,7 +9,7 @@ type InputProps = JSX.IntrinsicElements['input'] & IInputProps
 
 export const Input = ({ name, label, ...rest }: InputProps) => {
   return (
-    <S.Container>
+    <S.Container className="form-block">
       {label && <label htmlFor={name}>{label}</label>}
 
       <input id={name} name={name} {...rest} />

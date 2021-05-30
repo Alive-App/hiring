@@ -19,7 +19,7 @@ const StockCard: React.FC<IStockCardProps> = ({ stock }) => {
         </a>
       </Link>
 
-      <Link href={`/stock/${stock.name}`}>
+      <Link href={`/stock/${stock.name}/compare`}>
         <a
           className="compare"
           title={`Compare ${stock.name} com outros ativos`}
