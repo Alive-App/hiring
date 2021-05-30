@@ -42,7 +42,7 @@ class StockController {
       }
     })
 
-    if (!data['Global Quote'] || !data['Global Quote']['01. symbol']) {
+    if (!data || !data['Global Quote'] || !data['Global Quote']['01. symbol']) {
       throw new AppError('Symbol not found', 404)
     }
 
@@ -82,6 +82,7 @@ class StockController {
     })
 
     if (
+      !data ||
       !data['Meta Data'] ||
       !data['Meta Data']['2. Symbol'] ||
       data['Time Series (Daily)'].length === 0
@@ -197,7 +198,7 @@ class StockController {
     try {
       const newPrice = Number(
         data['Time Series (Daily)'][data['Meta Data']['3. Last Refreshed']][
-        '4. close'
+          '4. close'
         ]
       )
 
