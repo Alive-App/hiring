@@ -21,6 +21,9 @@ interface IHistory {
 }
 
 const Stock = () => {
+  const maxDate = format(Date.now(), 'yyyy-MM-dd')
+
+  const [error, setError] = useState('')
   const [loading, setLoading] = useState(true)
   const [history, setHistory] = useState<IHistory[]>([])
   const [stock, setStock] = useState<IStockList>({} as IStockList)
@@ -63,7 +66,9 @@ const Stock = () => {
 
       setHistory(data)
     } catch (error) {
-      console.log(error, error.message)
+      if (error.response) {
+        setError(error.response.data.message)
+      }
     }
 
     setLoading(false)
@@ -97,7 +102,7 @@ const Stock = () => {
                   name="from"
                   type="date"
                   label="Data de início"
-                  max="2021-05-30"
+                  max={maxDate}
                   value={from}
                   onChange={(e) => setFrom(e.target.value)}
                   required
@@ -106,7 +111,7 @@ const Stock = () => {
                   name="to"
                   type="date"
                   label="Data fim"
-                  max="2021-05-30"
+                  max={maxDate}
                   value={to}
                   onChange={(e) => setTo(e.target.value)}
                   required
@@ -116,6 +121,8 @@ const Stock = () => {
                   Filtrar
                 </Button>
               </div>
+
+              {error && <div className="form-error">{error}</div>}
             </S.Form>
 
             {history.length > 0 && (

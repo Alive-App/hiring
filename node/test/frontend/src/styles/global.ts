@@ -23,4 +23,12 @@ export default createGlobalStyle`
     -moz-osx-font-smoothing: grayscale;
     color: #222531;
   }
+
+  .form-error {
+    background: #f9c8cb;
+    padding: 1rem;
+    font-size: 1.4rem;
+    border-radius: 1rem;
+    margin-top: 1rem;
+  }
 `

@@ -106,7 +106,7 @@ const Gains = () => {
                   name="purchasedAt"
                   type="date"
                   label="Data da compra"
-                  max="2021-05-30"
+                  max={format(Date.now(), 'yyyy-MM-dd')}
                   value={purchasedAt}
                   onChange={(e) => setPurchasedAt(e.target.value)}
                   required

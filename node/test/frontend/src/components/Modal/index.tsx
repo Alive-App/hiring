@@ -4,7 +4,7 @@ import { FiXCircle } from 'react-icons/fi'
 import { format, parseISO } from 'date-fns'
 
 import { useModal } from 'contexts/modal'
-import { IStockList, useStocks } from 'contexts/stocks'
+import { useStocks } from 'contexts/stocks'
 import api from 'services/api'
 
 import * as S from './styles'
@@ -12,6 +12,7 @@ import Input from 'components/Input'
 import Button from 'components/Button'
 
 const Modal = () => {
+  const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
   const [stockName, setStockName] = useState('')
 
@@ -22,6 +23,7 @@ const Modal = () => {
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault()
     setLoading(true)
+    setError('')
 
     if (!stockName) {
       setLoading(false)
@@ -36,12 +38,14 @@ const Modal = () => {
       }
 
       addStock(data)
+      router.push('/')
+      setActive(false)
     } catch (error) {
-      console.log(error)
+      if (error.response) {
+        setError(error.response.data.message)
+      }
     }
 
-    router.push('/')
-    setActive(false)
     setStockName('')
     setLoading(false)
   }
@@ -60,6 +64,8 @@ const Modal = () => {
         </div>
 
         <div className="body">
+          {error && <div className="form-error">{error}</div>}
+
           <form name="newStock" onSubmit={handleSubmit}>
             <Input
               value={stockName}

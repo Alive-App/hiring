@@ -80,6 +80,11 @@ export const Content = styled.div`
   }
 
   .body {
+    .form-error {
+      margin-top: 0;
+      margin-bottom: 1.5rem;
+    }
+
     input {
       text-transform: uppercase;
 

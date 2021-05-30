@@ -21,14 +21,6 @@ export const Form = styled.form`
     margin-top: 2rem;
   }
 
-  .form-error {
-    background: #f9c8cb;
-    padding: 1rem;
-    font-size: 1.4rem;
-    border-radius: 1rem;
-    margin-top: 1rem;
-  }
-
   button {
     align-self: flex-end;
     font-size: 1.6rem;
