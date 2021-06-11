@@ -8,8 +8,8 @@ export class ServiceGetLastStockUsecase implements GetLastStockUsecase {
   ) {}
 
   async getLast (stockName: string): Promise<LastStockModel> {
-    await this.getLastStockService.getLastStock(stockName)
+    const lastStockModel = await this.getLastStockService.getLastStock(stockName)
 
-    return null as any
+    return lastStockModel
   }
 }
