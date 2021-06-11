@@ -1,6 +1,6 @@
 import { GetLastStockUseCase, LastStockData } from 'domain/usecases/get-last-stock-usecase'
 import { ParamNotProvidedError } from 'presentation/errors/param-not-provided-error'
-import { badRequest } from 'presentation/helpers/http'
+import { badRequest, serverError } from 'presentation/helpers/http'
 import { HttpRequest } from 'presentation/protocols/http-request'
 import { GetLastStockController } from './get-last-stock-controller'
 
@@ -48,5 +48,13 @@ describe('GetLastStockController', () => {
     const request = makeFakeRequest()
     await sut.handle(request)
     expect(getLastSpy).toHaveBeenLastCalledWith(request.params.stockName)
+  })
+
+  test('should return 500 if GetLastStockUsecase throws', async () => {
+    const { sut, getLastStockUsecaseStub } = makeSut()
+    jest.spyOn(getLastStockUsecaseStub, 'getLast').mockReturnValueOnce(Promise.reject(new Error()))
+    const request = makeFakeRequest()
+    const response = await sut.handle(request)
+    expect(response).toEqual(serverError())
   })
 })
