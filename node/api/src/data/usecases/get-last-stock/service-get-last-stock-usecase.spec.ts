@@ -41,4 +41,10 @@ describe('ServiceGetLastStockUsecase', () => {
     const promise = sut.getLast(fakeStockName)
     await expect(promise).rejects.toThrow()
   })
+
+  test('should return LastStockModel on success', async () => {
+    const { sut } = makeSut()
+    const lastStockModel = await sut.getLast(fakeStockName)
+    expect(lastStockModel).toEqual(makeFakeLastStockModel())
+  })
 })
