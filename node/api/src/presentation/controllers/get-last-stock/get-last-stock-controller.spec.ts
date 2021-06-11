@@ -1,3 +1,4 @@
+import { GetLastStockUseCase, LastStockData } from 'domain/usecases/get-last-stock-usecase'
 import { ParamNotProvidedError } from 'presentation/errors/param-not-provided-error'
 import { badRequest } from 'presentation/helpers/http'
 import { HttpRequest } from 'presentation/protocols/http-request'
@@ -9,10 +10,27 @@ const makeFakeRequest = (): HttpRequest => ({
   }
 })
 
-const makeSut = () => {
-  const sut = new GetLastStockController()
+const makeFakeLastStockData = (): LastStockData => ({
+  name: 'any_name',
+  lastPrice: 10,
+  pricedAt: 'any_priced_at'
+})
 
-  return { sut }
+const makeGetLastStockUsecaseStub = () => {
+  class GetLastStockUsecaseStub implements GetLastStockUseCase {
+    async getLast (stockName: string): Promise<LastStockData> {
+      return makeFakeLastStockData()
+    }
+  }
+
+  return new GetLastStockUsecaseStub()
+}
+
+const makeSut = () => {
+  const getLastStockUsecaseStub = makeGetLastStockUsecaseStub()
+  const sut = new GetLastStockController(getLastStockUsecaseStub)
+
+  return { sut, getLastStockUsecaseStub }
 }
 
 describe('GetLastStockController', () => {
@@ -22,5 +40,13 @@ describe('GetLastStockController', () => {
     request.params.stockName = ''
     const response = await sut.handle(request)
     expect(response).toEqual(badRequest(new ParamNotProvidedError('stockName')))
+  })
+
+  test('should call GetLastStockUsecase with correct value', async () => {
+    const { sut, getLastStockUsecaseStub } = makeSut()
+    const getLastSpy = jest.spyOn(getLastStockUsecaseStub, 'getLast')
+    const request = makeFakeRequest()
+    await sut.handle(request)
+    expect(getLastSpy).toHaveBeenLastCalledWith(request.params.stockName)
   })
 })
