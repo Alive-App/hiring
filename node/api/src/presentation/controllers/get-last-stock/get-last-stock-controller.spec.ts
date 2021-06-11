@@ -1,4 +1,5 @@
-import { GetLastStockUseCase, LastStockData } from 'domain/usecases/get-last-stock-usecase'
+import { LastStockModel } from 'domain/models/last-stock-model'
+import { GetLastStockUsecase } from 'domain/usecases/get-last-stock-usecase'
 import { ParamNotProvidedError } from 'presentation/errors/param-not-provided-error'
 import { badRequest, ok, serverError } from 'presentation/helpers/http'
 import { HttpRequest } from 'presentation/protocols/http-request'
@@ -10,15 +11,15 @@ const makeFakeRequest = (): HttpRequest => ({
   }
 })
 
-const makeFakeLastStockData = (): LastStockData => ({
+const makeFakeLastStockData = (): LastStockModel => ({
   name: 'any_name',
   lastPrice: 10,
   pricedAt: 'any_priced_at'
 })
 
 const makeGetLastStockUsecaseStub = () => {
-  class GetLastStockUsecaseStub implements GetLastStockUseCase {
-    async getLast (stockName: string): Promise<LastStockData> {
+  class GetLastStockUsecaseStub implements GetLastStockUsecase {
+    async getLast (stockName: string): Promise<LastStockModel> {
       return makeFakeLastStockData()
     }
   }

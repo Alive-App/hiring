@@ -1,4 +1,4 @@
-import { GetLastStockUseCase } from 'domain/usecases/get-last-stock-usecase'
+import { GetLastStockUsecase } from 'domain/usecases/get-last-stock-usecase'
 import { ParamNotProvidedError } from 'presentation/errors/param-not-provided-error'
 import { badRequest, ok, serverError } from 'presentation/helpers/http'
 import { Controller } from 'presentation/protocols/controller'
@@ -7,7 +7,7 @@ import { HttpResponse } from 'presentation/protocols/http-response'
 
 export class GetLastStockController implements Controller {
   constructor (
-    private readonly getLastStockUsecase: GetLastStockUseCase
+    private readonly getLastStockUsecase: GetLastStockUsecase
   ) { }
 
   async handle (httpRequest: HttpRequest): Promise<HttpResponse> {
