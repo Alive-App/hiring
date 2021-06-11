@@ -1,9 +1,5 @@
-export interface LastStockData {
-  'name': string,
-  'lastPrice': number,
-  'pricedAt': string // data e hora no formato ISO 8601, UTC
-}
+import { LastStockModel } from 'domain/models/last-stock-model'
 
 export interface GetLastStockUseCase {
-  getLast(stockName: string): Promise<LastStockData>
+  getLast(stockName: string): Promise<LastStockModel>
 }
