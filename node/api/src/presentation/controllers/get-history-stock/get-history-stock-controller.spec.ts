@@ -6,6 +6,9 @@ import { GetHistoryStockController } from './get-history-stock-controller'
 const makeFakeRequest = (): HttpRequest => ({
   params: {
     stockName: 'any_stock_name'
+  },
+  query: {
+    fromDate: 'any_from_date'
   }
 })
 
@@ -22,5 +25,13 @@ describe('GetHistoryStockController', () => {
     request.params.stockName = ''
     const response = await sut.handle(request)
     expect(response).toEqual(badRequest(new ParamNotProvidedError('stockName')))
+  })
+
+  test('should return 400 if fromDate not provided', async () => {
+    const { sut } = makeSut()
+    const request = makeFakeRequest()
+    request.query.fromDate = ''
+    const response = await sut.handle(request)
+    expect(response).toEqual(badRequest(new ParamNotProvidedError('fromDate')))
   })
 })
