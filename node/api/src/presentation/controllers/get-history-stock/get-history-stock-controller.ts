@@ -11,22 +11,24 @@ export class GetHistoryStockController implements Controller {
   constructor (
     private readonly isoDateValidation: IsoDateValidation,
     private readonly getHistoryStockUsecase: GetHistoryStockUsecase
-  ) {}
+  ) { }
 
   async handle (httpRequest: HttpRequest): Promise<HttpResponse> {
-    if (!httpRequest.query.fromDate) {
+    const { stockName } = httpRequest.params
+    const { fromDate, toDate } = httpRequest.query
+    if (!fromDate) {
       return badRequest(new ParamNotProvidedError('fromDate'))
     }
-    if (!this.isoDateValidation.isIsoDateValid(httpRequest.query.fromDate)) {
+    if (!this.isoDateValidation.isIsoDateValid(fromDate)) {
       return badRequest(new ParamInvalidError('fromDate'))
     }
-    if (!httpRequest.query.toDate) {
+    if (!toDate) {
       return badRequest(new ParamNotProvidedError('toDate'))
     }
-    if (!this.isoDateValidation.isIsoDateValid(httpRequest.query.toDate)) {
+    if (!this.isoDateValidation.isIsoDateValid(toDate)) {
       return badRequest(new ParamInvalidError('toDate'))
     }
-    await this.getHistoryStockUsecase.getHistory(httpRequest.params.stockName, httpRequest.query.fromDate, httpRequest.query.toDate)
+    await this.getHistoryStockUsecase.getHistory(stockName, fromDate, toDate)
     return badRequest(new ParamNotProvidedError('stockName'))
   }
 }
