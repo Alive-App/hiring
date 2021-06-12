@@ -32,4 +32,11 @@ describe('ServiceCompareStocksUsecase', () => {
     await sut.compare(['IBM'])
     expect(getLastStockSpy).toHaveBeenLastCalledWith('IBM')
   })
+
+  test('should throw if getLastStockService throws', async () => {
+    const { sut, getLastStockServiceStub } = makeSut()
+    jest.spyOn(getLastStockServiceStub, 'getLastStock').mockRejectedValueOnce(new Error())
+    const promise = sut.compare(['IBM'])
+    await expect(promise).rejects.toThrow()
+  })
 })
