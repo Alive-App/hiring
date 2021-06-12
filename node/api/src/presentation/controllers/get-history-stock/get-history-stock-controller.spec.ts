@@ -8,7 +8,8 @@ const makeFakeRequest = (): HttpRequest => ({
     stockName: 'any_stock_name'
   },
   query: {
-    fromDate: 'any_from_date'
+    fromDate: 'any_from_date',
+    toDate: 'any_to_date'
   }
 })
 
@@ -33,5 +34,13 @@ describe('GetHistoryStockController', () => {
     request.query.fromDate = ''
     const response = await sut.handle(request)
     expect(response).toEqual(badRequest(new ParamNotProvidedError('fromDate')))
+  })
+
+  test('should return 400 if toDate not provided', async () => {
+    const { sut } = makeSut()
+    const request = makeFakeRequest()
+    request.query.toDate = ''
+    const response = await sut.handle(request)
+    expect(response).toEqual(badRequest(new ParamNotProvidedError('toDate')))
   })
 })
