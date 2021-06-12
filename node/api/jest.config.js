@@ -3,5 +3,6 @@ module.exports = {
   coverageDirectory: 'coverage',
   coverageProvider: 'v8',
   preset: 'ts-jest',
-  testEnvironment: 'node'
+  testEnvironment: 'node',
+  cache: false
 }

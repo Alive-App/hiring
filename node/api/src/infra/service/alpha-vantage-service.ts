@@ -1,13 +1,15 @@
 import axios, { AxiosInstance } from 'axios'
 import { GetLastStockService } from 'data/protocols/get-last-stock-service'
+import { GetHistoryStockService } from 'data/protocols/get-history-stock-service'
 import { LastStockModel } from 'domain/models/last-stock-model'
 import { alphaVantageDateToIsoDate } from 'infra/helpers/date-helpers'
+import { HistoryStockModel, HistoryStockPricingModel } from 'domain/models/history-stock-model'
 
 export type IntervalType = '1min' | '5min' | '15min' | '30min' | '60min'
 
 export type OutputsizeType = 'compact' | 'full'
 
-export type TimeSeriesType = {
+export type TimeSeriesIntradayItemType = {
   [dateTime: string]: {
     '1. open': string
     '2. high': string
@@ -26,14 +28,38 @@ export type TimeSeriesIntradayType = {
     '5. Output Size': string
     '6. Time Zone': string
   },
-  'Time Series (1min)'?: TimeSeriesType
-  'Time Series (5min)'?: TimeSeriesType
-  'Time Series (15min)'?: TimeSeriesType
-  'Time Series (30min)'?: TimeSeriesType
-  'Time Series (60min)'?: TimeSeriesType
+  'Time Series (1min)'?: TimeSeriesIntradayItemType
+  'Time Series (5min)'?: TimeSeriesIntradayItemType
+  'Time Series (15min)'?: TimeSeriesIntradayItemType
+  'Time Series (30min)'?: TimeSeriesIntradayItemType
+  'Time Series (60min)'?: TimeSeriesIntradayItemType
 }
 
-export class AlphaVantageService implements GetLastStockService {
+export type TimeSeriesDailyItemType = {
+  [dateTime: string]: {
+    '1. open': string
+    '2. high': string
+    '3. low': string
+    '4. close': string
+    '5. adjusted close': string
+    '6. volume': string
+    '7. dividend amount': string
+    '8. split coefficient': string
+  }
+}
+
+export type TimeSeriesDailyType = {
+  'Meta Data': {
+    '1. Information': string
+    '2. Symbol': string
+    '3. Last Refreshed': string
+    '4. Output Size': string
+    '5. Time Zone': string
+  },
+  'Time Series (Daily)': TimeSeriesDailyItemType
+}
+
+export class AlphaVantageService implements GetLastStockService, GetHistoryStockService {
   private api: AxiosInstance
 
   constructor (
@@ -62,6 +88,22 @@ export class AlphaVantageService implements GetLastStockService {
     return data
   }
 
+  private async timeSeriesDaily (
+    symbol: string,
+    outputsize: OutputsizeType = 'full'
+  ) {
+    const { data } = await this.api.get<TimeSeriesDailyType>('', {
+      params: {
+        function: 'TIME_SERIES_DAILY_ADJUSTED',
+        apikey: this.token,
+        symbol,
+        outputsize
+      }
+    })
+
+    return data
+  }
+
   async getLastStock (stockName: string): Promise<LastStockModel> {
     const data = await this.timeSeriesIntraday(stockName)
 
@@ -82,5 +124,29 @@ export class AlphaVantageService implements GetLastStockService {
       name: stockName,
       pricedAt: alphaVantageDateToIsoDate(lastRefreshed)
     }
+  }
+
+  async getHistoryStock (stockName: string, fromDate: Date, toDate: Date): Promise<HistoryStockModel> {
+    const data = await this.timeSeriesDaily(stockName)
+    const prices: HistoryStockPricingModel[] = []
+
+    const keys = Object.keys(data['Time Series (Daily)'])
+
+    for (const key of keys) {
+      const stockDate = new Date(key)
+
+      if (stockDate >= fromDate || stockDate <= toDate) {
+        const stock = data['Time Series (Daily)'][key]
+        prices.push({
+          opening: Number(stock['1. open']),
+          closing: Number(stock['4. close']),
+          high: Number(stock['2. high']),
+          low: Number(stock['3. low']),
+          pricedAt: alphaVantageDateToIsoDate(key)
+        })
+      }
+    }
+
+    return { name: stockName, prices }
   }
 }
