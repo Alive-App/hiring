@@ -10,6 +10,6 @@ export const expressControllerAdapter = (controller: Controller) => {
 
     const httpResponse = await controller.handle(httpRequest)
 
-    res.json(httpResponse.statusCode).json(httpResponse.body)
+    res.status(httpResponse.statusCode).json(httpResponse.body)
   }
 }
