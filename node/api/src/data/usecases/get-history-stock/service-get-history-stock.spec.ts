@@ -45,4 +45,11 @@ describe('ServiceGetHistoryStockUsecase', () => {
     await sut.getHistory(stockName, fromDate, toDate)
     expect(getHistoryStockSpy).toHaveBeenLastCalledWith(stockName, fromDate, toDate)
   })
+
+  test('should throw if getHistoryStockService throws', async () => {
+    const { sut, getHistoryStockServiceStub } = makeSut()
+    jest.spyOn(getHistoryStockServiceStub, 'getHistoryStock').mockRejectedValueOnce(new Error())
+    const promise = sut.getHistory(stockName, fromDate, toDate)
+    await expect(promise).rejects.toThrow()
+  })
 })
