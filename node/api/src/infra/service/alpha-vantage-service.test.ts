@@ -10,7 +10,7 @@ const makeSut = () => {
 }
 
 describe('AlphaVantageService', () => {
-  test('should return an LastStockModel', async () => {
+  test('should return a LastStockModel', async () => {
     const { sut } = makeSut()
 
     const lastStockModel = await sut.getLastStock('IBM')
@@ -21,7 +21,7 @@ describe('AlphaVantageService', () => {
     expect(lastStockModel.pricedAt).toBeTruthy()
   })
 
-  test('should return an HistoryStockModel', async () => {
+  test('should return a HistoryStockModel', async () => {
     const { sut } = makeSut()
 
     const historyStockModel = await sut.getHistoryStock('IBM', new Date(2020, 10, 1), new Date(2020, 11, 1))
