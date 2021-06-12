@@ -125,4 +125,12 @@ describe('GetHistoryStockController', () => {
     await sut.handle(request)
     expect(getHistorySpy).toHaveBeenLastCalledWith(request.params.stockName, request.query.fromDate, request.query.toDate)
   })
+
+  test('should return 500 if getHistoryStockUsecase throws', async () => {
+    const { sut, getHistoryStockUsecaseStub } = makeSut()
+    jest.spyOn(getHistoryStockUsecaseStub, 'getHistory').mockRejectedValueOnce(new Error())
+    const request = makeFakeRequest()
+    const response = await sut.handle(request)
+    expect(response).toEqual(serverError())
+  })
 })
