@@ -6,6 +6,9 @@ import { HttpResponse } from 'presentation/protocols/http-response'
 
 export class GetHistoryStockController implements Controller {
   async handle (httpRequest: HttpRequest): Promise<HttpResponse> {
+    if (!httpRequest.query.fromDate) {
+      return badRequest(new ParamNotProvidedError('fromDate'))
+    }
     return badRequest(new ParamNotProvidedError('stockName'))
   }
 }
