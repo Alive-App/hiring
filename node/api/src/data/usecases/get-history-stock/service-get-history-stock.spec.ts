@@ -52,4 +52,10 @@ describe('ServiceGetHistoryStockUsecase', () => {
     const promise = sut.getHistory(stockName, fromDate, toDate)
     await expect(promise).rejects.toThrow()
   })
+
+  test('should return a historyStock on susscess', async () => {
+    const { sut } = makeSut()
+    const historyStock = await sut.getHistory(stockName, fromDate, toDate)
+    expect(historyStock).toEqual(makeFakeHistoryStockModel())
+  })
 })
