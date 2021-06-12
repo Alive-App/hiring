@@ -1,3 +1,6 @@
+import { CompareStockModel } from 'domain/models/compare-stock-model'
+import { LastStockModel } from 'domain/models/last-stock-model'
+import { CompareStocksUsecase } from 'domain/usecases/compare-stocks-usecase'
 import { ParamNotProvidedError } from 'presentation/errors/param-not-provided-error'
 import { badRequest } from 'presentation/helpers/http'
 import { HttpRequest } from 'presentation/protocols/http-request'
@@ -11,10 +14,32 @@ const makeFakeRequest = (): HttpRequest => ({
     stocks: ['IBM']
   }
 })
-const makeSut = () => {
-  const sut = new CompareStocksController()
 
-  return { sut }
+const makeFakeLastStockData = (): LastStockModel => ({
+  name: 'any_name',
+  lastPrice: 10,
+  pricedAt: 'any_priced_at'
+})
+
+const makeCompareStocksUsecaseStub = () => {
+  class CompareStocksUsecaseStub implements CompareStocksUsecase {
+    async compare (stocks: string[]): Promise<CompareStockModel> {
+      return {
+        lastPrices: [
+          makeFakeLastStockData()
+        ]
+      }
+    }
+  }
+
+  return new CompareStocksUsecaseStub()
+}
+
+const makeSut = () => {
+  const compareStocksUsecaseStub = makeCompareStocksUsecaseStub()
+  const sut = new CompareStocksController(compareStocksUsecaseStub)
+
+  return { sut, compareStocksUsecaseStub }
 }
 
 describe('CompareStocksController', () => {
@@ -26,11 +51,11 @@ describe('CompareStocksController', () => {
     expect(response).toEqual(badRequest(new ParamNotProvidedError('stockName')))
   })
 
-  test('should return 400 if stocks not provided', async () => {
-    const { sut } = makeSut()
+  test('should call compareStocksUsecase with correct values', async () => {
+    const { sut, compareStocksUsecaseStub } = makeSut()
+    const compareSpy = jest.spyOn(compareStocksUsecaseStub, 'compare')
     const request = makeFakeRequest()
-    request.body.stocks = []
-    const response = await sut.handle(request)
-    expect(response).toEqual(badRequest(new ParamNotProvidedError('stocks')))
+    await sut.handle(request)
+    expect(compareSpy).toHaveBeenLastCalledWith(request.body.stocks)
   })
 })
