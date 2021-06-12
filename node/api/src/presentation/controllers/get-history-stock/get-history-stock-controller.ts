@@ -21,6 +21,9 @@ export class GetHistoryStockController implements Controller {
     if (!httpRequest.query.toDate) {
       return badRequest(new ParamNotProvidedError('toDate'))
     }
+    if (!this.isoDateValidation.isIsoDateValid(httpRequest.query.toDate)) {
+      return badRequest(new ParamInvalidError('toDate'))
+    }
     return badRequest(new ParamNotProvidedError('stockName'))
   }
 }
