@@ -1,4 +1,4 @@
-import { GetLastStockService } from 'data/protocols/services/get-last-stock-service'
+import { GetLastStockService } from 'data/protocols/get-last-stock-service'
 import { LastStockModel } from 'domain/models/last-stock-model'
 import { GetLastStockUsecase } from 'domain/usecases/get-last-stock-usecase'
 
