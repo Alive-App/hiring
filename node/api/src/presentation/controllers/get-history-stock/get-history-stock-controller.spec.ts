@@ -1,4 +1,4 @@
-import { IsoDateValidation } from 'data/protocols/iso-date-validation'
+import { IsoDateValidation } from 'domain/validations/iso-date-validation'
 import { HistoryStockModel, HistoryStockPricingModel } from 'domain/models/history-stock-model'
 import { GetHistoryStockUsecase } from 'domain/usecases/get-history-stock-usecase'
 import { ParamInvalidError } from 'presentation/errors/param-invalid-error'
