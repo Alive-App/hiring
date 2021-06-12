@@ -135,7 +135,7 @@ export class AlphaVantageService implements GetLastStockService, GetHistoryStock
     for (const key of keys) {
       const stockDate = new Date(key)
 
-      if (stockDate >= fromDate || stockDate <= toDate) {
+      if (stockDate >= fromDate && stockDate <= toDate) {
         const stock = data['Time Series (Daily)'][key]
         prices.push({
           opening: Number(stock['1. open']),

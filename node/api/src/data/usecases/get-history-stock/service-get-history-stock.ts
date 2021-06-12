@@ -8,10 +8,7 @@ export class ServiceGetHistoryStockUsecase implements GetHistoryStockUsecase {
   ) {}
 
   async getHistory (stockName: string, fromDate: Date, toDate: Date): Promise<HistoryStockModel> {
-    await this.getHistoryStockService.getHistoryStock(stockName, fromDate, toDate)
-    return {
-      name: stockName,
-      prices: []
-    }
+    const historyStock = await this.getHistoryStockService.getHistoryStock(stockName, fromDate, toDate)
+    return historyStock
   }
 }

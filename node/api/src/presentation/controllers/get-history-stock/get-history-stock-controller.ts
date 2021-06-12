@@ -16,25 +16,28 @@ export class GetHistoryStockController implements Controller {
   async handle (httpRequest: HttpRequest): Promise<HttpResponse> {
     try {
       const { stockName } = httpRequest.params
-      const { fromDate, toDate } = httpRequest.query
+      const { from, to } = httpRequest.query
       if (!stockName) {
         return badRequest(new ParamNotProvidedError('stockName'))
       }
-      if (!fromDate) {
-        return badRequest(new ParamNotProvidedError('fromDate'))
+      if (!from) {
+        return badRequest(new ParamNotProvidedError('from'))
       }
-      if (!this.isoDateValidation.isIsoDateValid(fromDate)) {
-        return badRequest(new ParamInvalidError('fromDate'))
+      if (!this.isoDateValidation.isIsoDateValid(from)) {
+        return badRequest(new ParamInvalidError('from'))
       }
-      if (!toDate) {
-        return badRequest(new ParamNotProvidedError('toDate'))
+      if (!to) {
+        return badRequest(new ParamNotProvidedError('to'))
       }
-      if (!this.isoDateValidation.isIsoDateValid(toDate)) {
-        return badRequest(new ParamInvalidError('toDate'))
+      if (!this.isoDateValidation.isIsoDateValid(to)) {
+        return badRequest(new ParamInvalidError('to'))
       }
+      const fromDate = new Date(from)
+      const toDate = new Date(to)
       const historyStock = await this.getHistoryStockUsecase.getHistory(stockName, fromDate, toDate)
       return ok(historyStock)
     } catch (err) {
+      console.log(err)
       return serverError()
     }
   }
