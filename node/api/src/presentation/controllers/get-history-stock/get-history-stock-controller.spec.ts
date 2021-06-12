@@ -67,10 +67,18 @@ describe('GetHistoryStockController', () => {
   test('should return 400 if toDate invalid', async () => {
     const { sut, isoDateValidationStub } = makeSut()
     jest.spyOn(isoDateValidationStub, 'isIsoDateValid')
-      .mockImplementation(() => true)
       .mockImplementationOnce(() => true)
       .mockImplementationOnce(() => false)
     const response = await sut.handle(makeFakeRequest())
     expect(response).toEqual(badRequest(new ParamInvalidError('toDate')))
+  })
+
+  test('should call isoDateValidation with correct values', async () => {
+    const { sut, isoDateValidationStub } = makeSut()
+    const isIsoDateValidSpy = jest.spyOn(isoDateValidationStub, 'isIsoDateValid')
+    const request = makeFakeRequest()
+    await sut.handle(request)
+    expect(isIsoDateValidSpy).toHaveBeenCalledTimes(2)
+    expect(isIsoDateValidSpy).toHaveBeenLastCalledWith(request.query.toDate)
   })
 })
