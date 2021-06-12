@@ -19,16 +19,16 @@ const makeGetLastStockServiceStub = () => {
 }
 
 const makeSut = () => {
-  const getLastStockService = makeGetLastStockServiceStub()
-  const sut = new ServiceCompareStocksUsecase(getLastStockService)
+  const getLastStockServiceStub = makeGetLastStockServiceStub()
+  const sut = new ServiceCompareStocksUsecase(getLastStockServiceStub)
 
-  return { sut, getLastStockService }
+  return { sut, getLastStockServiceStub }
 }
 
 describe('ServiceCompareStocksUsecase', () => {
   test('should call getLastStockService with correct value', async () => {
-    const { sut, getLastStockService } = makeSut()
-    const getLastStockSpy = jest.spyOn(getLastStockService, 'getLastStock')
+    const { sut, getLastStockServiceStub } = makeSut()
+    const getLastStockSpy = jest.spyOn(getLastStockServiceStub, 'getLastStock')
     await sut.compare(['IBM'])
     expect(getLastStockSpy).toHaveBeenLastCalledWith('IBM')
   })
