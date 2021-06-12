@@ -1,6 +1,7 @@
 import axios, { AxiosInstance } from 'axios'
 import { GetLastStockService } from 'data/protocols/get-last-stock-service'
 import { LastStockModel } from 'domain/models/last-stock-model'
+import { alphaVantageDateToIsoDate } from 'infra/helpers/date-helpers'
 
 export type IntervalType = '1min' | '5min' | '15min' | '30min' | '60min'
 
@@ -79,7 +80,7 @@ export class AlphaVantageService implements GetLastStockService {
     return {
       lastPrice: Number(lastTimeSeries['4. close']),
       name: stockName,
-      pricedAt: lastRefreshed
+      pricedAt: alphaVantageDateToIsoDate(lastRefreshed)
     }
   }
 }
