@@ -1,3 +1,5 @@
+import { IsoDateValidation } from 'data/protocols/iso-date-validation'
+import { ParamInvalidError } from 'presentation/errors/param-invalid-error'
 import { ParamNotProvidedError } from 'presentation/errors/param-not-provided-error'
 import { badRequest } from 'presentation/helpers/http'
 import { HttpRequest } from 'presentation/protocols/http-request'
@@ -13,10 +15,21 @@ const makeFakeRequest = (): HttpRequest => ({
   }
 })
 
-const makeSut = () => {
-  const sut = new GetHistoryStockController()
+const makeIsoDateValidationStub = () => {
+  class IsoDateValidationStub implements IsoDateValidation {
+    isIsoDateValid (isoDate: string): boolean {
+      return true
+    }
+  }
 
-  return { sut }
+  return new IsoDateValidationStub()
+}
+
+const makeSut = () => {
+  const isoDateValidationStub = makeIsoDateValidationStub()
+  const sut = new GetHistoryStockController(isoDateValidationStub)
+
+  return { sut, isoDateValidationStub }
 }
 
 describe('GetHistoryStockController', () => {
@@ -42,5 +55,12 @@ describe('GetHistoryStockController', () => {
     request.query.toDate = ''
     const response = await sut.handle(request)
     expect(response).toEqual(badRequest(new ParamNotProvidedError('toDate')))
+  })
+
+  test('should return 400 if fromDate invalid', async () => {
+    const { sut, isoDateValidationStub } = makeSut()
+    jest.spyOn(isoDateValidationStub, 'isIsoDateValid').mockReturnValueOnce(false)
+    const response = await sut.handle(makeFakeRequest())
+    expect(response).toEqual(badRequest(new ParamInvalidError('fromDate')))
   })
 })
