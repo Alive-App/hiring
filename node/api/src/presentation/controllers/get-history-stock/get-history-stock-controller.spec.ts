@@ -3,7 +3,7 @@ import { HistoryStockModel, HistoryStockPricingModel } from 'domain/models/histo
 import { GetHistoryStockUsecase } from 'domain/usecases/get-history-stock-usecase'
 import { ParamInvalidError } from 'presentation/errors/param-invalid-error'
 import { ParamNotProvidedError } from 'presentation/errors/param-not-provided-error'
-import { badRequest } from 'presentation/helpers/http'
+import { badRequest, serverError } from 'presentation/helpers/http'
 import { HttpRequest } from 'presentation/protocols/http-request'
 import { GetHistoryStockController } from './get-history-stock-controller'
 
@@ -106,6 +106,16 @@ describe('GetHistoryStockController', () => {
     await sut.handle(request)
     expect(isIsoDateValidSpy).toHaveBeenCalledTimes(2)
     expect(isIsoDateValidSpy).toHaveBeenLastCalledWith(request.query.toDate)
+  })
+
+  test('should return 500 if isoDateValidation throws', async () => {
+    const { sut, isoDateValidationStub } = makeSut()
+    jest.spyOn(isoDateValidationStub, 'isIsoDateValid').mockImplementationOnce(() => {
+      throw new Error('')
+    })
+    const request = makeFakeRequest()
+    const response = await sut.handle(request)
+    expect(response).toEqual(serverError())
   })
 
   test('should call getHistoryStockUsecase with correct values', async () => {
