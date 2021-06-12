@@ -13,4 +13,11 @@ describe('IsoDateValidationImpl', () => {
     const isValid = sut.isIsoDateValid(validIsoDate)
     expect(isValid).toBe(true)
   })
+
+  test('should return false on fails', () => {
+    const { sut } = makeSut()
+    const invalidIsoDate = 'invalid_iso_date'
+    const isValid = sut.isIsoDateValid(invalidIsoDate)
+    expect(isValid).toBe(false)
+  })
 })
