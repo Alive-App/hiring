@@ -2,7 +2,7 @@ import { CompareStockModel } from 'domain/models/compare-stock-model'
 import { LastStockModel } from 'domain/models/last-stock-model'
 import { CompareStocksUsecase } from 'domain/usecases/compare-stocks-usecase'
 import { ParamNotProvidedError } from 'presentation/errors/param-not-provided-error'
-import { badRequest } from 'presentation/helpers/http'
+import { badRequest, serverError } from 'presentation/helpers/http'
 import { HttpRequest } from 'presentation/protocols/http-request'
 import { CompareStocksController } from './compare-stocks-controller'
 
@@ -57,5 +57,13 @@ describe('CompareStocksController', () => {
     const request = makeFakeRequest()
     await sut.handle(request)
     expect(compareSpy).toHaveBeenLastCalledWith(request.body.stocks)
+  })
+
+  test('should return 500 if compareStocksUsecase throws', async () => {
+    const { sut, compareStocksUsecaseStub } = makeSut()
+    jest.spyOn(compareStocksUsecaseStub, 'compare').mockRejectedValueOnce(new Error())
+    const request = makeFakeRequest()
+    const response = await sut.handle(request)
+    expect(response).toEqual(serverError())
   })
 })
