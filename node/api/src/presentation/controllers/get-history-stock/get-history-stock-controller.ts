@@ -2,7 +2,7 @@ import { IsoDateValidation } from 'data/protocols/iso-date-validation'
 import { GetHistoryStockUsecase } from 'domain/usecases/get-history-stock-usecase'
 import { ParamInvalidError } from 'presentation/errors/param-invalid-error'
 import { ParamNotProvidedError } from 'presentation/errors/param-not-provided-error'
-import { badRequest, serverError } from 'presentation/helpers/http'
+import { badRequest, ok, serverError } from 'presentation/helpers/http'
 import { Controller } from 'presentation/protocols/controller'
 import { HttpRequest } from 'presentation/protocols/http-request'
 import { HttpResponse } from 'presentation/protocols/http-response'
@@ -17,6 +17,9 @@ export class GetHistoryStockController implements Controller {
     try {
       const { stockName } = httpRequest.params
       const { fromDate, toDate } = httpRequest.query
+      if (!stockName) {
+        return badRequest(new ParamNotProvidedError('stockName'))
+      }
       if (!fromDate) {
         return badRequest(new ParamNotProvidedError('fromDate'))
       }
@@ -29,8 +32,8 @@ export class GetHistoryStockController implements Controller {
       if (!this.isoDateValidation.isIsoDateValid(toDate)) {
         return badRequest(new ParamInvalidError('toDate'))
       }
-      await this.getHistoryStockUsecase.getHistory(stockName, fromDate, toDate)
-      return badRequest(new ParamNotProvidedError('stockName'))
+      const historyStock = await this.getHistoryStockUsecase.getHistory(stockName, fromDate, toDate)
+      return ok(historyStock)
     } catch (err) {
       return serverError()
     }

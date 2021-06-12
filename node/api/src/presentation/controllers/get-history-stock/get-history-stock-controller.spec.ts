@@ -3,7 +3,7 @@ import { HistoryStockModel, HistoryStockPricingModel } from 'domain/models/histo
 import { GetHistoryStockUsecase } from 'domain/usecases/get-history-stock-usecase'
 import { ParamInvalidError } from 'presentation/errors/param-invalid-error'
 import { ParamNotProvidedError } from 'presentation/errors/param-not-provided-error'
-import { badRequest, serverError } from 'presentation/helpers/http'
+import { badRequest, ok, serverError } from 'presentation/helpers/http'
 import { HttpRequest } from 'presentation/protocols/http-request'
 import { GetHistoryStockController } from './get-history-stock-controller'
 
@@ -132,5 +132,11 @@ describe('GetHistoryStockController', () => {
     const request = makeFakeRequest()
     const response = await sut.handle(request)
     expect(response).toEqual(serverError())
+  })
+
+  test('should return 200 on success', async () => {
+    const { sut } = makeSut()
+    const response = await sut.handle(makeFakeRequest())
+    expect(response).toEqual(ok(makeFakeHistoryStockModel()))
   })
 })
