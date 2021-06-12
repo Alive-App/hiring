@@ -4,6 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
+    "dev": "cross-env NODE_PATH=src ts-node ./src/main/server.ts",
     "test": "cross-env NODE_PATH=src jest --passWithNoTests --silent --noStackTrace --runInBand",
     "test:verbose": "cross-env NODE_PATH=src jest --passWithNoTests  --runInBand",
     "test:unit": "npm test -- --watch -c jest-unit.config.js",
