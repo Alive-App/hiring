@@ -1,9 +1,24 @@
 import { IsoDateValidation } from 'data/protocols/iso-date-validation'
+import { HistoryStockModel, HistoryStockPricingModel } from 'domain/models/history-stock-model'
+import { GetHistoryStockUsecase } from 'domain/usecases/get-history-stock-usecase'
 import { ParamInvalidError } from 'presentation/errors/param-invalid-error'
 import { ParamNotProvidedError } from 'presentation/errors/param-not-provided-error'
 import { badRequest } from 'presentation/helpers/http'
 import { HttpRequest } from 'presentation/protocols/http-request'
 import { GetHistoryStockController } from './get-history-stock-controller'
+
+const makeFakeHistoryStockPricingModel = (): HistoryStockPricingModel => ({
+  closing: 10,
+  high: 10,
+  low: 10,
+  opening: 10,
+  pricedAt: 'any_priced_at'
+})
+
+const makeFakeHistoryStockModel = (): HistoryStockModel => ({
+  name: 'any_name',
+  prices: [makeFakeHistoryStockPricingModel()]
+})
 
 const makeFakeRequest = (): HttpRequest => ({
   params: {
@@ -25,11 +40,22 @@ const makeIsoDateValidationStub = () => {
   return new IsoDateValidationStub()
 }
 
+const makeGetHistoryStockUsecaseStub = () => {
+  class GetHistoryStockUsecaseStub implements GetHistoryStockUsecase {
+    async getHistory (stockName: string, fromDate: Date, toDate: Date): Promise<HistoryStockModel> {
+      return makeFakeHistoryStockModel()
+    }
+  }
+
+  return new GetHistoryStockUsecaseStub()
+}
+
 const makeSut = () => {
   const isoDateValidationStub = makeIsoDateValidationStub()
-  const sut = new GetHistoryStockController(isoDateValidationStub)
+  const getHistoryStockUsecaseStub = makeGetHistoryStockUsecaseStub()
+  const sut = new GetHistoryStockController(isoDateValidationStub, getHistoryStockUsecaseStub)
 
-  return { sut, isoDateValidationStub }
+  return { sut, isoDateValidationStub, getHistoryStockUsecaseStub }
 }
 
 describe('GetHistoryStockController', () => {
@@ -80,5 +106,13 @@ describe('GetHistoryStockController', () => {
     await sut.handle(request)
     expect(isIsoDateValidSpy).toHaveBeenCalledTimes(2)
     expect(isIsoDateValidSpy).toHaveBeenLastCalledWith(request.query.toDate)
+  })
+
+  test('should call getHistoryStockUsecase with correct values', async () => {
+    const { sut, getHistoryStockUsecaseStub } = makeSut()
+    const getHistorySpy = jest.spyOn(getHistoryStockUsecaseStub, 'getHistory')
+    const request = makeFakeRequest()
+    await sut.handle(request)
+    expect(getHistorySpy).toHaveBeenLastCalledWith(request.params.stockName, request.query.fromDate, request.query.toDate)
   })
 })
