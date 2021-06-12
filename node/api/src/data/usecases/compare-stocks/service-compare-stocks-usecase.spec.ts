@@ -39,4 +39,11 @@ describe('ServiceCompareStocksUsecase', () => {
     const promise = sut.compare(['IBM'])
     await expect(promise).rejects.toThrow()
   })
+
+  test('should return CompareStocksModel on success', async () => {
+    const { sut } = makeSut()
+    const compareStocksModel = await sut.compare(['IBM'])
+    expect(compareStocksModel).toBeTruthy()
+    expect(compareStocksModel.lastPrices).toBeTruthy()
+  })
 })
