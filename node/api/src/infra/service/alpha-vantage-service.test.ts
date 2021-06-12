@@ -1,6 +1,7 @@
+import { env } from 'main/config/env'
 import { AlphaVantageService } from './alpha-vantage-service'
 
-const token = '9K7W6EG7WY0UKQYX'
+const token = env.alphaVantageToken
 
 const makeSut = () => {
   const sut = new AlphaVantageService(token)
