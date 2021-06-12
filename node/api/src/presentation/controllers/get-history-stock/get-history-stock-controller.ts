@@ -9,6 +9,9 @@ export class GetHistoryStockController implements Controller {
     if (!httpRequest.query.fromDate) {
       return badRequest(new ParamNotProvidedError('fromDate'))
     }
+    if (!httpRequest.query.toDate) {
+      return badRequest(new ParamNotProvidedError('toDate'))
+    }
     return badRequest(new ParamNotProvidedError('stockName'))
   }
 }
