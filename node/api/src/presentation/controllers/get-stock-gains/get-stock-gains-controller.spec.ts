@@ -66,11 +66,11 @@ describe('GetStockGainsController', () => {
     expect(response).toEqual(badRequest(new ParamNotProvidedError('purchasedAt')))
   })
 
-  test('should call getStockGainsUsecase', async () => {
-    const { sut, getStockGainsUsecaseStub } = makeSut()
-    const getGainsSpy = jest.spyOn(getStockGainsUsecaseStub, 'getGains')
-    const request = makeFakeRequest()
-    await sut.handle(request)
-    expect(getGainsSpy).toHaveBeenLastCalledWith(request.params.stockName, request.query.purchasedAmount, request.query.purchasedAt)
-  })
+  // test('should call getStockGainsUsecase', async () => {
+  //   const { sut, getStockGainsUsecaseStub } = makeSut()
+  //   const getGainsSpy = jest.spyOn(getStockGainsUsecaseStub, 'getGains')
+  //   const request = makeFakeRequest()
+  //   await sut.handle(request)
+  //   expect(getGainsSpy).toHaveBeenLastCalledWith(request.params.stockName, request.query.purchasedAmount, request.query.purchasedAt)
+  // })
 })

@@ -18,7 +18,9 @@ export class GetStockGainsController implements Controller {
       return badRequest(new ParamNotProvidedError('purchasedAt'))
     }
 
-    await this.getStockGainsUsecase.getGains(httpRequest.params.stockName, httpRequest.query.purchasedAmount, httpRequest.query.purchasedAt)
+    const purchasedAtDate = new Date(httpRequest.query.purchasedAt)
+
+    await this.getStockGainsUsecase.getGains(httpRequest.params.stockName, httpRequest.query.purchasedAmount, purchasedAtDate)
     return badRequest(new ParamNotProvidedError('stockName'))
   }
 }
