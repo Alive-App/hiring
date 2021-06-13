@@ -31,4 +31,10 @@ describe('ServiceGetAvailableStockNamesUsecase', () => {
     const promise = sut.getStockNames('any_stock_name')
     await expect(promise).rejects.toThrow()
   })
+
+  test('should return a string list on success', async () => {
+    const { sut } = makeSut()
+    const stockNamesAvailables = await sut.getStockNames('any_stock_name')
+    await expect(stockNamesAvailables).toEqual(['stock_name_1', 'stock_name_2'])
+  })
 })
