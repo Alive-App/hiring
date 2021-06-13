@@ -1,5 +1,6 @@
-import { useHistory } from 'react-router-dom'
+import { useHistory, useParams } from 'react-router-dom'
 import { subMonths } from 'date-fns'
+import { FormEvent, useState } from 'react'
 
 import { Container } from '../../components/container'
 import { Header } from '../../components/header'
@@ -12,15 +13,16 @@ import { TableHead } from '../../components/table-head'
 import { TableHeadCell } from '../../components/table-head-cell'
 import { TableRow } from '../../components/table-row'
 
-import { FilterContainer } from './styles'
-import { useState } from 'react'
+import { FilterContainer, Title } from './styles'
+import { api } from '../../services/api'
+import { formatDate, formatPrice } from '../../helpers/format'
 
 export interface HistoryItemApi {
   opening: number;
   closing: number;
   high: number;
   low: number;
-  pricedAt: '2021-06-11T00:00:00.000Z';
+  pricedAt: string;
 }
 
 export interface HistoryApi {
@@ -33,6 +35,7 @@ export const Details = () => {
    * Hooks
    */
   const { goBack } = useHistory()
+  const { stockName } = useParams<{ stockName: string }>()
 
   /**
    * States
@@ -51,6 +54,15 @@ export const Details = () => {
     goBack()
   }
 
+  const handleSearchSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+
+    const { data } = await api.get<HistoryApi>(`/stocks/${stockName}/history`, {
+      params: { to, from }
+    })
+    setHistory(data)
+  }
+
   /**
    * Returns
    */
@@ -58,9 +70,10 @@ export const Details = () => {
     <Container>
       <Header>
         <Button onClick={handleBackClick}>Voltar</Button>
+        <Title>{stockName}</Title>
       </Header>
 
-      <FilterContainer>
+      <FilterContainer onSubmit={handleSearchSubmit}>
         <DateField
           label="Data inicial"
           marginRight={10}
@@ -90,11 +103,11 @@ export const Details = () => {
         <TableBody>
           {history.prices.map((price) => (
             <TableRow key={JSON.stringify(price)}>
-              <TableCell>{price.pricedAt}</TableCell>
-              <TableCell>{price.opening}</TableCell>
-              <TableCell>{price.closing}</TableCell>
-              <TableCell>{price.high}</TableCell>
-              <TableCell>{price.low}</TableCell>
+              <TableCell>{formatDate(price.pricedAt)}</TableCell>
+              <TableCell>{formatPrice(price.opening)}</TableCell>
+              <TableCell>{formatPrice(price.closing)}</TableCell>
+              <TableCell>{formatPrice(price.high)}</TableCell>
+              <TableCell>{formatPrice(price.low)}</TableCell>
             </TableRow>
           ))}
         </TableBody>

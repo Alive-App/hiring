@@ -1,4 +1,4 @@
-import { Table as MuiTable } from '@material-ui/core'
+import { Table as MuiTable, Paper } from '@material-ui/core'
 import { ReactNode } from 'react'
 
 export interface TableProps {
@@ -6,5 +6,7 @@ export interface TableProps {
 }
 
 export const Table = ({ children }: TableProps) => (
-  <MuiTable>{children}</MuiTable>
+  <Paper variant="outlined" style={{ padding: 10 }}>
+    <MuiTable>{children}</MuiTable>
+  </Paper>
 )
