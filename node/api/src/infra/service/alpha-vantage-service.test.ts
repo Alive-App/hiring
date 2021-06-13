@@ -30,4 +30,15 @@ describe('AlphaVantageService', () => {
     expect(historyStockModel.name).toBeTruthy()
     expect(historyStockModel.prices).toBeTruthy()
   })
+
+  test('should return a StockByDateModel', async () => {
+    const { sut } = makeSut()
+
+    const StockByDateModel = await sut.getStockByDate('IBM', new Date(2020, 4, 18))
+
+    expect(StockByDateModel).toBeTruthy()
+    expect(StockByDateModel.name).toBeTruthy()
+    expect(StockByDateModel.lastPrice).toBeTruthy()
+    expect(StockByDateModel.pricedAt).toBeTruthy()
+  })
 })

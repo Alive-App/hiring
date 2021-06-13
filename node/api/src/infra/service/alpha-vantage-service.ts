@@ -1,9 +1,11 @@
 import axios, { AxiosInstance } from 'axios'
 import { GetLastStockService } from 'data/protocols/get-last-stock-service'
 import { GetHistoryStockService } from 'data/protocols/get-history-stock-service'
+import { GetStockByDateService } from 'data/protocols/get-stock-by-date-service'
 import { LastStockModel } from 'domain/models/last-stock-model'
 import { alphaVantageDateToIsoDate } from 'infra/helpers/date-helpers'
 import { HistoryStockModel, HistoryStockPricingModel } from 'domain/models/history-stock-model'
+import { StockByDateModel } from 'domain/models/stock-by-date-model'
 
 export type IntervalType = '1min' | '5min' | '15min' | '30min' | '60min'
 
@@ -59,7 +61,7 @@ export type TimeSeriesDailyType = {
   'Time Series (Daily)': TimeSeriesDailyItemType
 }
 
-export class AlphaVantageService implements GetLastStockService, GetHistoryStockService {
+export class AlphaVantageService implements GetLastStockService, GetHistoryStockService, GetStockByDateService {
   private api: AxiosInstance
 
   constructor (
@@ -148,5 +150,29 @@ export class AlphaVantageService implements GetLastStockService, GetHistoryStock
     }
 
     return { name: stockName, prices }
+  }
+
+  async getStockByDate (stockName: string, date: Date): Promise<StockByDateModel> {
+    const data = await this.timeSeriesDaily(stockName)
+    const stockByDate: StockByDateModel = {} as StockByDateModel
+
+    const keys = Object.keys(data['Time Series (Daily)'])
+
+    for (const key of keys) {
+      const stockDate = new Date(key)
+
+      if (stockDate.getTime() === date.getTime()) {
+        const stock = data['Time Series (Daily)'][key]
+        stockByDate.lastPrice = Number(stock['4. close'])
+        stockByDate.name = stockName
+        stockByDate.pricedAt = alphaVantageDateToIsoDate(key)
+      }
+    }
+
+    if (!stockByDate) {
+      throw new Error()
+    }
+
+    return stockByDate
   }
 }
