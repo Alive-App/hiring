@@ -1,7 +1,7 @@
 import { StockGainsModel } from 'domain/models/stock-gains-model'
 import { GetStockGainsUsecase } from 'domain/usecases/get-stock-gains-usecase'
 import { ParamNotProvidedError } from 'presentation/errors/param-not-provided-error'
-import { badRequest, serverError } from 'presentation/helpers/http'
+import { badRequest, ok, serverError } from 'presentation/helpers/http'
 import { HttpRequest } from 'presentation/protocols/http-request'
 import { GetStockGainsController } from './get-stock-gains-controller'
 
@@ -80,5 +80,12 @@ describe('GetStockGainsController', () => {
     const request = makeFakeRequest()
     const response = await sut.handle(request)
     expect(response).toEqual(serverError())
+  })
+
+  test('should return 200 on success', async () => {
+    const { sut } = makeSut()
+    const request = makeFakeRequest()
+    const response = await sut.handle(request)
+    expect(response).toEqual(ok(makeFakeStockGainsModel()))
   })
 })
