@@ -3,9 +3,13 @@ import { Paper, Typography } from '@material-ui/core'
 import { Button } from '../../../../components/button'
 import { ActionsContainer } from './styles'
 
-export const StockItem = () => (
+export interface StockItemProps {
+  stockName: string;
+}
+
+export const StockItem = ({ stockName }: StockItemProps) => (
   <Paper variant="outlined" style={{ padding: 10, margin: 10, minWidth: 300 }}>
-    <Typography variant="h6">Nome ação</Typography>
+    <Typography variant="h6">{stockName}</Typography>
     <Typography variant="body1">Preço ação</Typography>
     <Typography variant="body1">Data atualização</Typography>
 

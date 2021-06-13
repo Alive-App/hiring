@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom'
 import { Container } from '../../components/container'
 import { Header } from '../../components/header'
 import { Button } from '../../components/button'
+import { useStock } from '../../hooks/use-stock'
 
 import { StockList } from './styles'
 import { StockItem } from './components/stock-item'
@@ -12,6 +13,7 @@ export const Home = () => {
    * Hooks
    */
   const { push } = useHistory()
+  const { stocks } = useStock()
 
   /**
    * Handles
@@ -30,20 +32,9 @@ export const Home = () => {
       </Header>
 
       <StockList>
-        <StockItem />
-        <StockItem />
-        <StockItem />
-        <StockItem />
-        <StockItem />
-        <StockItem />
-        <StockItem />
-        <StockItem />
-        <StockItem />
-        <StockItem />
-        <StockItem />
-        <StockItem />
-        <StockItem />
-        <StockItem />
+        {stocks.map((stock) => (
+          <StockItem stockName={stock} key={stock} />
+        ))}
       </StockList>
     </Container>
   )
