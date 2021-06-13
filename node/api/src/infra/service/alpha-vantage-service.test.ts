@@ -41,4 +41,12 @@ describe('AlphaVantageService', () => {
     expect(StockByDateModel.lastPrice).toBeTruthy()
     expect(StockByDateModel.pricedAt).toBeTruthy()
   })
+
+  test('should return a list string', async () => {
+    const { sut } = makeSut()
+
+    const availableStockNames = await sut.getAvailableStockNames('IBM')
+
+    expect(availableStockNames).toBeTruthy()
+  })
 })
