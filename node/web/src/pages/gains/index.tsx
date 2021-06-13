@@ -37,6 +37,20 @@ export const Gains = () => {
   const [purchasedAmount, setPurchasedAmount] = useState<number>(0)
 
   /**
+   * Functions
+   */
+  const checkForm = () => {
+    if (!purchasedAt) {
+      return 'Data da compra é obrigatório'
+    }
+    if (!purchasedAmount) {
+      return 'Quantidade de compra é obrigatório'
+    }
+
+    return null
+  }
+
+  /**
    * Handles
    */
   const handleBackClick = () => {
@@ -48,9 +62,17 @@ export const Gains = () => {
   }
 
   const handleSearchSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+
+    const errorMessage = checkForm()
+
+    if (errorMessage) {
+      alert(errorMessage)
+      return
+    }
+
     try {
       setLoading(true)
-      e.preventDefault()
       const { data } = await api.get(`/stocks/${stockName}/gains`, {
         params: { purchasedAmount, purchasedAt }
       })
@@ -79,12 +101,14 @@ export const Gains = () => {
 
       <FilterContainer onSubmit={handleSearchSubmit}>
         <DateField
+          required
           marginRight={10}
           label="Data de compra"
           value={purchasedAt}
           onDateChange={setPurchasedAt}
         />
         <TextField
+          required
           marginRight={10}
           label="Quantidade de compra"
           value={purchasedAmount}

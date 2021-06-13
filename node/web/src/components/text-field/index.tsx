@@ -9,6 +9,7 @@ export interface TextFieldProps {
   marginTop?: number;
   marginRight?: number;
   marginBottom?: number;
+  required?: boolean;
   value?: any;
   onTextChange?: (
     newValue: string,
@@ -23,6 +24,7 @@ export const TextField = ({
   marginTop = 0,
   marginRight = 0,
   value,
+  required,
   placeholder,
   onTextChange
 }: TextFieldProps) => {
@@ -44,6 +46,7 @@ export const TextField = ({
    */
   return (
     <MuiTextField
+      required={required}
       label={label}
       fullWidth={fullWidth}
       style={{ marginTop, marginBottom, marginRight }}

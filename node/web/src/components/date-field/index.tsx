@@ -8,6 +8,7 @@ export interface DateFieldProps {
   marginTop?: number;
   marginRight?: number;
   marginBottom?: number;
+  required?: boolean;
   value?: Date;
   onDateChange?: (
     newValue: Date,
@@ -21,6 +22,7 @@ export const DateField = ({
   marginBottom = 0,
   marginTop = 0,
   marginRight = 0,
+  required,
   value,
   onDateChange
 }: DateFieldProps) => {
@@ -68,6 +70,7 @@ export const DateField = ({
    */
   return (
     <TextField
+      required={required}
       type="date"
       label={label}
       fullWidth={fullWidth}

@@ -62,9 +62,12 @@ export const Details = () => {
 
       e.preventDefault()
 
-      const { data } = await api.get<HistoryApi>(`/stocks/${stockName}/history`, {
-        params: { to, from }
-      })
+      const { data } = await api.get<HistoryApi>(
+        `/stocks/${stockName}/history`,
+        {
+          params: { to, from }
+        }
+      )
       setHistory(data)
     } catch (err) {
       alert(err)
@@ -88,12 +91,14 @@ export const Details = () => {
 
       <FilterContainer onSubmit={handleSearchSubmit}>
         <DateField
+          required
           label="Data inicial"
           marginRight={10}
           value={from}
           onDateChange={setFrom}
         />
         <DateField
+          required
           label="Data final"
           marginRight={10}
           value={to}
