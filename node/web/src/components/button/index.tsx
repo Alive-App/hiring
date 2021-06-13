@@ -3,8 +3,9 @@ import { Button as MuiButton } from '@material-ui/core'
 
 export interface ButtonProps {
   children: ReactNode;
+  variant?: 'contained' | 'outlined'
 }
 
-export const Button = ({ children }: ButtonProps) => (
-  <MuiButton variant='contained' color='primary'>{children}</MuiButton>
+export const Button = ({ children, variant = 'contained' }: ButtonProps) => (
+  <MuiButton variant={variant} color='primary'>{children}</MuiButton>
 )
