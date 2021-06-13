@@ -32,4 +32,12 @@ describe('ServiceGetStockGainsUsecase', () => {
     await sut.getGains('any_name', 100, date)
     expect(getLastStockSpy).toHaveBeenLastCalledWith('any_name')
   })
+
+  test('should throw if getLastStockService throws', async () => {
+    const { sut, getLastStockServiceStub } = makeSut()
+    const date = new Date()
+    jest.spyOn(getLastStockServiceStub, 'getLastStock').mockRejectedValueOnce(new Error())
+    const promise = sut.getGains('any_name', 100, date)
+    await expect(promise).rejects.toThrow()
+  })
 })
