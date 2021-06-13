@@ -1,6 +1,6 @@
 import { GetStockGainsUsecase } from 'domain/usecases/get-stock-gains-usecase'
 import { ParamNotProvidedError } from 'presentation/errors/param-not-provided-error'
-import { badRequest, serverError } from 'presentation/helpers/http'
+import { badRequest, ok, serverError } from 'presentation/helpers/http'
 import { Controller } from 'presentation/protocols/controller'
 import { HttpRequest } from 'presentation/protocols/http-request'
 import { HttpResponse } from 'presentation/protocols/http-response'
@@ -12,6 +12,9 @@ export class GetStockGainsController implements Controller {
 
   async handle (httpRequest: HttpRequest): Promise<HttpResponse> {
     try {
+      if (!httpRequest.params.stockName) {
+        return badRequest(new ParamNotProvidedError('stockName'))
+      }
       if (!httpRequest.query.purchasedAmount) {
         return badRequest(new ParamNotProvidedError('purchasedAmount'))
       }
@@ -21,8 +24,8 @@ export class GetStockGainsController implements Controller {
 
       const purchasedAtDate = new Date(httpRequest.query.purchasedAt)
 
-      await this.getStockGainsUsecase.getGains(httpRequest.params.stockName, httpRequest.query.purchasedAmount, purchasedAtDate)
-      return badRequest(new ParamNotProvidedError('stockName'))
+      const stockGains = await this.getStockGainsUsecase.getGains(httpRequest.params.stockName, httpRequest.query.purchasedAmount, purchasedAtDate)
+      return ok(stockGains)
     } catch (err) {
       return serverError()
     }
