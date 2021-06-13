@@ -7,7 +7,7 @@ export class ServiceGetAvailableStockNamesUsecase implements GetAvailableStockNa
   ) {}
 
   async getStockNames (search: string): Promise<string[]> {
-    await this.getAvailableStockNamesService.getAvailableStockNames(search)
-    return null as any
+    const stockNamesAvailable = await this.getAvailableStockNamesService.getAvailableStockNames(search)
+    return stockNamesAvailable
   }
 }
