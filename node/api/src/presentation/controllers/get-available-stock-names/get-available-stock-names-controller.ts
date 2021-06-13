@@ -18,6 +18,7 @@ export class GetAvailableStockNamesController implements Controller {
       const stockNames = await this.getAvailableStockNamesUsecase.getStockNames(httpRequest.query.search)
       return ok(stockNames)
     } catch (err) {
+      console.log(err)
       return serverError()
     }
   }
