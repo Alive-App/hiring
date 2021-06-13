@@ -24,4 +24,11 @@ describe('ServiceGetAvailableStockNamesUsecase', () => {
     await sut.getStockNames('any_stock_name')
     expect(getAvailableStockNamesSpy).toHaveBeenLastCalledWith('any_stock_name')
   })
+
+  test('should throw if getAvailableStockNamesService throws', async () => {
+    const { sut, getAvailableStockNamesServiceStub } = makeSut()
+    jest.spyOn(getAvailableStockNamesServiceStub, 'getAvailableStockNames').mockRejectedValueOnce(new Error())
+    const promise = sut.getStockNames('any_stock_name')
+    await expect(promise).rejects.toThrow()
+  })
 })
