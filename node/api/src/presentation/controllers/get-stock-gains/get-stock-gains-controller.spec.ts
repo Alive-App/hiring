@@ -1,7 +1,7 @@
 import { StockGainsModel } from 'domain/models/stock-gains-model'
 import { GetStockGainsUsecase } from 'domain/usecases/get-stock-gains-usecase'
 import { ParamNotProvidedError } from 'presentation/errors/param-not-provided-error'
-import { badRequest } from 'presentation/helpers/http'
+import { badRequest, serverError } from 'presentation/helpers/http'
 import { HttpRequest } from 'presentation/protocols/http-request'
 import { GetStockGainsController } from './get-stock-gains-controller'
 
@@ -66,11 +66,19 @@ describe('GetStockGainsController', () => {
     expect(response).toEqual(badRequest(new ParamNotProvidedError('purchasedAt')))
   })
 
-  // test('should call getStockGainsUsecase', async () => {
+  // test('should call getStockGainsUsecase with correct values', async () => {
   //   const { sut, getStockGainsUsecaseStub } = makeSut()
   //   const getGainsSpy = jest.spyOn(getStockGainsUsecaseStub, 'getGains')
   //   const request = makeFakeRequest()
   //   await sut.handle(request)
   //   expect(getGainsSpy).toHaveBeenLastCalledWith(request.params.stockName, request.query.purchasedAmount, request.query.purchasedAt)
   // })
+
+  test('should return 500 if getStockGainsUsecase throws', async () => {
+    const { sut, getStockGainsUsecaseStub } = makeSut()
+    jest.spyOn(getStockGainsUsecaseStub, 'getGains').mockRejectedValueOnce(new Error())
+    const request = makeFakeRequest()
+    const response = await sut.handle(request)
+    expect(response).toEqual(serverError())
+  })
 })
