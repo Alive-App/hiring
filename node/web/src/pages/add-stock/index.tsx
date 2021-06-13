@@ -5,6 +5,7 @@ import { Container } from '../../components/container'
 import { Header } from '../../components/header'
 import { Button } from '../../components/button'
 import { TextField } from '../../components/text-field'
+import { api } from '../../services/api'
 
 import { SearchBar } from './styles'
 
@@ -18,6 +19,7 @@ export const AddStock = () => {
    * States
    */
   const [search, setSearch] = useState('')
+  const [stockNames, setStockNames] = useState<string[]>([])
 
   /**
    * Handles
@@ -26,7 +28,13 @@ export const AddStock = () => {
     goBack()
   }
 
-  const handleSearchClick = () => {}
+  const handleSearchClick = async () => {
+    const { data } = await api.get('/available-stock-names', {
+      params: { search }
+    })
+
+    setStockNames(data)
+  }
 
   /**
    * Returns
@@ -48,6 +56,8 @@ export const AddStock = () => {
         />
         <Button onClick={handleSearchClick}>Pesquisar</Button>
       </SearchBar>
+
+      {stockNames.map(stockName => stockName)}
     </Container>
   )
 }
