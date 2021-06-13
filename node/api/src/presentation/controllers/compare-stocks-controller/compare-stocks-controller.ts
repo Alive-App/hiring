@@ -23,7 +23,7 @@ export class CompareStocksController implements Controller {
         return badRequest(new ParamNotProvidedError('stocks'))
       }
 
-      const compareStocks = await this.compareStocksUseCase.compare(httpRequest.body.stocks)
+      const compareStocks = await this.compareStocksUseCase.compare(httpRequest.params.stockName, httpRequest.body.stocks)
 
       return ok(compareStocks)
     } catch (err) {

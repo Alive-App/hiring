@@ -23,7 +23,7 @@ const makeFakeLastStockData = (): LastStockModel => ({
 
 const makeCompareStocksUsecaseStub = () => {
   class CompareStocksUsecaseStub implements CompareStocksUsecase {
-    async compare (stocks: string[]): Promise<CompareStockModel> {
+    async compare (stockName:string, stocks: string[]): Promise<CompareStockModel> {
       return {
         lastPrices: [
           makeFakeLastStockData()
@@ -56,7 +56,7 @@ describe('CompareStocksController', () => {
     const compareSpy = jest.spyOn(compareStocksUsecaseStub, 'compare')
     const request = makeFakeRequest()
     await sut.handle(request)
-    expect(compareSpy).toHaveBeenLastCalledWith(request.body.stocks)
+    expect(compareSpy).toHaveBeenLastCalledWith(request.params.stockName, request.body.stocks)
   })
 
   test('should return 500 if compareStocksUsecase throws', async () => {

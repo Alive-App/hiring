@@ -29,20 +29,20 @@ describe('ServiceCompareStocksUsecase', () => {
   test('should call getLastStockService with correct value', async () => {
     const { sut, getLastStockServiceStub } = makeSut()
     const getLastStockSpy = jest.spyOn(getLastStockServiceStub, 'getLastStock')
-    await sut.compare(['IBM'])
-    expect(getLastStockSpy).toHaveBeenLastCalledWith('IBM')
+    await sut.compare('IBM', ['VALE'])
+    expect(getLastStockSpy).toHaveBeenLastCalledWith('VALE')
   })
 
   test('should throw if getLastStockService throws', async () => {
     const { sut, getLastStockServiceStub } = makeSut()
     jest.spyOn(getLastStockServiceStub, 'getLastStock').mockRejectedValueOnce(new Error())
-    const promise = sut.compare(['IBM'])
+    const promise = sut.compare('IBM', ['VALE'])
     await expect(promise).rejects.toThrow()
   })
 
   test('should return CompareStocksModel on success', async () => {
     const { sut } = makeSut()
-    const compareStocksModel = await sut.compare(['IBM'])
+    const compareStocksModel = await sut.compare('IBM', ['VALE'])
     expect(compareStocksModel).toBeTruthy()
     expect(compareStocksModel.lastPrices).toBeTruthy()
   })

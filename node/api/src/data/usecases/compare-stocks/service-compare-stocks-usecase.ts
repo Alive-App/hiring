@@ -7,12 +7,12 @@ export class ServiceCompareStocksUsecase implements CompareStocksUsecase {
     private readonly getLastStockService: GetLastStockService
   ) {}
 
-  async compare (stocks: string[]): Promise<CompareStockModel> {
+  async compare (stockName:string, stocks: string[]): Promise<CompareStockModel> {
     const compareStocksModel:CompareStockModel = {
       lastPrices: []
     }
 
-    for (const stock of stocks) {
+    for (const stock of [stockName, ...stocks]) {
       const lastStocks = await this.getLastStockService.getLastStock(stock)
       compareStocksModel.lastPrices.push(lastStocks)
     }
