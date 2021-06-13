@@ -154,16 +154,17 @@ export class AlphaVantageService implements GetLastStockService, GetHistoryStock
 
   async getStockByDate (stockName: string, date: Date): Promise<StockByDateModel> {
     const data = await this.timeSeriesDaily(stockName)
-    const day = date.getDay()
+    const day = date.getDate()
     const month = date.getMonth()
     const year = date.getFullYear()
+
     const stockByDate: StockByDateModel = {} as StockByDateModel
 
     const keys = Object.keys(data['Time Series (Daily)'])
 
     for (const key of keys) {
       const stockDate = new Date(key)
-      const dayStock = stockDate.getDay()
+      const dayStock = stockDate.getDate()
       const monthStock = stockDate.getMonth()
       const yearStock = stockDate.getFullYear()
 

@@ -18,7 +18,7 @@ export class ServiceGetStockGainsUsecase implements GetStockGainsUsecase {
 
     return {
       name: stockName,
-      purchasedAmount: purchasedAmount,
+      purchasedAmount: Number(purchasedAmount),
       purchasedAt: stockByDate.pricedAt,
       priceAtDate: stockByDate.lastPrice,
       lastPrice: lastStock.lastPrice,
