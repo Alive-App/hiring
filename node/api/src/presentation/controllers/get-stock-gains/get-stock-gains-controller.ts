@@ -9,6 +9,9 @@ export class GetStockGainsController implements Controller {
     if (!httpRequest.query.purchasedAmount) {
       return badRequest(new ParamNotProvidedError('purchasedAmount'))
     }
+    if (!httpRequest.query.purchasedAt) {
+      return badRequest(new ParamNotProvidedError('purchasedAt'))
+    }
     return badRequest(new ParamNotProvidedError('stockName'))
   }
 }

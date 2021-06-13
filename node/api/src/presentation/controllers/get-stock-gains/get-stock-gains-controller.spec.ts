@@ -8,7 +8,8 @@ const makeFakeRequest = (): HttpRequest => ({
     stockName: 'any_stock_name'
   },
   query: {
-    purchasedAmount: 100
+    purchasedAmount: 100,
+    purchasedAt: '2021-06-12T20:00:00.000Z'
   }
 })
 
@@ -33,5 +34,13 @@ describe('GetStockGainsController', () => {
     request.query.purchasedAmount = null
     const response = await sut.handle(request)
     expect(response).toEqual(badRequest(new ParamNotProvidedError('purchasedAmount')))
+  })
+
+  test('should return 400 if purchasedAt not provided', async () => {
+    const { sut } = makeSut()
+    const request = makeFakeRequest()
+    request.query.purchasedAt = ''
+    const response = await sut.handle(request)
+    expect(response).toEqual(badRequest(new ParamNotProvidedError('purchasedAt')))
   })
 })
