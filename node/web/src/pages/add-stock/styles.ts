@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const SearchBar = styled.div`
+export const SearchBar = styled.form`
   display: flex;
 `
 

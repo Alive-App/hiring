@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, FormEvent } from 'react'
 import { useHistory } from 'react-router-dom'
 
 import { Container } from '../../components/container'
@@ -29,7 +29,9 @@ export const AddStock = () => {
     goBack()
   }
 
-  const handleSearchClick = async () => {
+  const handleSearchSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+
     const { data } = await api.get('/available-stock-names', {
       params: { search }
     })
@@ -46,7 +48,7 @@ export const AddStock = () => {
         <Button onClick={handleBackClick}>Voltar</Button>
       </Header>
 
-      <SearchBar>
+      <SearchBar onSubmit={handleSearchSubmit}>
         <TextField
           fullWidth
           marginTop={10}
@@ -55,7 +57,7 @@ export const AddStock = () => {
           value={search}
           onTextChange={setSearch}
         />
-        <Button onClick={handleSearchClick}>Pesquisar</Button>
+        <Button type='submit'>Pesquisar</Button>
       </SearchBar>
 
       <SearchResultsContainer>
