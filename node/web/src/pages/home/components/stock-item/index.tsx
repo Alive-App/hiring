@@ -6,6 +6,7 @@ import { Button } from '../../../../components/button'
 import { ActionsContainer } from './styles'
 import { useCallback, useEffect, useState } from 'react'
 import { api } from '../../../../services/api'
+import { formatDateTime, formatPrice } from '../../../../helpers/format'
 
 export interface StockItemProps {
   stockName: string;
@@ -59,8 +60,12 @@ export const StockItem = ({ stockName }: StockItemProps) => {
       style={{ padding: 10, margin: 10, minWidth: 300 }}
     >
       <Typography variant="h6">{stockName}</Typography>
-      <Typography variant="body1">Preço atual: {stock.lastPrice}</Typography>
-      <Typography variant="body1">Atualizado em: {stock.pricedAt}</Typography>
+      <Typography variant="body1">
+        Preço atual: {stock.lastPrice ? formatPrice(stock.lastPrice) : 'Carregando...'}
+      </Typography>
+      <Typography variant="body1">
+        Atualizado em: {formatDateTime(stock.pricedAt) || 'Carregando...'}
+      </Typography>
 
       <ActionsContainer>
         <Button>Ver detalhes</Button>
