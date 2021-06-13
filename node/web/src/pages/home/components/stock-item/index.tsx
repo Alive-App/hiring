@@ -50,6 +50,10 @@ export const StockItem = ({ stockName }: StockItemProps) => {
     push(`/${stockName}/details`)
   }
 
+  const handleNavigateToGains = () => {
+    push(`/${stockName}/gains`)
+  }
+
   /**
    * Effects
    */
@@ -74,8 +78,9 @@ export const StockItem = ({ stockName }: StockItemProps) => {
       </Typography>
 
       <ActionsContainer>
-        <Button onClick={handleNavigateToDetails}>Ver detalhes</Button>
-        <Button variant="outlined" onClick={handleRemoveClick}>
+        <Button size='small' onClick={handleNavigateToDetails}>Detalhes</Button>
+        <Button size='small' onClick={handleNavigateToGains}>Ganhos</Button>
+        <Button size='small' variant="outlined" onClick={handleRemoveClick}>
           Excluir
         </Button>
       </ActionsContainer>

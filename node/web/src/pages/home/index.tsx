@@ -29,7 +29,6 @@ export const Home = () => {
     <Container>
       <Header>
         <Button marginRight={10} onClick={handleAddStockClick}>Incluir ativo</Button>
-        <Button onClick={handleAddStockClick}>Projetar ganhos</Button>
       </Header>
 
       <StockList>

@@ -6,6 +6,7 @@ export interface ButtonProps {
   variant?: 'contained' | 'outlined';
   type?: 'button' | 'submit' | 'reset';
   marginRight?: number;
+  size?: 'small' | 'medium' | 'large'
   onClick?: MouseEventHandler<HTMLButtonElement>;
 }
 
@@ -14,6 +15,7 @@ export const Button = ({
   onClick,
   marginRight = 0,
   type = 'button',
+  size,
   variant = 'contained'
 }: ButtonProps) => (
   <MuiButton
@@ -21,6 +23,7 @@ export const Button = ({
     type={type}
     variant={variant}
     color="primary"
+    size={size}
     onClick={onClick}
   >
     {children}
