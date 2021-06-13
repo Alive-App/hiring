@@ -7,7 +7,8 @@ import { Button } from '../../components/button'
 import { TextField } from '../../components/text-field'
 import { api } from '../../services/api'
 
-import { SearchBar } from './styles'
+import { SearchBar, SearchResultsContainer } from './styles'
+import { SearchResultItem } from './components/search-result-item'
 
 export const AddStock = () => {
   /**
@@ -57,7 +58,11 @@ export const AddStock = () => {
         <Button onClick={handleSearchClick}>Pesquisar</Button>
       </SearchBar>
 
-      {stockNames.map(stockName => stockName)}
+      <SearchResultsContainer>
+        {stockNames.map((stockName) => (
+          <SearchResultItem key={stockName} stockName={stockName} />
+        ))}
+      </SearchResultsContainer>
     </Container>
   )
 }
