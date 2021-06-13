@@ -1,5 +1,7 @@
 import { Paper } from '@material-ui/core'
+import { useHistory } from 'react-router-dom'
 
+import { useStock } from '../../../../hooks/use-stock'
 import { Button } from '../../../../components/button'
 
 export interface SearchResultItemProps {
@@ -8,9 +10,18 @@ export interface SearchResultItemProps {
 
 export const SearchResultItem = ({ stockName }: SearchResultItemProps) => {
   /**
+   * Hooks
+   */
+  const { addStock } = useStock()
+  const { goBack } = useHistory()
+
+  /**
    * Handles
    */
-  const handleAddStockClick = () => {}
+  const handleAddStockClick = () => {
+    addStock(stockName)
+    goBack()
+  }
 
   /**
    * Returns

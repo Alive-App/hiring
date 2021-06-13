@@ -1,4 +1,4 @@
-import { createContext, ReactNode, useState } from 'react'
+import { createContext, ReactNode, useState, useEffect } from 'react'
 
 export interface StockContextProps {
   stocks: string[];
@@ -16,6 +16,11 @@ export const StockContextProvider = ({
   children
 }: StockContextProviderProps) => {
   /**
+   * Consts
+   */
+  const STOCKS_KEY = '@stocks'
+
+  /**
    * States
    */
   const [stocks, setStocks] = useState<string[]>([])
@@ -24,12 +29,35 @@ export const StockContextProvider = ({
    * Functions
    */
   const addStock = (newStock: string) => {
+    const exists = stocks.find((item) => item === newStock)
+
+    if (exists) {
+      return
+    }
+
     setStocks((prev) => [newStock, ...prev])
   }
 
   const removeStock = (stock: string) => {
     setStocks((prev) => prev.filter((item) => item !== stock))
   }
+
+  /**
+   * Effects
+   */
+  useEffect(() => {
+    const persistStocks = localStorage.getItem(STOCKS_KEY)
+
+    if (!persistStocks) {
+      return
+    }
+
+    setStocks(JSON.parse(persistStocks))
+  }, [])
+
+  useEffect(() => {
+    localStorage.setItem(STOCKS_KEY, JSON.stringify(stocks))
+  }, [stocks])
 
   /**
    * Returns
