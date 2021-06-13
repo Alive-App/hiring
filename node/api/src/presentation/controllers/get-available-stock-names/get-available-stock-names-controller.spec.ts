@@ -1,6 +1,6 @@
 import { GetAvailableStockNamesUsecase } from 'domain/usecases/get-available-stock-names-usecase'
 import { ParamNotProvidedError } from 'presentation/errors/param-not-provided-error'
-import { badRequest } from 'presentation/helpers/http'
+import { badRequest, serverError } from 'presentation/helpers/http'
 import { HttpRequest } from 'presentation/protocols/http-request'
 import { GetAvailableStockNamesController } from './get-available-stock-names-controller'
 
@@ -42,5 +42,13 @@ describe('GetAvailableStockNamesController', () => {
     const request = makeFakeRequest()
     await sut.handle(request)
     expect(getStockNamesSpy).toHaveBeenLastCalledWith(request.query.search)
+  })
+
+  test('should return 500 if getAvailableStockNamesUsecase throws', async () => {
+    const { sut, getAvailableStockNamesUsecaseStub } = makeSut()
+    jest.spyOn(getAvailableStockNamesUsecaseStub, 'getStockNames').mockRejectedValueOnce(new Error())
+    const request = makeFakeRequest()
+    const response = await sut.handle(request)
+    expect(response).toEqual(serverError())
   })
 })
