@@ -31,8 +31,8 @@ export const StockItem = ({ stockName }: StockItemProps) => {
       style={{ padding: 10, margin: 10, minWidth: 300 }}
     >
       <Typography variant="h6">{stockName}</Typography>
-      <Typography variant="body1">Preço ação</Typography>
-      <Typography variant="body1">Data atualização</Typography>
+      <Typography variant="body1">Preço atual: </Typography>
+      <Typography variant="body1">Atualizado em: </Typography>
 
       <ActionsContainer>
         <Button>Ver detalhes</Button>
