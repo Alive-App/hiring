@@ -1,9 +1,9 @@
 import { GlobalStyle } from './global-styles'
-import { Home } from '../pages/home'
+import { Router } from './router'
 
 export const App = () => (
   <>
-    <Home />
+    <Router />
     <GlobalStyle />
   </>
 )
