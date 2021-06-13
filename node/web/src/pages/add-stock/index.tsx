@@ -5,6 +5,7 @@ import { Container } from '../../components/container'
 import { Header } from '../../components/header'
 import { Button } from '../../components/button'
 import { TextField } from '../../components/text-field'
+import { Loading } from '../../components/loading'
 import { api } from '../../services/api'
 
 import { SearchBar, SearchResultsContainer } from './styles'
@@ -19,6 +20,7 @@ export const AddStock = () => {
   /**
    * States
    */
+  const [loading, setLoading] = useState(false)
   const [search, setSearch] = useState('')
   const [stockNames, setStockNames] = useState<string[]>([])
 
@@ -30,18 +32,30 @@ export const AddStock = () => {
   }
 
   const handleSearchSubmit = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
+    try {
+      setLoading(true)
 
-    const { data } = await api.get('/available-stock-names', {
-      params: { search }
-    })
+      e.preventDefault()
 
-    setStockNames(data)
+      const { data } = await api.get('/available-stock-names', {
+        params: { search }
+      })
+
+      setStockNames(data)
+    } catch (err) {
+      alert(err)
+    } finally {
+      setLoading(false)
+    }
   }
 
   /**
    * Returns
    */
+  if (loading) {
+    return <Loading />
+  }
+
   return (
     <Container>
       <Header>
@@ -57,7 +71,7 @@ export const AddStock = () => {
           value={search}
           onTextChange={setSearch}
         />
-        <Button type='submit'>Pesquisar</Button>
+        <Button type="submit">Pesquisar</Button>
       </SearchBar>
 
       <SearchResultsContainer>

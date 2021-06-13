@@ -6,6 +6,7 @@ import { Header } from '../../components/header'
 import { Button } from '../../components/button'
 import { DateField } from '../../components/date-field'
 import { TextField } from '../../components/text-field'
+import { Loading } from '../../components/loading'
 
 import { FilterContainer, Title, DataContainer } from './styles'
 import { api } from '../../services/api'
@@ -30,6 +31,7 @@ export const Gains = () => {
   /**
    * States
    */
+  const [loading, setLoading] = useState(false)
   const [purchasedData, setPurchasedData] = useState({} as PurchasedDataApi)
   const [purchasedAt, setPurchasedAt] = useState(new Date())
   const [purchasedAmount, setPurchasedAmount] = useState<number>(0)
@@ -46,16 +48,28 @@ export const Gains = () => {
   }
 
   const handleSearchSubmit = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    const { data } = await api.get(`/stocks/${stockName}/gains`, {
-      params: { purchasedAmount, purchasedAt }
-    })
-    setPurchasedData(data)
+    try {
+      setLoading(true)
+      e.preventDefault()
+      const { data } = await api.get(`/stocks/${stockName}/gains`, {
+        params: { purchasedAmount, purchasedAt }
+      })
+      setPurchasedData(data)
+    } catch (err) {
+      alert(err)
+    } finally {
+      setLoading(false)
+    }
   }
 
   /**
    * Returns
    */
+
+  if (loading) {
+    return <Loading />
+  }
+
   return (
     <Container>
       <Header>
@@ -82,9 +96,22 @@ export const Gains = () => {
       <DataContainer>
         <p>Quantidade de compra: {purchasedData.purchasedAmount}</p>
         <p>Data da compra: {formatDate(purchasedData.purchasedAt)}</p>
-        <p>Preço na compra: {formatPrice(purchasedData.priceAtDate)}</p>
-        <p>Preço atual: {formatPrice(purchasedData.lastPrice)}</p>
-        <p>Ganhos: {formatPrice(purchasedData.capitalGains)}</p>
+        <p>
+          Preço na compra:{' '}
+          {purchasedData.priceAtDate
+            ? formatPrice(purchasedData.priceAtDate)
+            : ''}
+        </p>
+        <p>
+          Preço atual:{' '}
+          {purchasedData.lastPrice ? formatPrice(purchasedData.lastPrice) : ''}
+        </p>
+        <p>
+          Ganhos:{' '}
+          {purchasedData.capitalGains
+            ? formatPrice(purchasedData.capitalGains)
+            : ''}
+        </p>
       </DataContainer>
     </Container>
   )

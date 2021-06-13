@@ -12,6 +12,7 @@ import { TableCell } from '../../components/table-cell'
 import { TableHead } from '../../components/table-head'
 import { TableHeadCell } from '../../components/table-head-cell'
 import { TableRow } from '../../components/table-row'
+import { Loading } from '../../components/loading'
 
 import { FilterContainer, Title } from './styles'
 import { api } from '../../services/api'
@@ -40,6 +41,7 @@ export const Details = () => {
   /**
    * States
    */
+  const [loading, setLoading] = useState(false)
   const [from, setFrom] = useState(subMonths(new Date(), 1))
   const [to, setTo] = useState(new Date())
   const [history, setHistory] = useState({
@@ -55,17 +57,28 @@ export const Details = () => {
   }
 
   const handleSearchSubmit = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
+    try {
+      setLoading(true)
 
-    const { data } = await api.get<HistoryApi>(`/stocks/${stockName}/history`, {
-      params: { to, from }
-    })
-    setHistory(data)
+      e.preventDefault()
+
+      const { data } = await api.get<HistoryApi>(`/stocks/${stockName}/history`, {
+        params: { to, from }
+      })
+      setHistory(data)
+    } catch (err) {
+      alert(err)
+    } finally {
+      setLoading(false)
+    }
   }
 
   /**
    * Returns
    */
+  if (loading) {
+    return <Loading />
+  }
   return (
     <Container>
       <Header>
