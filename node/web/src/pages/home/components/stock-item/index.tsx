@@ -1,10 +1,11 @@
+import { useCallback, useEffect, useState } from 'react'
 import { Paper, Typography } from '@material-ui/core'
+import { useHistory } from 'react-router-dom'
 
 import { useStock } from '../../../../hooks/use-stock'
 import { Button } from '../../../../components/button'
 
 import { ActionsContainer } from './styles'
-import { useCallback, useEffect, useState } from 'react'
 import { api } from '../../../../services/api'
 import { formatDateTime, formatPrice } from '../../../../helpers/format'
 
@@ -23,6 +24,7 @@ export const StockItem = ({ stockName }: StockItemProps) => {
    * Hooks
    */
   const { removeStock } = useStock()
+  const { push } = useHistory()
 
   /**
    * States
@@ -42,6 +44,10 @@ export const StockItem = ({ stockName }: StockItemProps) => {
    */
   const handleRemoveClick = () => {
     removeStock(stockName)
+  }
+
+  const handleNavigateToDetails = () => {
+    push(`/${stockName}/details`)
   }
 
   /**
@@ -68,7 +74,7 @@ export const StockItem = ({ stockName }: StockItemProps) => {
       </Typography>
 
       <ActionsContainer>
-        <Button>Ver detalhes</Button>
+        <Button onClick={handleNavigateToDetails}>Ver detalhes</Button>
         <Button variant="outlined" onClick={handleRemoveClick}>
           Excluir
         </Button>
