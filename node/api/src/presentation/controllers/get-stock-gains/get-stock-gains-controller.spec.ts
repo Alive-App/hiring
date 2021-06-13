@@ -6,6 +6,9 @@ import { GetStockGainsController } from './get-stock-gains-controller'
 const makeFakeRequest = (): HttpRequest => ({
   params: {
     stockName: 'any_stock_name'
+  },
+  query: {
+    purchasedAmount: 100
   }
 })
 
@@ -22,5 +25,13 @@ describe('GetStockGainsController', () => {
     request.params.stockName = ''
     const response = await sut.handle(request)
     expect(response).toEqual(badRequest(new ParamNotProvidedError('stockName')))
+  })
+
+  test('should return 400 if purchasedAmount not provided', async () => {
+    const { sut } = makeSut()
+    const request = makeFakeRequest()
+    request.query.purchasedAmount = null
+    const response = await sut.handle(request)
+    expect(response).toEqual(badRequest(new ParamNotProvidedError('purchasedAmount')))
   })
 })
