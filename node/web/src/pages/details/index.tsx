@@ -40,12 +40,17 @@ export const Details = () => {
       <FilterContainer>
         <DateField
           label="Data inicial"
+          marginRight={10}
           value={from}
           onDateChange={setFrom}
-          marginRight={10}
         />
-        <DateField label="Data final" value={to} onDateChange={setTo} />
-        <Button onClick={handleBackClick}>Pesquisar</Button>
+        <DateField
+          label="Data final"
+          marginRight={10}
+          value={to}
+          onDateChange={setTo}
+        />
+        <Button type="submit">Pesquisar</Button>
       </FilterContainer>
     </Container>
   )
