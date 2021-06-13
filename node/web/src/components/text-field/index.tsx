@@ -4,8 +4,10 @@ import { TextField as MuiTextField } from '@material-ui/core'
 
 export interface TextFieldProps {
   label?: string;
+  placeholder?: string;
   fullWidth?: boolean;
   marginTop?: number;
+  marginRight?: number;
   marginBottom?: number;
   value?: any;
   onTextChange?: (
@@ -19,7 +21,9 @@ export const TextField = ({
   fullWidth,
   marginBottom = 0,
   marginTop = 0,
+  marginRight = 0,
   value,
+  placeholder,
   onTextChange
 }: TextFieldProps) => {
   /**
@@ -32,9 +36,7 @@ export const TextField = ({
       return
     }
 
-    if (e.target.value) {
-      onTextChange(e.target.value, e)
-    }
+    onTextChange(e.target.value, e)
   }
 
   /**
@@ -44,8 +46,9 @@ export const TextField = ({
     <MuiTextField
       label={label}
       fullWidth={fullWidth}
-      style={{ marginTop, marginBottom }}
+      style={{ marginTop, marginBottom, marginRight }}
       value={value}
+      placeholder={placeholder}
       onChange={handleChange}
     />
   )
