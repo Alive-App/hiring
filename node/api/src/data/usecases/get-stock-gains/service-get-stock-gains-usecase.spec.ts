@@ -68,4 +68,14 @@ describe('ServiceGetStockGainsUsecase', () => {
     await sut.getGains('any_name', 100, date)
     expect(getStockByDatekSpy).toHaveBeenLastCalledWith('any_name', date)
   })
+
+  test('should return a StockGainsModel on success', async () => {
+    const { sut } = makeSut()
+    const date = new Date()
+    const stockGainsModel = await sut.getGains('any_name', 100, date)
+    expect(stockGainsModel).toBeTruthy()
+    expect(stockGainsModel.name).toBeTruthy()
+    expect(stockGainsModel.priceAtDate).toBeTruthy()
+    expect(stockGainsModel.purchasedAmount).toBeTruthy()
+  })
 })
