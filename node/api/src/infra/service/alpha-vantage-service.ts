@@ -2,6 +2,7 @@ import axios, { AxiosInstance } from 'axios'
 import { GetLastStockService } from 'data/protocols/get-last-stock-service'
 import { GetHistoryStockService } from 'data/protocols/get-history-stock-service'
 import { GetStockByDateService } from 'data/protocols/get-stock-by-date-service'
+import { GetAvailableStockNamesService } from 'data/protocols/get-available-stock-names-service'
 import { LastStockModel } from 'domain/models/last-stock-model'
 import { alphaVantageDateToIsoDate } from 'infra/helpers/date-helpers'
 import { HistoryStockModel, HistoryStockPricingModel } from 'domain/models/history-stock-model'
@@ -61,7 +62,23 @@ export type TimeSeriesDailyType = {
   'Time Series (Daily)': TimeSeriesDailyItemType
 }
 
-export class AlphaVantageService implements GetLastStockService, GetHistoryStockService, GetStockByDateService {
+export type SearchEndpointItemType = {
+  '1. symbol':string,
+  '2. name': string,
+  '3. type':string,
+  '4. region':string,
+  '5. marketOpen': string,
+  '6. marketClose':string,
+  '7. timezone': string,
+  '8. currency': string,
+  '9. matchScore': string
+}
+
+export type SearchEndpointType = {
+  bestMatches: SearchEndpointItemType[]
+}
+
+export class AlphaVantageService implements GetLastStockService, GetHistoryStockService, GetStockByDateService, GetAvailableStockNamesService {
   private api: AxiosInstance
 
   constructor (
@@ -70,6 +87,15 @@ export class AlphaVantageService implements GetLastStockService, GetHistoryStock
     this.api = axios.create({
       baseURL: 'https://www.alphavantage.co/query?'
     })
+  }
+
+  private async checkDemoQuote (apiReturn: any) {
+    if (apiReturn.Note) {
+      const note = apiReturn.Note
+      if (note === 'Thank you for using Alpha Vantage! Our standard API call frequency is 5 calls per minute and 500 calls per day. Please visit https://www.alphavantage.co/premium/ if you would like to target a higher API call frequency.') {
+        throw new Error()
+      }
+    }
   }
 
   private async timeSeriesIntraday (
@@ -87,6 +113,8 @@ export class AlphaVantageService implements GetLastStockService, GetHistoryStock
       }
     })
 
+    this.checkDemoQuote(data)
+
     return data
   }
 
@@ -102,6 +130,24 @@ export class AlphaVantageService implements GetLastStockService, GetHistoryStock
         outputsize
       }
     })
+
+    this.checkDemoQuote(data)
+
+    return data
+  }
+
+  private async searchEndpoint (
+    keywords: string
+  ) {
+    const { data } = await this.api.get<SearchEndpointType>('', {
+      params: {
+        function: 'SYMBOL_SEARCH',
+        apikey: this.token,
+        keywords
+      }
+    })
+
+    this.checkDemoQuote(data)
 
     return data
   }
@@ -181,5 +227,13 @@ export class AlphaVantageService implements GetLastStockService, GetHistoryStock
     }
 
     return stockByDate
+  }
+
+  async getAvailableStockNames (search: string): Promise<string[]> {
+    const data = await this.searchEndpoint(search)
+
+    const availableStockNames = data.bestMatches.map(item => item['1. symbol'])
+
+    return availableStockNames
   }
 }
