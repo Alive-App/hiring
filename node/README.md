@@ -1,6 +1,6 @@
 ## Backend
 
-Principais tecnologias usadas, node, typescript, express, jest.<br/>
+Principais tecnologias usadas, node, typescript, express, jest.\
 Principais conceitos utilizados, clean architecture, solid, ddd.
 
 ### Instalação
@@ -13,7 +13,7 @@ Principais conceitos utilizados, clean architecture, solid, ddd.
    ```sh
    cd node/api
    ```
-3. Crie o arquivo .env e preencha com dados obrigatórios
+3. Crie o arquivo .env e preencha com dados obrigatórios, para obter o token Alpha Vantage [click aqui](https://www.alphavantage.co/support/#api-key)
    ```sh
    cp ./.env-exemple ./.env
    ```
@@ -25,13 +25,13 @@ Principais conceitos utilizados, clean architecture, solid, ddd.
 ### Execução
 
 - Para executar em modo desenvolvimento
-   ```sh
-   npm run dev
-   ```
+  ```sh
+  npm run dev
+  ```
 - Para rodar todos testes
-   ```sh
-   npm test:ci
-   ```
+  ```sh
+  npm test:ci
+  ```
 
 ## Frontend
 
@@ -59,10 +59,10 @@ Principais tecnologias usadas, react, typescript, styled-components, material-ui
 ### Execução
 
 - Para executar em modo desenvolvimento
-   ```sh
-   npm run start
-   ```
+  ```sh
+  npm run start
+  ```
 - Para rodar todos testes
-   ```sh
-   npm test
-   ```
+  ```sh
+  npm test
+  ```
