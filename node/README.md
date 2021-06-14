@@ -1,6 +1,6 @@
 ## Backend
 
-Principais tecnologias usadas, node, typescript, express, jest.
+Principais tecnologias usadas, node, typescript, express, jest.<br/>
 Principais conceitos utilizados, clean architecture, solid, ddd.
 
 ### Instalação
